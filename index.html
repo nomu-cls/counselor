@@ -13,25 +13,33 @@
         rel="stylesheet">
     <style>
         :root {
-            --primary: #1a1a2e;
-            --primary-light: #16213e;
-            --accent: #c9a84c;
-            --accent-light: #e8d48b;
-            --purple: #7b2d8e;
-            --purple-light: #a855c7;
-            --purple-soft: #f5eaf8;
+            /* Soft, feminine color palette inspired by gengo10th.vercel.app */
+            --primary: #eff6ff;
+            /* Very soft blue */
+            --primary-light: #ffffff;
+            --primary-dark: #cbd5e1;
+            --accent: #f59e0b;
+            /* Amber/Gold */
+            --accent-light: #fcd34d;
+            --purple: #8b5cf6;
+            /* Soft vibrant purple */
+            --purple-light: #a78bfa;
+            --purple-soft: #f5f3ff;
+            --teal: #14b8a6;
+            /* Teal for accents */
+            --teal-soft: #f0fdfa;
             --white: #ffffff;
-            --gray-50: #fafafa;
-            --gray-100: #f5f5f5;
-            --gray-200: #e5e5e5;
-            --gray-400: #a3a3a3;
-            --gray-600: #525252;
-            --gray-800: #262626;
-            --text: #1a1a1a;
-            --text-light: #6b7280;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-400: #94a3b8;
+            --gray-600: #475569;
+            --gray-800: #1e293b;
+            --text: #334155;
+            --text-light: #64748b;
             --red-soft: #fef2f2;
             --green-soft: #f0fdf4;
-            --green: #16a34a;
+            --green: #10b981;
         }
 
         * {
@@ -61,8 +69,8 @@
         /* HERO SECTION                                   */
         /* ============================================= */
         .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 40%, #0f3460 100%);
-            color: var(--white);
+            background: linear-gradient(135deg, var(--teal-soft) 0%, var(--primary) 100%);
+            color: var(--gray-800);
             padding: 80px 20px 60px;
             text-align: center;
             position: relative;
@@ -101,13 +109,13 @@
 
         .hero-badge {
             display: inline-block;
-            background: rgba(201, 168, 76, 0.15);
-            border: 1px solid rgba(201, 168, 76, 0.4);
+            background: rgba(20, 184, 166, 0.1);
+            border: 1px solid rgba(20, 184, 166, 0.3);
             padding: 6px 20px;
             border-radius: 30px;
             font-size: 13px;
-            font-weight: 600;
-            color: var(--accent-light);
+            font-weight: 700;
+            color: var(--teal);
             letter-spacing: 0.5px;
             margin-bottom: 32px;
         }
@@ -122,7 +130,7 @@
         }
 
         .hero h1 .placeholder {
-            color: var(--accent-light);
+            color: var(--purple-light);
             font-size: 0.65em;
             display: block;
             margin-bottom: 12px;
@@ -132,7 +140,7 @@
         .hero .sub-copy {
             font-size: 15px;
             line-height: 1.9;
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--gray-600);
             margin-bottom: 40px;
         }
 
@@ -141,8 +149,8 @@
         /* ============================================= */
         .cta-btn {
             display: inline-block;
-            background: linear-gradient(135deg, var(--accent) 0%, #b8943f 100%);
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
+            color: var(--white);
             padding: 18px 48px;
             border-radius: 60px;
             font-size: 17px;
@@ -172,7 +180,7 @@
 
         .cta-note {
             font-size: 12px;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray-400);
             margin-top: 12px;
         }
 
@@ -194,7 +202,7 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--purple);
+            color: var(--teal);
             margin-bottom: 16px;
         }
 
@@ -247,7 +255,7 @@
         .pain-list li::before {
             content: '➤';
             flex-shrink: 0;
-            color: var(--purple);
+            color: var(--teal);
             font-size: 14px;
             margin-top: 3px;
         }
@@ -256,7 +264,7 @@
         /* PARADIGM SHIFT BLOCK                           */
         /* ============================================= */
         .paradigm-block {
-            background: linear-gradient(135deg, var(--purple) 0%, #5b1d6e 100%);
+            background: linear-gradient(135deg, var(--purple-light) 0%, var(--purple) 100%);
             color: var(--white);
             border-radius: 20px;
             padding: 48px 36px;
@@ -282,8 +290,8 @@
         /* STORY QUOTE                                    */
         /* ============================================= */
         .story-quote {
-            border-left: 4px solid var(--purple);
-            background: var(--purple-soft);
+            border-left: 4px solid var(--teal);
+            background: var(--teal-soft);
             padding: 32px 28px;
             border-radius: 0 16px 16px 0;
             margin: 32px 0;
@@ -299,7 +307,7 @@
             margin-top: 16px;
             font-size: 13px;
             font-weight: 600;
-            color: var(--purple);
+            color: var(--teal);
         }
 
         /* ============================================= */
@@ -409,7 +417,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 12px 20px;
             text-align: center;
@@ -433,10 +441,10 @@
         /* MID CTA SECTION                                */
         /* ============================================= */
         .mid-cta {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(135deg, var(--teal-soft) 0%, var(--primary) 100%);
             padding: 60px 20px;
             text-align: center;
-            color: var(--white);
+            color: var(--gray-800);
         }
 
         .mid-cta h3 {
@@ -449,7 +457,7 @@
 
         .mid-cta p {
             font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--gray-600);
             margin-bottom: 32px;
         }
 
@@ -498,15 +506,15 @@
         /* FOOTER                                         */
         /* ============================================= */
         footer {
-            background: var(--primary);
-            color: rgba(255, 255, 255, 0.5);
+            background: var(--gray-100);
+            color: var(--gray-400);
             text-align: center;
             padding: 40px 20px;
             font-size: 12px;
         }
 
         footer a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--gray-600);
             text-decoration: none;
         }
 
@@ -516,7 +524,7 @@
         .sep {
             width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, var(--purple), var(--accent));
+            background: linear-gradient(90deg, var(--teal), var(--purple-light));
             border-radius: 2px;
             margin: 32px 0;
         }
@@ -679,7 +687,7 @@
     <!-- ============================================= -->
     <!-- SECTION 4: SKILLS (得られるもの)                -->
     <!-- ============================================= -->
-    <section class="section bg-purple-soft" id="program">
+    <section class="section bg-soft" id="program">
         <div class="section-inner">
             <span class="section-label">— 第3期で得られるもの</span>
             <h2 class="section-title">
