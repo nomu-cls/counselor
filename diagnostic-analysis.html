@@ -136,7 +136,7 @@
         <button onclick="showTab('clusters')">3クラスタ案</button>
         <button onclick="showTab('skills')">学ぶべきスキル</button>
         <button onclick="showTab('questions')">質問リデザイン</button>
-        <button onclick="showTab('videos')">動画出し分け</button>
+        <button onclick="showTab('workshop')">5日間WS</button>
     </div>
 
     <div class="content">
@@ -188,22 +188,11 @@
                     MTGで「診断結果がロジャーズに偏っていた」と報告あり。質問設計が4択で均等配分のため、カウンセラーは共感型の回答を選びやすく偏りが出やすい。
                 </div>
 
-                <div class="alert warning">
-                    <strong>3. 動画の出し分けが不均等</strong>
-                    フロイト型だけ10本の動画、他は5本のみ。フロイト型に偏った設計になっている。
-                </div>
-
-                <div class="alert warning">
-                    <strong>4.「学ぶべきスキル」が講座資料と紐づいていない</strong>
-                    各タイプの「今あなたに必要なこと」が抽象的。具体的にカリキュラムのどのスキルが不足しているかが明示されていない。
-                </div>
-
                 <div class="alert note">
                     <strong>🔑 解決の方向性</strong>
                     ① 性格タイプ判定 → <strong>課題ベースの判定</strong>に変更<br>
                     ② 4タイプ → <strong>3クラスタ</strong>に統合<br>
-                    ③ 学習スキルを<strong>全スライドPDFから具体的に紐づけ</strong><br>
-                    ④ 動画も<strong>共通5本 + クラスタ別5本</strong>で公平に
+                    ③ 学習スキルを<strong>全スライドPDFから具体的に紐づけ</strong>
                 </div>
             </div>
         </div>
@@ -519,54 +508,49 @@
         <!-- =============================== -->
         <!-- TAB: videos                      -->
         <!-- =============================== -->
-        <div id="videos" class="tab-content">
+        <div id="workshop" class="tab-content">
             <div class="section">
-                <h2>🎬 動画の出し分け案</h2>
+                <h2>📅 5日間ワークショップ（クラスタ別）</h2>
+                <p style="font-size:14px;color:var(--text-light);margin-bottom:12px;">
+                    診断結果 → 5日間ワークショップ（無料チャレンジ）→ 個別相談の流れ。<br>
+                    各クラスタの「壁」を5日間で体感・解決する構成。
+                </p>
+            </div>
 
-                <h3>共通動画（全クラスタ共通）5本</h3>
+            <div class="section">
+                <h3 style="color:var(--orange);">🔶 クラスタA「伝えられない型」5日間WS</h3>
                 <table>
-                    <tr><td>1</td><td>支援者が陥りがちな6つの罠</td></tr>
-                    <tr><td>2</td><td>突然来なくなったクライアント — 自分を責める代わりにできること</td></tr>
-                    <tr><td>3</td><td>突然キャンセルするクライアントの理由と予防策</td></tr>
-                    <tr><td>4</td><td>話してくれないクライアント — 質問の誤り</td></tr>
-                    <tr><td>5</td><td>深刻な悩みを打ち明けるクライアント — 心を軽くする聴き方</td></tr>
+                    <tr><th>Day</th><th>テーマ</th><th>ゴール</th></tr>
+                    <tr><td>Day 1</td><td>あなたの技術が「伝わらない」本当の理由</td><td>言語化の壁を自覚する</td></tr>
+                    <tr><td>Day 2</td><td>4MAT® — 4つの疑問詞で価値を30秒で語る</td><td>自分のセッションを構造化して説明できる</td></tr>
+                    <tr><td>Day 3</td><td>コアニーズの3つの問い — 表面を超える聴き方</td><td>クライアントの深層ニーズを引き出す質問力</td></tr>
+                    <tr><td>Day 4</td><td>PSMモデル — NOと言われない伝え方</td><td>ペーシング→暗示→動機づけの実践</td></tr>
+                    <tr><td>Day 5</td><td>リフレーミング5つの型 — 感覚を構造にする</td><td>再現可能な「型」で伝える力を手に入れる</td></tr>
                 </table>
             </div>
 
             <div class="section">
-                <h3>クラスタ別追加動画（各5本）</h3>
-                <div class="video-grid">
-                    <div class="video-col a">
-                        <h4>🔶 クラスタA</h4>
-                        <ul>
-                            <li>「伝わってない？」伝え方の改善法</li>
-                            <li>4MATで自分の価値を30秒で語る方法</li>
-                            <li>感覚を型にする言語化テンプレート</li>
-                            <li>コアニーズ発掘の3つの質問</li>
-                            <li>リフレーミング5つの型</li>
-                        </ul>
-                    </div>
-                    <div class="video-col b">
-                        <h4>🟢 クラスタB</h4>
-                        <ul>
-                            <li>壮絶な話に巻き込まれない方法</li>
-                            <li>初対面の安心感の作り方</li>
-                            <li>自己肯定感ゼロのクライアントへの声かけ</li>
-                            <li>セッションの行き詰まり打破法</li>
-                            <li>BASIC-IDで聴き方が変わる</li>
-                        </ul>
-                    </div>
-                    <div class="video-col c">
-                        <h4>🔵 クラスタC</h4>
-                        <ul>
-                            <li>「伝わってない？」伝え方の改善法</li>
-                            <li>クロージング苦手意識の克服法</li>
-                            <li>初対面の安心感の作り方</li>
-                            <li>感動ステップ：6つの顧客接点</li>
-                            <li>TTM：準備段階に合わせた対応</li>
-                        </ul>
-                    </div>
-                </div>
+                <h3 style="color:var(--green);">🟢 クラスタB「深まらない型」5日間WS</h3>
+                <table>
+                    <tr><th>Day</th><th>テーマ</th><th>ゴール</th></tr>
+                    <tr><td>Day 1</td><td>傾聴が「深まらない」本当の理由</td><td>共感と介入の違いを理解する</td></tr>
+                    <tr><td>Day 2</td><td>分類傾聴 — 7要素で「聴く」を変える</td><td>内容以外の情報を識別して聴く</td></tr>
+                    <tr><td>Day 3</td><td>BASIC-ID — 7つの基準で体系的に聴く</td><td>質問で相手の全体像を引き出す</td></tr>
+                    <tr><td>Day 4</td><td>TRC — ストーリーで伝え返す技術</td><td>聴いた情報を変化の鍵に変換する</td></tr>
+                    <tr><td>Day 5</td><td>イエスセット＋接続詞で行き詰まりを打破</td><td>「深まる会話」を構造的に作れるようになる</td></tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3 style="color:var(--blue);">🔵 クラスタC「選ばれない型」5日間WS</h3>
+                <table>
+                    <tr><th>Day</th><th>テーマ</th><th>ゴール</th></tr>
+                    <tr><td>Day 1</td><td>良いセッションなのに「選ばれない」本当の理由</td><td>セッション外の課題を自覚する</td></tr>
+                    <tr><td>Day 2</td><td>第一印象の作り方 — 最初の10秒で信頼を作る</td><td>非言語の所作で信頼の土台を築く</td></tr>
+                    <tr><td>Day 3</td><td>感動ステップ — 6つの顧客接点を設計する</td><td>セッション外の体験を最適化する</td></tr>
+                    <tr><td>Day 4</td><td>TTM — クライアントの準備段階に合わせる</td><td>相手の段階に合った言葉を選べるようになる</td></tr>
+                    <tr><td>Day 5</td><td>4MAT®＋すべき・できる・したい</td><td>価値を伝え、行動を促す力を手に入れる</td></tr>
+                </table>
             </div>
         </div>
 
