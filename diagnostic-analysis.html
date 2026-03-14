@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>診断リデザイン分析 — カウンセラーの言語学 3クラスタ対応</title>
+    <style>
+        :root {
+            --navy: #1a2744;
+            --navy-light: #2a3a5c;
+            --red: #c0392b;
+            --gold: #d4a017;
+            --green: #27ae60;
+            --blue: #2980b9;
+            --orange: #e67e22;
+            --bg: #f8f9fa;
+            --card-bg: #ffffff;
+            --text: #333;
+            --text-light: #666;
+            --border: #e0e0e0;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif; background: var(--bg); color: var(--text); line-height:1.7; }
+
+        /* Header */
+        .header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%); color:#fff; padding:48px 24px; text-align:center; }
+        .header h1 { font-size:clamp(20px,4vw,32px); margin-bottom:8px; }
+        .header .subtitle { font-size:14px; opacity:0.8; }
+        .header .badge { display:inline-block; background:var(--gold); color:var(--navy); padding:4px 16px; border-radius:20px; font-size:12px; font-weight:700; margin-top:12px; }
+
+        /* Navigation */
+        .tab-nav { display:flex; gap:0; background:var(--navy); position:sticky; top:0; z-index:100; overflow-x:auto; }
+        .tab-nav button { flex:1; min-width:120px; padding:14px 12px; background:transparent; border:none; color:rgba(255,255,255,0.6); font-size:13px; font-weight:600; cursor:pointer; transition:all 0.3s; border-bottom:3px solid transparent; white-space:nowrap; }
+        .tab-nav button.active { color:#fff; border-bottom-color:var(--gold); background:rgba(255,255,255,0.1); }
+
+        /* Content */
+        .content { max-width:900px; margin:0 auto; padding:24px 16px; }
+        .tab-content { display:none; }
+        .tab-content.active { display:block; }
+
+        /* Section */
+        .section { background:var(--card-bg); border-radius:12px; padding:28px 24px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+        .section h2 { font-size:20px; color:var(--navy); margin-bottom:16px; padding-bottom:8px; border-bottom:2px solid var(--border); }
+        .section h3 { font-size:17px; color:var(--navy); margin:20px 0 10px; }
+        .section h4 { font-size:15px; color:var(--navy-light); margin:16px 0 8px; }
+        .section p, .section li { font-size:14px; line-height:1.8; }
+        .section ul { padding-left:20px; margin:8px 0; }
+        .section li { margin-bottom:4px; }
+
+        /* Alert boxes */
+        .alert { padding:16px 20px; border-radius:8px; margin:16px 0; font-size:14px; line-height:1.7; }
+        .alert strong { display:block; margin-bottom:4px; }
+        .alert.note { background:#e8f4fd; border-left:4px solid var(--blue); }
+        .alert.important { background:#fdf2e9; border-left:4px solid var(--orange); }
+        .alert.warning { background:#fce8e8; border-left:4px solid var(--red); }
+        .alert.tip { background:#e8fdf0; border-left:4px solid var(--green); }
+
+        /* Tables */
+        table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+        th { background:var(--navy); color:#fff; padding:10px 12px; text-align:left; font-size:12px; }
+        td { padding:10px 12px; border-bottom:1px solid var(--border); vertical-align:top; }
+        tr:nth-child(even) { background:#f9f9f9; }
+        td:first-child { white-space:nowrap; font-weight:600; }
+
+        /* Cluster cards */
+        .cluster-card { border-radius:12px; padding:24px; margin:16px 0; position:relative; overflow:hidden; }
+        .cluster-card.a { background:linear-gradient(135deg, #fef5e7 0%, #fdebd0 100%); border-left:5px solid var(--orange); }
+        .cluster-card.b { background:linear-gradient(135deg, #eafaf1 0%, #d5f5e3 100%); border-left:5px solid var(--green); }
+        .cluster-card.c { background:linear-gradient(135deg, #ebf5fb 0%, #d6eaf8 100%); border-left:5px solid var(--blue); }
+        .cluster-card .cluster-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+        .cluster-card.a .cluster-label { color:var(--orange); }
+        .cluster-card.b .cluster-label { color:var(--green); }
+        .cluster-card.c .cluster-label { color:var(--blue); }
+        .cluster-card h3 { margin-top:0; font-size:18px; }
+        .cluster-card .type-name { font-size:14px; color:var(--text-light); margin-bottom:12px; }
+
+        /* Strength/weakness blocks */
+        .trait-block { margin:12px 0; }
+        .trait-block .trait-header { font-size:14px; font-weight:700; margin-bottom:6px; }
+        .trait-block .trait-header.strength { color:var(--green); }
+        .trait-block .trait-header.shadow { color:var(--red); }
+        .trait-block .trait-header.need { color:var(--blue); }
+        .trait-block ul { font-size:13px; }
+
+        /* Voice quote */
+        .voice-quote { background:rgba(0,0,0,0.04); border-left:3px solid var(--gold); padding:12px 16px; margin:12px 0; border-radius:0 8px 8px 0; font-size:13px; }
+        .voice-quote .attribution { font-size:12px; color:var(--text-light); margin-top:4px; }
+
+        /* Question blocks */
+        .question-block { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; padding:16px 20px; margin:12px 0; }
+        .question-block .q-num { font-size:12px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+        .question-block .q-text { font-size:14px; font-weight:600; color:var(--navy); margin-bottom:10px; }
+        .question-block .option { display:flex; align-items:flex-start; gap:8px; padding:6px 0; font-size:13px; }
+        .option .tag { display:inline-block; width:22px; height:22px; border-radius:50%; text-align:center; line-height:22px; font-size:11px; font-weight:700; color:#fff; flex-shrink:0; }
+        .option .tag.a { background:var(--orange); }
+        .option .tag.b { background:var(--green); }
+        .option .tag.c { background:var(--blue); }
+
+        /* Skill table */
+        .skill-table td.skill-name { color:var(--navy); font-weight:700; }
+        .skill-table td.pdf-ref { color:var(--text-light); font-size:12px; }
+
+        /* Video grid */
+        .video-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin:16px 0; }
+        .video-col h4 { font-size:13px; text-align:center; padding:8px; border-radius:8px 8px 0 0; color:#fff; margin:0; }
+        .video-col.a h4 { background:var(--orange); }
+        .video-col.b h4 { background:var(--green); }
+        .video-col.c h4 { background:var(--blue); }
+        .video-col ul { list-style:none; padding:8px 12px; margin:0; background:#f9f9f9; border-radius:0 0 8px 8px; min-height:200px; }
+        .video-col li { font-size:12px; padding:6px 0; border-bottom:1px solid var(--border); }
+        .video-col li:last-child { border-bottom:none; }
+
+        /* Result block */
+        .result-block { background:linear-gradient(135deg, #fef9e7 0%, #fdf2e9 100%); border:2px solid var(--gold); border-radius:10px; padding:16px 20px; margin:16px 0; font-size:14px; }
+        .result-block strong { color:var(--navy); }
+
+        /* Responsive */
+        @media(max-width:600px) {
+            .video-grid { grid-template-columns:1fr; }
+            .section { padding:20px 16px; }
+            .tab-nav button { font-size:11px; padding:10px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>📊 診断リデザイン分析</h1>
+        <div class="subtitle">カウンセラーの言語学 — 3クラスタ対応版</div>
+        <div class="badge">MTG 0309 議論確認 + 全スライドPDF分析</div>
+    </div>
+
+    <div class="tab-nav">
+        <button class="active" onclick="showTab('overview')">MTG確認</button>
+        <button onclick="showTab('issues')">現状の課題</button>
+        <button onclick="showTab('clusters')">3クラスタ案</button>
+        <button onclick="showTab('skills')">学ぶべきスキル</button>
+        <button onclick="showTab('questions')">質問リデザイン</button>
+        <button onclick="showTab('videos')">動画出し分け</button>
+    </div>
+
+    <div class="content">
+
+        <!-- =============================== -->
+        <!-- TAB: overview                    -->
+        <!-- =============================== -->
+        <div id="overview" class="tab-content active">
+            <div class="section">
+                <h2>✅ MTG議事録（0309）で確認された方針</h2>
+
+                <table>
+                    <tr><th style="width:30%;">項目</th><th>決定事項</th></tr>
+                    <tr><td>3クラスタ構成</td><td>LP-A（パールズ+エリクソン統合）、LP-B（ロジャーズ）、LP-C（フロイト）</td></tr>
+                    <tr><td>診断の目的</td><td>3つのLPクラスタに振り分け → 各自に合った課題と解決スキルを提示</td></tr>
+                    <tr><td>個別相談データ</td><td>フロイト15名（最多）、ロジャーズ11名、エリクソン7名、パールズ最少</td></tr>
+                    <tr><td>ターゲット</td><td>フロイト型とロジャーズ型に集中（パールズ+エリクソンは統合）</td></tr>
+                    <tr><td>診断→学習の流れ</td><td>診断結果 → あなたに足りないスキル提示 → 5日間チャレンジへ誘導</td></tr>
+                </table>
+
+                <div class="alert important">
+                    <strong>📌 こうさんの指示（MTGより）</strong>
+                    「まずスキルを出してもらって、それによってどうなるか書いてもらった後、<strong>逆引きして</strong>『今あなたに足りないのは〜』を言語化する」<br><br>
+                    「カウンセラーの言語学の全スライドPDFを読み込ませて、この3タイプで学ぶべきスキルを導き出してくれ」
+                </div>
+
+                <div class="alert tip">
+                    <strong>💡 診断の位置づけ</strong>
+                    広告 → LP → 診断（自分ごと化）→ 5日間チャレンジ → 個別相談。<br>
+                    診断結果で「あなたに足りないスキル」を見せ、5日間チャレンジでその理由を理解してもらう流れ。
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- TAB: issues                      -->
+        <!-- =============================== -->
+        <div id="issues" class="tab-content">
+            <div class="section">
+                <h2>🔴 現状の診断の課題</h2>
+
+                <div class="alert warning">
+                    <strong>1. 4タイプ → 3クラスタへの変換がない</strong>
+                    現在は4タイプ（フロイト/ロジャーズ/パールズ/エリクソン）をそのまま出しているが、MTGの決定はパールズ+エリクソンを統合して3クラスタにすること。
+                </div>
+
+                <div class="alert warning">
+                    <strong>2. 診断結果の偏り</strong>
+                    MTGで「診断結果がロジャーズに偏っていた」と報告あり。質問設計が4択で均等配分のため、カウンセラーは共感型の回答を選びやすく偏りが出やすい。
+                </div>
+
+                <div class="alert warning">
+                    <strong>3. 動画の出し分けが不均等</strong>
+                    フロイト型だけ10本の動画、他は5本のみ。フロイト型に偏った設計になっている。
+                </div>
+
+                <div class="alert warning">
+                    <strong>4.「学ぶべきスキル」が講座資料と紐づいていない</strong>
+                    各タイプの「今あなたに必要なこと」が抽象的。具体的にカリキュラムのどのスキルが不足しているかが明示されていない。
+                </div>
+
+                <div class="alert note">
+                    <strong>🔑 解決の方向性</strong>
+                    ① 性格タイプ判定 → <strong>課題ベースの判定</strong>に変更<br>
+                    ② 4タイプ → <strong>3クラスタ</strong>に統合<br>
+                    ③ 学習スキルを<strong>全スライドPDFから具体的に紐づけ</strong><br>
+                    ④ 動画も<strong>共通5本 + クラスタ別5本</strong>で公平に
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- TAB: clusters                    -->
+        <!-- =============================== -->
+        <div id="clusters" class="tab-content">
+            <div class="section">
+                <h2>3クラスタ対応 — 診断結果リデザイン案</h2>
+                <p style="font-size:14px;color:var(--text-light);margin-bottom:16px;">
+                    4タイプ診断のまま結果を出しつつ、<strong>3クラスタに振り分ける</strong>設計。<br>
+                    フロイト型→C、ロジャーズ型→B、パールズ+エリクソン型→A。
+                </p>
+            </div>
+
+            <!-- Cluster A -->
+            <div class="cluster-card a">
+                <div class="cluster-label">クラスタ A — LP-A対応</div>
+                <h3>🔶「伝えられない型」</h3>
+                <div class="type-name">（パールズ型 + エリクソン型 → 行動変容型カウンセラー）</div>
+
+                <div class="trait-block">
+                    <div class="trait-header strength">✅ あなたの強み</div>
+                    <ul>
+                        <li>実践と体験を通してクライアントにリアルな変化を起こす力がある</li>
+                        <li>理想の未来を描き、自然に行動を促すことができる</li>
+                        <li>セッションにダイナミズムと希望を吹き込める</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header shadow">⚠️ あなたが陥りやすい壁</div>
+                    <ul>
+                        <li>自分の技術や成果を<strong>言葉にできない</strong>（言語化の壁）</li>
+                        <li>感覚的に「できている」ことを型にできず、教えられない・スケールしない</li>
+                        <li>テクニックに走りすぎて、クライアントの感情を置き去りにしてしまうことも</li>
+                        <li>ポジティブすぎる未来を押しつけ、「今の痛み」を蔑ろにしてしまうことも</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header need">🌱 あなたに今、必要なこと</div>
+                    <ul>
+                        <li><strong>あなたの技術を「言葉」にする力</strong>を手に入れること</li>
+                        <li>感覚を構造化し、再現可能なフレームワークにすること</li>
+                        <li>クライアントの感情と願望の両方を扱える「伝え方」を学ぶこと</li>
+                    </ul>
+                </div>
+
+                <div class="voice-quote">
+                    「右脳で感覚的にやっていたことを、左脳の人にもわかるように構造化する必要があった」
+                    <div class="attribution">— 稲井英人さん（量子声アカデミー代表）→ リピート・紹介が増加</div>
+                </div>
+                <div class="voice-quote">
+                    「歯のことだけ聞いて終わっていた。その奥にある願望に触れる方法を知った」
+                    <div class="attribution">— 亀田さん（歯科医）→ 売上大幅増</div>
+                </div>
+            </div>
+
+            <!-- Cluster B -->
+            <div class="cluster-card b">
+                <div class="cluster-label">クラスタ B — LP-B対応</div>
+                <h3>🟢「深まらない型」</h3>
+                <div class="type-name">（ロジャーズ型 → 共感傾聴型カウンセラー）</div>
+
+                <div class="trait-block">
+                    <div class="trait-header strength">✅ あなたの強み</div>
+                    <ul>
+                        <li>クライアントに寄り添い、共感的な信頼関係を築ける</li>
+                        <li>丁寧に話を聴き、安心感を生み出すことができる</li>
+                        <li>クライアントが「自分の力で」問題を克服する受容的なサポートが得意</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header shadow">⚠️ あなたが陥りやすい壁</div>
+                    <ul>
+                        <li>傾聴しても「ただ聴くだけ」で終わり、<strong>セッションが深まらない</strong></li>
+                        <li>質問をしていくと、ある程度で止まって、<strong>その先がわからなくなる</strong></li>
+                        <li>「共感」だけでは変化が起きない場面で無力感を感じる</li>
+                        <li>感情的に疲弊してしまう（共感疲労）</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header need">🌱 あなたに今、必要なこと</div>
+                    <ul>
+                        <li><strong>「聴く」の先にある「介入」の技術</strong>を身につけること</li>
+                        <li>感覚でやっている傾聴を<strong>体系化・言語化</strong>すること</li>
+                        <li>「共感」から「行動変容」への橋渡しの会話を学ぶこと</li>
+                    </ul>
+                </div>
+
+                <div class="voice-quote">
+                    「行き詰まったときに、どう言葉で介入すればいいのかわからなかった。感覚でやっていた部分を、構造として持てるようになった」
+                    <div class="attribution">— 入江隆三郎さん（精神科医・院長）</div>
+                </div>
+            </div>
+
+            <!-- Cluster C -->
+            <div class="cluster-card c">
+                <div class="cluster-label">クラスタ C — LP-C対応</div>
+                <h3>🔵「選ばれない・継続しない型」</h3>
+                <div class="type-name">（フロイト型 → 分析深掘り型カウンセラー）</div>
+
+                <div class="trait-block">
+                    <div class="trait-header strength">✅ あなたの強み</div>
+                    <ul>
+                        <li>クライアントの心の奥深くにある「根本原因」を見つけ出す力</li>
+                        <li>論理的に物事を整理・構造化する力</li>
+                        <li>内省のサポートや深掘りが得意</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header shadow">⚠️ あなたが陥りやすい壁</div>
+                    <ul>
+                        <li>良いセッションをしているのに、<strong>お客様が離れていく・継続しない</strong></li>
+                        <li>一番伝えたいことがクライアントに伝わらない（意図と受け取り方のズレ）</li>
+                        <li>過去ばかりに焦点を当て、「今ここ」や未来を扱えない</li>
+                        <li>分析に集中しすぎて、クライアントとの距離が縮まらない</li>
+                    </ul>
+                </div>
+
+                <div class="trait-block">
+                    <div class="trait-header need">🌱 あなたに今、必要なこと</div>
+                    <ul>
+                        <li>セッション<strong>以外</strong>の顧客接点を最適化すること</li>
+                        <li>伝えたいことが「確実に届く」<strong>構造的な伝え方</strong>を手に入れること</li>
+                        <li>深掘りの判断基準を<strong>感覚ではなくフレームワーク</strong>で持つこと</li>
+                    </ul>
+                </div>
+
+                <div class="voice-quote">
+                    「私が一番伝えたいことが相手に刺さってなかったりとか…一番伝えたいはずのことが2番手3番手ぐらいにしか伝わってなかった」
+                    <div class="attribution">— 高味ひさこさん（カウンセラー）</div>
+                </div>
+                <div class="voice-quote">
+                    「成約率30%→50%に改善、5ヶ月連続月100万超え」
+                    <div class="attribution">— 熊澤さん（夫婦関係改善カウンセラー）</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- TAB: skills                      -->
+        <!-- =============================== -->
+        <div id="skills" class="tab-content">
+            <div class="section">
+                <h2>📚 各クラスタが学ぶべきスキル</h2>
+                <p style="font-size:14px;color:var(--text-light);margin-bottom:12px;">全スライドPDF（260ページ+）から抽出した、各クラスタに不足しているスキル</p>
+            </div>
+
+            <!-- Skills A -->
+            <div class="section">
+                <h3 style="color:var(--orange);">🔶 クラスタA「伝えられない型」に必要なスキル</h3>
+                <table class="skill-table">
+                    <tr><th>#</th><th>スキル名</th><th>PDF出典</th><th>なぜ必要か</th></tr>
+                    <tr><td>1</td><td class="skill-name">4MAT®</td><td class="pdf-ref">Day6 p486〜</td><td>「なぜ→何→どのように→もしも」の4つの疑問詞で伝える構造。技術はあるのに言語化できない壁を突破</td></tr>
+                    <tr><td>2</td><td class="skill-name">コアニーズの3つの問い</td><td class="pdf-ref">Day2 p107〜</td><td>自律性・有能感・関係性の3軸で深いニーズを引き出す。表面的な問題解決で終わらない</td></tr>
+                    <tr><td>3</td><td class="skill-name">PSMモデル</td><td class="pdf-ref">Day3 p267〜</td><td>ペーシング→暗示→動機づけで、NOと言われない伝え方</td></tr>
+                    <tr><td>4</td><td class="skill-name">5つのリフレーミング</td><td class="pdf-ref">Day4 p357</td><td>問題を別の角度から見せる技術。「型」にはめられない会話力</td></tr>
+                    <tr><td>5</td><td class="skill-name">感動ステップ</td><td class="pdf-ref">Day2 p160〜</td><td>6つの顧客接点設計。セッション外の体験を設計して再現性を高める</td></tr>
+                </table>
+                <div class="result-block">
+                    <strong>学んだら、こうなる：</strong><br>
+                    自分の技術を「相手が『これだ！』と感じる言葉」で語れるようになり、感覚的な成功を型にして教えられる・スケールできるようになります。
+                </div>
+            </div>
+
+            <!-- Skills B -->
+            <div class="section">
+                <h3 style="color:var(--green);">🟢 クラスタB「深まらない型」に必要なスキル</h3>
+                <table class="skill-table">
+                    <tr><th>#</th><th>スキル名</th><th>PDF出典</th><th>なぜ必要か</th></tr>
+                    <tr><td>1</td><td class="skill-name">識別傾聴術</td><td class="pdf-ref">Day4 p365〜</td><td>8つのレベルで同時に聴く技術。「ただ聴くだけ」→「変化の鍵を見つける聴き方」へ</td></tr>
+                    <tr><td>2</td><td class="skill-name">BASIC-ID</td><td class="pdf-ref">Day3 p230〜</td><td>7つの基準（行動/感情/感覚/イメージ/認知/対人関係/薬理）で体系的に聴く</td></tr>
+                    <tr><td>3</td><td class="skill-name">分類傾聴</td><td class="pdf-ref">Day2 p131〜</td><td>行動・意図・関係者・捉え方・時期・文脈・感情の7要素で識別して聴く</td></tr>
+                    <tr><td>4</td><td class="skill-name">TRC（引き金→反応→結末）</td><td class="pdf-ref">Day3 p236〜</td><td>聴いた情報をストーリーとして並び替え、伝え返す技術</td></tr>
+                    <tr><td>5</td><td class="skill-name">イエスセット＋接続詞</td><td class="pdf-ref">Day3 p240〜</td><td>「進む/転換する/探る」接続詞で会話を深め、行き詰まりを打破</td></tr>
+                </table>
+                <div class="result-block">
+                    <strong>学んだら、こうなる：</strong><br>
+                    「聴くだけで終わる」「行き詰まる」という壁がなくなり、傾聴の先にある「変化の鍵穴」を見つけ、構造的に介入できるようになります。
+                </div>
+            </div>
+
+            <!-- Skills C -->
+            <div class="section">
+                <h3 style="color:var(--blue);">🔵 クラスタC「選ばれない型」に必要なスキル</h3>
+                <table class="skill-table">
+                    <tr><th>#</th><th>スキル名</th><th>PDF出典</th><th>なぜ必要か</th></tr>
+                    <tr><td>1</td><td class="skill-name">感動ステップ</td><td class="pdf-ref">Day2 p160〜</td><td>6つの顧客接点（募集文〜フォローアップ）を設計。セッション外で「選ばれる」仕組み</td></tr>
+                    <tr><td>2</td><td class="skill-name">催眠的テンプレート</td><td class="pdf-ref">Day1 p45〜</td><td>セッション冒頭で一瞬で信頼をつくる所作と言葉</td></tr>
+                    <tr><td>3</td><td class="skill-name">TTM変容プロセス</td><td class="pdf-ref">Day5 p393〜</td><td>クライアントの準備段階に合わせたアプローチ</td></tr>
+                    <tr><td>4</td><td class="skill-name">4MAT®</td><td class="pdf-ref">Day6 p486〜</td><td>セッションの価値を「なるほど」が生まれる順序で伝える</td></tr>
+                    <tr><td>5</td><td class="skill-name">すべき・できる・したい</td><td class="pdf-ref">Day5 p375〜</td><td>行動変容の3要素を喚起する問いかけ。クロージング苦手意識を克服</td></tr>
+                    <tr><td>6</td><td class="skill-name">第一印象の作り方</td><td class="pdf-ref">Day1 p29〜</td><td>最初の10秒の非言語所作で信頼の土台を作る</td></tr>
+                </table>
+                <div class="result-block">
+                    <strong>学んだら、こうなる：</strong><br>
+                    セッション中だけでなく「セッション外」の体験全体を設計でき、クライアントの準備段階に合った言葉で価値を伝えられるようになります。結果、リピート・継続が自然に生まれます。
+                </div>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- TAB: questions                   -->
+        <!-- =============================== -->
+        <div id="questions" class="tab-content">
+            <div class="section">
+                <h2>🔄 診断の質問リデザイン案</h2>
+
+                <div class="alert important">
+                    <strong>設計方針</strong>
+                    「どのタイプか」ではなく<strong>「どの壁にぶつかっているか」</strong>を課題ベースで判定。<br>
+                    A回答最多→クラスタA「伝えられない型」、B回答最多→クラスタB「深まらない型」、C回答最多→クラスタC「選ばれない型」
+                </div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q1</div>
+                <div class="q-text">セッション後、最もよく感じる「残念感」は？</div>
+                <div class="option"><span class="tag a">A</span> 伝えたかったことが相手に届いた手応えがない</div>
+                <div class="option"><span class="tag b">B</span> 深いところまで話せたのに、変化に繋がらなかった</div>
+                <div class="option"><span class="tag c">C</span> 良いセッションだったのに、次の予約が入らない</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q2</div>
+                <div class="q-text">クライアントとの関係で、最も困ることは？</div>
+                <div class="option"><span class="tag a">A</span> 自分の価値やセッションの良さを説明できない</div>
+                <div class="option"><span class="tag b">B</span> 聴けば聴くほど行き詰まって、出口が見えなくなる</div>
+                <div class="option"><span class="tag c">C</span> 信頼されている実感はあるのに、お金の話になると距離ができる</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q3</div>
+                <div class="q-text">新しいクライアントと初めて会うとき、一番の不安は？</div>
+                <div class="option"><span class="tag a">A</span> うまく自分のセッションの価値を伝えられるか</div>
+                <div class="option"><span class="tag b">B</span> 想定外の深い悩みが来たとき、対応できるか</div>
+                <div class="option"><span class="tag c">C</span> 初回で良い印象を与えて、継続につなげられるか</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q4</div>
+                <div class="q-text">他のカウンセラーの講座や学びに参加するとき、求めるのは？</div>
+                <div class="option"><span class="tag a">A</span> 自分のやり方を言語化・体系化するヒント</div>
+                <div class="option"><span class="tag b">B</span> 傾聴の先にある「介入」の具体的な技術</div>
+                <div class="option"><span class="tag c">C</span> 集客・リピート・セッション外の設計方法</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q5</div>
+                <div class="q-text">セッション中に最もストレスを感じる場面は？</div>
+                <div class="option"><span class="tag a">A</span> アドバイスしたいのに、うまい言葉が出てこない</div>
+                <div class="option"><span class="tag b">B</span> 話を聞いているだけで時間が過ぎ、核心に触れられない</div>
+                <div class="option"><span class="tag c">C</span> 良い関わりをしているのに、成果が目に見える形にならない</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q6</div>
+                <div class="q-text">今の自分に最も欲しいのは？</div>
+                <div class="option"><span class="tag a">A</span> 技術を「言葉」にして人に伝える力</div>
+                <div class="option"><span class="tag b">B</span> 「聴く」だけでなく「変化を生む」介入の力</div>
+                <div class="option"><span class="tag c">C</span> セッション以外で「選ばれる」仕組み</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q7</div>
+                <div class="q-text">クライアントの反応で、最もがっかりする場面は？</div>
+                <div class="option"><span class="tag a">A</span> 一生懸命伝えたのに、全く別のことが印象に残っていた</div>
+                <div class="option"><span class="tag b">B</span> 共感しても「で、どうすればいいんですか？」と言われた</div>
+                <div class="option"><span class="tag c">C</span> 満足してもらえたはずなのに、紹介も継続もなく終わった</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q8</div>
+                <div class="q-text">自分のセッションの最大の課題は何ですか？</div>
+                <div class="option"><span class="tag a">A</span> 感覚的にできていることを「型」や「構造」にできない</div>
+                <div class="option"><span class="tag b">B</span> 傾聴のその先、何をどう「介入」すればいいかわからない</div>
+                <div class="option"><span class="tag c">C</span> セッション前後のコミュニケーション設計ができていない</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q9</div>
+                <div class="q-text">理想のカウンセラー像に近いのは？</div>
+                <div class="option"><span class="tag a">A</span> 自分の専門性を明確な言葉で表現し、人を導ける人</div>
+                <div class="option"><span class="tag b">B</span> どんな相手でも深層にアクセスし、変容を起こせる人</div>
+                <div class="option"><span class="tag c">C</span> クライアントから「あなたに出会えてよかった」と言われ続ける人</div>
+            </div>
+
+            <div class="question-block">
+                <div class="q-num">Q10</div>
+                <div class="q-text">この診断で、最も知りたいことは？</div>
+                <div class="option"><span class="tag a">A</span> なぜ自分の価値が伝わらないのか、その構造的な原因</div>
+                <div class="option"><span class="tag b">B</span> 傾聴が「深まらない」原因と、その先の具体的技術</div>
+                <div class="option"><span class="tag c">C</span> 良いセッションなのに「選ばれない」理由と、その解決策</div>
+            </div>
+
+            <div class="section" style="margin-top:20px;">
+                <h3>判定ロジック</h3>
+                <table>
+                    <tr><th>回答パターン</th><th>判定結果</th></tr>
+                    <tr><td>A回答が最多</td><td><strong style="color:var(--orange);">クラスタA「伝えられない型」</strong>（パールズ＋エリクソン寄り）</td></tr>
+                    <tr><td>B回答が最多</td><td><strong style="color:var(--green);">クラスタB「深まらない型」</strong>（ロジャーズ寄り）</td></tr>
+                    <tr><td>C回答が最多</td><td><strong style="color:var(--blue);">クラスタC「選ばれない型」</strong>（フロイト寄り）</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- =============================== -->
+        <!-- TAB: videos                      -->
+        <!-- =============================== -->
+        <div id="videos" class="tab-content">
+            <div class="section">
+                <h2>🎬 動画の出し分け案</h2>
+
+                <h3>共通動画（全クラスタ共通）5本</h3>
+                <table>
+                    <tr><td>1</td><td>支援者が陥りがちな6つの罠</td></tr>
+                    <tr><td>2</td><td>突然来なくなったクライアント — 自分を責める代わりにできること</td></tr>
+                    <tr><td>3</td><td>突然キャンセルするクライアントの理由と予防策</td></tr>
+                    <tr><td>4</td><td>話してくれないクライアント — 質問の誤り</td></tr>
+                    <tr><td>5</td><td>深刻な悩みを打ち明けるクライアント — 心を軽くする聴き方</td></tr>
+                </table>
+            </div>
+
+            <div class="section">
+                <h3>クラスタ別追加動画（各5本）</h3>
+                <div class="video-grid">
+                    <div class="video-col a">
+                        <h4>🔶 クラスタA</h4>
+                        <ul>
+                            <li>「伝わってない？」伝え方の改善法</li>
+                            <li>4MATで自分の価値を30秒で語る方法</li>
+                            <li>感覚を型にする言語化テンプレート</li>
+                            <li>コアニーズ発掘の3つの質問</li>
+                            <li>リフレーミング5つの型</li>
+                        </ul>
+                    </div>
+                    <div class="video-col b">
+                        <h4>🟢 クラスタB</h4>
+                        <ul>
+                            <li>壮絶な話に巻き込まれない方法</li>
+                            <li>初対面の安心感の作り方</li>
+                            <li>自己肯定感ゼロのクライアントへの声かけ</li>
+                            <li>セッションの行き詰まり打破法</li>
+                            <li>BASIC-IDで聴き方が変わる</li>
+                        </ul>
+                    </div>
+                    <div class="video-col c">
+                        <h4>🔵 クラスタC</h4>
+                        <ul>
+                            <li>「伝わってない？」伝え方の改善法</li>
+                            <li>クロージング苦手意識の克服法</li>
+                            <li>初対面の安心感の作り方</li>
+                            <li>感動ステップ：6つの顧客接点</li>
+                            <li>TTM：準備段階に合わせた対応</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-nav button').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
