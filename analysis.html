@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>カウンセラータイプ別 受講生の悩み分析</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b; --primary-dark: #0f172a;
+            --accent: #cfae50; --accent-light: #e6cd85;
+            --teal: #4facc8; --teal-soft: #eaf5f8;
+            --purple: #5e8b95; --purple-light: #89b6c2; --purple-soft: #f0f6f8;
+            --white: #ffffff; --gray-50: #f8fafc; --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0; --gray-400: #94a3b8; --gray-600: #475569; --gray-800: #1e293b;
+            --text: #334155; --green-soft: #f0fdf4;
+            --freud: #8b5cf6; --rogers: #06b6d4; --erickson: #f59e0b;
+            --perls: #10b981; --bezos: #ef4444; --zuck: #3b82f6;
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family:'Noto Sans JP',sans-serif; color:var(--text); line-height:1.8; background:var(--white); font-size:15px; -webkit-font-smoothing:antialiased; }
+
+        /* Hero */
+        .hero { background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:var(--white); padding:80px 20px 60px; text-align:center; position:relative; overflow:hidden; }
+        .hero::before { content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(ellipse at center,rgba(201,168,76,0.08) 0%,transparent 60%); animation:shimmer 8s ease-in-out infinite; }
+        @keyframes shimmer { 0%,100%{transform:translate(-10%,-10%)} 50%{transform:translate(10%,10%)} }
+        .hero-inner { max-width:800px; margin:0 auto; position:relative; z-index:1; }
+        .hero-badge { display:inline-block; background:rgba(207,174,80,0.15); border:1px solid rgba(207,174,80,0.4); padding:6px 20px; border-radius:30px; font-size:12px; font-weight:700; color:var(--accent-light); letter-spacing:1px; margin-bottom:28px; }
+        .hero h1 { font-family:'Noto Serif JP',serif; font-size:clamp(22px,4.5vw,36px); font-weight:700; line-height:1.5; margin-bottom:16px; }
+        .hero p.sub { font-size:14px; color:rgba(255,255,255,0.75); line-height:1.8; }
+
+        /* Nav */
+        .type-nav { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; padding:24px 20px; background:var(--gray-50); border-bottom:1px solid var(--gray-200); position:sticky; top:0; z-index:100; backdrop-filter:blur(10px); }
+        .type-nav a { display:inline-flex; align-items:center; gap:6px; padding:8px 18px; border-radius:30px; font-size:13px; font-weight:600; text-decoration:none; color:var(--gray-600); background:var(--white); border:1px solid var(--gray-200); transition:all .25s; }
+        .type-nav a:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,0.08); }
+        .type-nav a .dot { width:10px; height:10px; border-radius:50%; }
+
+        /* Section */
+        .section { padding:72px 20px; }
+        .section-inner { max-width:800px; margin:0 auto; }
+        .bg-soft { background:var(--gray-50); }
+
+        /* Type Header */
+        .type-header { display:flex; align-items:center; gap:16px; margin-bottom:28px; }
+        .type-icon { width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:28px; flex-shrink:0; }
+        .type-header h2 { font-family:'Noto Serif JP',serif; font-size:clamp(20px,3.5vw,28px); font-weight:700; color:var(--gray-800); line-height:1.4; }
+        .type-header .subtitle { font-size:13px; color:var(--gray-400); font-weight:500; margin-top:2px; }
+
+        /* People Tags */
+        .people-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+        .people-tag { display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:20px; font-size:12px; font-weight:600; background:var(--gray-100); color:var(--gray-600); }
+        .people-tag .emoji { font-size:14px; }
+
+        /* Pain Table */
+        .pain-table { width:100%; border-collapse:collapse; margin:20px 0 28px; font-size:14px; }
+        .pain-table th { text-align:left; padding:12px 16px; background:var(--gray-100); color:var(--gray-800); font-weight:600; font-size:12px; letter-spacing:0.5px; border-bottom:2px solid var(--gray-200); }
+        .pain-table td { padding:14px 16px; border-bottom:1px solid var(--gray-200); vertical-align:top; line-height:1.7; color:var(--gray-600); }
+        .pain-table td:first-child { font-weight:600; color:var(--gray-800); white-space:nowrap; width:140px; }
+        @media(max-width:640px) { .pain-table td:first-child { white-space:normal; width:auto; } .pain-table { display:block; } .pain-table thead { display:none; } .pain-table tr { display:block; margin-bottom:16px; background:var(--gray-50); border-radius:12px; padding:12px; } .pain-table td { display:block; padding:6px 0; border:none; } .pain-table td:first-child { font-size:13px; color:var(--teal); } }
+
+        /* Quote */
+        .voice-quote { border-left:4px solid var(--teal); background:var(--teal-soft); padding:24px 24px; border-radius:0 14px 14px 0; margin:20px 0; font-size:14px; line-height:1.9; color:var(--gray-600); font-style:italic; }
+        .voice-quote .attr { font-style:normal; margin-top:12px; font-size:12px; font-weight:600; color:var(--teal); }
+
+        /* Results */
+        .results-box { background:var(--green-soft); border-radius:14px; padding:24px; margin:20px 0; }
+        .results-box h4 { font-size:14px; font-weight:700; color:#059669; margin-bottom:10px; }
+        .results-box ul { list-style:none; }
+        .results-box li { padding:6px 0; font-size:14px; line-height:1.7; color:var(--gray-600); display:flex; gap:8px; }
+        .results-box li::before { content:'✅'; flex-shrink:0; }
+
+        /* Appeal Points */
+        .appeal-box { background:linear-gradient(135deg,rgba(79,172,200,0.08),rgba(94,139,149,0.08)); border:1px solid rgba(79,172,200,0.2); border-radius:14px; padding:24px; margin:20px 0; }
+        .appeal-box h4 { font-size:14px; font-weight:700; color:var(--purple); margin-bottom:12px; display:flex; align-items:center; gap:8px; }
+        .appeal-box ol { padding-left:20px; }
+        .appeal-box li { padding:4px 0; font-size:14px; line-height:1.7; color:var(--gray-600); }
+        .appeal-box .keywords { margin-top:12px; display:flex; flex-wrap:wrap; gap:6px; }
+        .appeal-box .kw { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:600; background:var(--white); color:var(--purple); border:1px solid rgba(94,139,149,0.3); }
+
+        /* Divider */
+        .type-divider { width:80px; height:3px; background:linear-gradient(90deg,var(--teal),var(--purple-light)); border-radius:2px; margin:0 auto; }
+
+        /* Common themes */
+        .theme-card { background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:28px; margin-bottom:16px; transition:all .3s; }
+        .theme-card:hover { border-color:var(--purple-light); box-shadow:0 8px 24px rgba(0,0,0,0.06); transform:translateY(-2px); }
+        .theme-card h4 { font-size:16px; font-weight:700; color:var(--gray-800); margin-bottom:8px; }
+        .theme-card p { font-size:14px; color:var(--gray-600); line-height:1.8; }
+        .theme-card .badge { display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:20px; margin-bottom:10px; }
+
+        /* LP Proposal */
+        .lp-card { background:var(--white); border:2px solid var(--gray-200); border-radius:16px; padding:28px; margin-bottom:20px; }
+        .lp-card h4 { font-family:'Noto Serif JP',serif; font-size:17px; font-weight:700; color:var(--gray-800); margin-bottom:6px; }
+        .lp-card .headline { font-family:'Noto Serif JP',serif; font-size:15px; font-weight:600; color:var(--purple); line-height:1.6; margin:12px 0; padding:16px; background:var(--purple-soft); border-radius:10px; }
+        .lp-card .meta { font-size:13px; color:var(--gray-400); margin-bottom:8px; }
+        .lp-card p { font-size:14px; color:var(--gray-600); line-height:1.7; }
+
+        /* Impact table */
+        .impact-table { width:100%; border-collapse:collapse; margin:24px 0; font-size:14px; }
+        .impact-table th { text-align:left; padding:12px 16px; background:var(--primary); color:var(--white); font-size:12px; font-weight:600; }
+        .impact-table td { padding:12px 16px; border-bottom:1px solid var(--gray-200); color:var(--gray-600); line-height:1.6; }
+        .impact-table tr:hover { background:var(--gray-50); }
+        .impact-table td:first-child { font-weight:600; color:var(--gray-800); }
+
+        footer { background:var(--gray-100); color:var(--gray-400); text-align:center; padding:32px 20px; font-size:12px; }
+
+        @media(max-width:640px) {
+            .hero { padding:60px 16px 48px; }
+            .section { padding:56px 16px; }
+            .type-nav { gap:6px; padding:16px 12px; }
+            .type-nav a { padding:6px 12px; font-size:12px; }
+            .type-header { flex-direction:column; align-items:flex-start; gap:10px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-badge">📊 DATA ANALYSIS</div>
+        <h1>カウンセラータイプ別<br>受講生の悩み分析レポート</h1>
+        <p class="sub">12名のインタビュー＋会議議事録から抽出した<br>タイプ別の悩み（Before）・成果（After）・LP訴求ポイント</p>
+    </div>
+</section>
+
+<!-- Type Navigation -->
+<nav class="type-nav" id="nav">
+    <a href="#freud"><span class="dot" style="background:var(--freud)"></span>フロイト型</a>
+    <a href="#rogers"><span class="dot" style="background:var(--rogers)"></span>ロジャーズ型</a>
+    <a href="#erickson"><span class="dot" style="background:var(--erickson)"></span>エリクソン型</a>
+    <a href="#perls"><span class="dot" style="background:var(--perls)"></span>パールズ型</a>
+    <a href="#themes"><span class="dot" style="background:var(--accent)"></span>共通テーマ</a>
+    <a href="#lp"><span class="dot" style="background:var(--primary)"></span>LP提案</a>
+</nav>
+
+<!-- ==================== FREUD ==================== -->
+<section class="section" id="freud">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(139,92,246,0.1)">🔍</div>
+            <div><h2 style="color:var(--freud)">フロイト型</h2><div class="subtitle">分析・深掘り志向</div></div>
+        </div>
+        <div class="people-tags">
+            <span class="people-tag"><span class="emoji">👩</span>高味ひさこ（カウンセラー）</span>
+            <span class="people-tag"><span class="emoji">👩</span>下川和枝（薬剤師・コーチ）</span>
+            <span class="people-tag"><span class="emoji">🔮</span>赤坂かおり（スピリチュアルカウンセラー）</span>
+            <span class="people-tag"><span class="emoji">👩</span>飯田里奈子（会社員・人事）</span>
+            <span class="people-tag"><span class="emoji">👩</span>小関洋子（施術家・アートヘルスケア）</span>
+            <span class="people-tag"><span class="emoji">👩</span>熙澤まさよ（夫婦関係改善カウンセラー）</span>
+        </div>
+
+        <table class="pain-table">
+            <thead><tr><th>カテゴリ</th><th>具体的な悩み</th></tr></thead>
+            <tbody>
+                <tr><td>伝達の不一致</td><td>自分が一番伝えたいことがクライアントに伝わらない。意図と受け取り方にズレが生じる</td></tr>
+                <tr><td>深掘りのタイミング</td><td>いつ深く掘り下げるべきか、いつ引くべきかの判断に迷う</td></tr>
+                <tr><td>準備段階の理解不足</td><td>クライアントの変化への「準備段階」（前熟考期）を理解しておらず、準備ができていない人にも同じアプローチ</td></tr>
+                <tr><td>焦点の迷い</td><td>個人に寄り添うべきか、関係性全体を見るべきか判断に迷う（下川さん：夫婦カウンセリング）</td></tr>
+                <tr><td>伝達への不安</td><td>自分のメッセージがクライアントに正しく伝わっているかが常に不安。一番重要なことが2番手3番手にしか受け取られない（赤坂さん）</td></tr>
+                <tr><td>積み重ねの不足</td><td>ふわついた自信ではなく、地に足のついた実践の積み重ねが足りない（赤坂さん）</td></tr>
+                <tr><td>形式的な関わり</td><td>人事という権威のせいか、社員が本音を話してくれない。面談が形式的な会話で終わる（飯田さん）</td></tr>
+                <tr><td>心の支援の壁</td><td>施術はできるが、心の支援で何を言えばいいかわからない。被災地支援での無力感（小関さん）</td></tr>
+                <tr><td>成約率の不安定</td><td>良いときは良いが悪いときは全然決まらない。変化しないクライアントへの対応に苦惩（熙澤さん）</td></tr>
+            </tbody>
+        </table>
+
+        <div class="voice-quote">
+            「私が一番伝えたいことが相手に刺さってなかったりとか…一番伝えたいはずのことが2番手3番手ぐらいにしか伝わってなかった」
+            <div class="attr">— 高味ひさこさん</div>
+        </div>
+        <div class="voice-quote">
+            「いつ深く掘り下げるべきか…個人に焦点を当てるのか関係性に焦点を当てるのか判断に迷った」
+            <div class="attr">— 下川和枝さん</div>
+        </div>
+        <div class="voice-quote">
+            「一番大事なことを伝えたはずなのに、アンケートを見たら全然別のことが印象に残っていた。自分の伝え方にがっかりした」
+            <div class="attr">— 赤坂かおりさん</div>
+        </div>
+
+        <div class="results-box">
+            <h4>得られた成果</h4>
+            <ul>
+                <li>クライアントの準備段階に合わせた言葉の選び方を習得</li>
+                <li>セッションの「意図」が明確になり、自信を持って関われるように</li>
+                <li>クライアントからの信頼が増し、相談トピックが広がった</li>
+                <li>コミュニケーションへの不安を手放し、自分軸・芯ができた（赤坂さん）</li>
+                <li>社員の本音が聞けるようになり、研修参加率が向上（飯田さん）</li>
+                <li>クライアント紹介が次々増加、勉強会の評判向上（小関さん）</li>
+                <li>成約率 30%→50%に改善、5ヶ月連続月100万超え（熙澤さん）</li>
+            </ul>
+        </div>
+
+        <div class="appeal-box">
+            <h4>💡 フロイト型への訴求ポイント</h4>
+            <ol>
+                <li><strong>「なぜ伝わらないのか」の構造的な理解</strong> → 分析好きなフロイト型に「言語の構造」を論理的に解説する訴求が響く</li>
+                <li><strong>「深掘りの判断基準」を体系化</strong> → 感覚ではなくフレームワークで判断できるようになることを強調</li>
+                <li><strong>「伝えたいことが伝わる」安心感</strong> → 不安の解消・手厚いサポート体制を強調</li>
+            </ol>
+            <div class="keywords"><span class="kw">構造化</span><span class="kw">体系</span><span class="kw">意図の明確化</span><span class="kw">準備段階の理論</span><span class="kw">伝達の不安解消</span><span class="kw">芯/軸の確立</span></div>
+        </div>
+    </div>
+</section>
+<div class="type-divider"></div>
+
+<!-- ==================== ROGERS ==================== -->
+<section class="section bg-soft" id="rogers">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(6,182,212,0.1)">👂</div>
+            <div><h2 style="color:var(--rogers)">ロジャーズ型</h2><div class="subtitle">傾聴・共感志向</div></div>
+        </div>
+        <div class="people-tags"><span class="people-tag"><span class="emoji">👨‍⚕️</span>入江隆三郎（精神科医・院長）</span></div>
+
+        <table class="pain-table">
+            <thead><tr><th>カテゴリ</th><th>具体的な悩み</th></tr></thead>
+            <tbody>
+                <tr><td>行き詰まりへの対処</td><td>患者と会話中に「行き詰まった」とき、どう介入すればよいかわからない</td></tr>
+                <tr><td>感覚頼みの実践</td><td>傾聴・共感は得意だが、それを言語化・再現可能にできていない</td></tr>
+                <tr><td>困難な患者</td><td>暴言を吐く患者など、ラポールが築きにくいケースで無力感</td></tr>
+                <tr><td>核心への到達</td><td>患者の問題の核を言語化して掴むことが難しい</td></tr>
+            </tbody>
+        </table>
+
+        <div class="voice-quote">
+            「行き詰まったときに、どう言葉で介入すればいいのかわからなかった。感覚でやっていた部分を、構造として持てるようになった」
+            <div class="attr">— 入江隆三郎さん</div>
+        </div>
+
+        <div class="results-box">
+            <h4>得られた成果</h4>
+            <ul>
+                <li>言葉を意図的に選び、構造化してコミュニケーションできるように</li>
+                <li>患者との関わりがより効果的・深くなった</li>
+                <li>治療的介入への自信が増した</li>
+            </ul>
+        </div>
+
+        <div class="appeal-box">
+            <h4>💡 ロジャーズ型への訴求ポイント</h4>
+            <ol>
+                <li><strong>「傾聴の先」にある技術</strong> → 傾聴だけでは解決しない場面の打開策</li>
+                <li><strong>感覚の言語化・体系化</strong> → 「なんとなくうまくいく」を再現可能にするフレームワーク</li>
+            </ol>
+            <div class="keywords"><span class="kw">傾聴の限界</span><span class="kw">介入のタイミング</span><span class="kw">感覚の体系化</span><span class="kw">行き詰まりの打破</span></div>
+        </div>
+    </div>
+</section>
+<div class="type-divider"></div>
+
+<!-- ==================== ERICKSON ==================== -->
+<section class="section" id="erickson">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(245,158,11,0.1)">⚡</div>
+            <div><h2 style="color:var(--erickson)">エリクソン型</h2><div class="subtitle">変化・解決志向</div></div>
+        </div>
+        <div class="people-tags">
+            <span class="people-tag"><span class="emoji">🦷</span>亀田さん（歯科医）</span>
+            <span class="people-tag"><span class="emoji">👩</span>藤井和子（催眠療法士・コーチ）</span>
+            <span class="people-tag"><span class="emoji">🎙️</span>稲井英人（量子声アカデミー代表）</span>
+            <span class="people-tag"><span class="emoji">👩</span>関めぐみ（ライター→カウンセラー志望）</span>
+        </div>
+
+        <table class="pain-table">
+            <thead><tr><th>カテゴリ</th><th>具体的な悩み</th></tr></thead>
+            <tbody>
+                <tr><td>表面的なQ&A</td><td>目の前の問題だけを扱い、クライアントの深いニーズ・願望に到達できない</td></tr>
+                <tr><td>本質への橋渡し</td><td>解決志向は得意だが、クライアントのコアニーズへの橋渡しが不明</td></tr>
+                <tr><td>伝え方の壁</td><td>成果を伝えたいが、大げさにならない表現方法がわからない</td></tr>
+                <tr><td>リピート・LTV</td><td>1回で終わる関係から継続的な関係への転換方法が不明</td></tr>
+                <tr><td>直感の体系化</td><td>自分のやり方は成果が出るが、論理化・テンプレート化して他人に教えられない（稲井さん）</td></tr>
+                <tr><td>再現性の欠如</td><td>感覚的に「できている」ことを「型」にできないため、スケールできない（稲井さん）</td></tr>
+                <tr><td>未経験からの第一歩</td><td>まだカウンセラーとして活動したことがない。練習でも言葉が出てこない、価値観を押し付けてしまう（関さん）</td></tr>
+            </tbody>
+        </table>
+
+        <div class="voice-quote">
+            「歯のことだけ聞いて終わっていた。その奥にある願望ーーどう生きたいか、どうなりたいかーーに触れる方法を知った」
+            <div class="attr">— 亀田さん（歯科医）</div>
+        </div>
+        <div class="voice-quote">
+            「大げさな表現をせずに、でもちゃんと伝わる方法が欲しかった。フォーマットを使ってLINEの自動配信に活かせた」
+            <div class="attr">— 藤井和子さん</div>
+        </div>
+        <div class="voice-quote">
+            「右脳で感覚的にやっていたことを、左脳の人にもわかるように構造化する必要があった。先生の講座で、抽象的なことを具体的な言葉に変換するスキルを学んだ」
+            <div class="attr">— 稲井英人さん</div>
+        </div>
+
+        <div class="results-box">
+            <h4>得られた成果</h4>
+            <ul>
+                <li>亀田さん：コアニーズの発見 → 患者のロイヤリティ向上・売上大幅増</li>
+                <li>藤井さん：自動配信でも「わかりやすい」と評価されるコミュニケーションに</li>
+                <li>稲井さん：直感的手法を論理的フレームワークに変換、リピート・紹介が増加</li>
+                <li>関さん：コミュニケーションに自信がつき、カウンセラーへの明確な道筋が見えた</li>
+            </ul>
+        </div>
+
+        <div class="appeal-box">
+            <h4>💡 エリクソン型への訴求ポイント</h4>
+            <ol>
+                <li><strong>「コアニーズ」の発掘スキル</strong> → 表面的な問題解決の先にある本質にアクセスする方法</li>
+                <li><strong>実践的なフォーマット・テンプレート</strong> → すぐに使える構造化ツール</li>
+                <li><strong>「天才性の型化」</strong> → 自分だけができることを再現可能なシステムに変換</li>
+            </ol>
+            <div class="keywords"><span class="kw">コアニーズ</span><span class="kw">深層の願望</span><span class="kw">誇張のない伝え方</span><span class="kw">即実践テンプレート</span><span class="kw">直感の言語化</span><span class="kw">再現性・スケーリング</span></div>
+        </div>
+    </div>
+</section>
+<div class="type-divider"></div>
+
+
+
+<!-- ==================== PERLS ==================== -->
+<section class="section bg-soft" id="perls">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(16,185,129,0.1)">💥</div>
+            <div><h2 style="color:var(--perls)">パールズ型</h2><div class="subtitle">今ここ・直面志向</div></div>
+        </div>
+        <div class="people-tags">
+            <span class="people-tag"><span class="emoji">💼</span>山本和輝（ビジネスコーチ・心理セラピスト）</span>
+        </div>
+
+        <table class="pain-table">
+            <thead><tr><th>カテゴリ</th><th>具体的な悩み</th></tr></thead>
+            <tbody>
+                <tr><td>導けないもどかしさ</td><td>クライアントを望む方向に導けない。愚痴が続き、アドバイスを言ってしまう</td></tr>
+                <tr><td>変化しないクライアント</td><td>3回やっても変化しない、同じパターンを繰り返す</td></tr>
+                <tr><td>Beingの欠如</td><td>「やり方」だけではなく「ありよう」の変革が必要だと気づいた</td></tr>
+            </tbody>
+        </table>
+
+        <div class="voice-quote">
+            「愚痴り続けるクライアント。"こっちじゃないのに"と思いながらも、アドバイスを言ってしまう。3回やっても変化しない」
+            <div class="attr">— 山本和輝さん</div>
+        </div>
+
+        <div class="results-box">
+            <h4>得られた成果</h4>
+            <ul>
+                <li>4ヶ月で300人の受講者獲得</li>
+                <li>企業稟議でフォーマット活用 → 1,300万の予算を一発承認</li>
+            </ul>
+        </div>
+
+        <div class="appeal-box">
+            <h4>💡 パールズ型への訴求ポイント</h4>
+            <ol>
+                <li><strong>「ありよう（Being）」の変革</strong> → やり方（Doing）だけでなく、存在としての在り方を変えるアプローチ</li>
+                <li><strong>知識→デモ→体験の3段階</strong> → 「見せる」ことでクライアントの主体性を引き出す</li>
+            </ol>
+            <div class="keywords"><span class="kw">Beingの変革</span><span class="kw">直面</span><span class="kw">体験型学習</span><span class="kw">主体性の喚起</span></div>
+        </div>
+    </div>
+</section>
+<div class="type-divider"></div>
+
+<!-- ==================== COMMON THEMES ==================== -->
+<section class="section" id="themes">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(207,174,80,0.15)">🔗</div>
+            <div><h2>全タイプ横断：3大共通テーマ</h2></div>
+        </div>
+
+        <div class="theme-card">
+            <div class="badge" style="background:rgba(207,174,80,0.15);color:var(--accent)">テーマ1</div>
+            <h4>「伝えたいことが伝わらない」</h4>
+            <p>最も頻出の悩み。自分の意図とクライアントの受け取り方のギャップに苦しんでいる。<strong>全タイプ共通。</strong></p>
+        </div>
+        <div class="theme-card">
+            <div class="badge" style="background:rgba(6,182,212,0.1);color:var(--rogers)">テーマ2</div>
+            <h4>「感覚でやっている → 再現できない」</h4>
+            <p>経験と直感で成果を出しているが、言語化・型化できないため教えられない・スケールしない。<strong>特にロジャーズ型・エリクソン型に顕著。</strong></p>
+        </div>
+        <div class="theme-card">
+            <div class="badge" style="background:rgba(139,92,246,0.1);color:var(--freud)">テーマ3</div>
+            <h4>「変化しないクライアントへの無力感」</h4>
+            <p>同じアプローチをしても変わらないクライアントがいて、自分を責めてしまう。<strong>特にエリクソン型・フロイト型に顕著。</strong></p>
+        </div>
+    </div>
+</section>
+<div class="type-divider"></div>
+
+<!-- ==================== LP PROPOSALS ==================== -->
+<section class="section bg-soft" id="lp">
+    <div class="section-inner">
+        <div class="type-header">
+            <div class="type-icon" style="background:rgba(30,41,59,0.1)">📝</div>
+            <div><h2>LP・マーケティング活用提案</h2><div class="subtitle">MTG議事録で議論された3パターンのLPに対する推奨コピー方向</div></div>
+        </div>
+
+        <div class="lp-card" style="border-color:var(--erickson)">
+            <div class="meta">LP-A：パールズ＋エリクソン型向け</div>
+            <div class="headline">「表面的なQ&Aで終わる対話を、<br>クライアントの"コアニーズ"に到達する対話へ」</div>
+            <p><strong>訴求軸：</strong>実践テンプレート・即使えるフォーマット・深層ニーズの発掘<br><strong>証言活用：</strong>亀田さん（歯科医→患者ロイヤリティ向上）、藤井さん（LINE自動配信活用）</p>
+        </div>
+
+        <div class="lp-card" style="border-color:var(--rogers)">
+            <div class="meta">LP-B：ロジャーズ型向け</div>
+            <div class="headline">「傾聴だけでは救えなかった人を、<br>"言葉の力"で動かす」</div>
+            <p><strong>訴求軸：</strong>行き詰まりの打破・感覚の体系化・介入スキル<br><strong>証言活用：</strong>入江さん（精神科医→患者との関わりが変わった）</p>
+        </div>
+
+        <div class="lp-card" style="border-color:var(--freud)">
+            <div class="meta">LP-C：フロイト型向け</div>
+            <div class="headline">「伝えたはずの言葉が、なぜ相手に届かないのか<br>―その"構造"を解き明かす」</div>
+            <p><strong>訴求軸：</strong>伝達の構造理解・準備段階理論・深掘りの判断基準<br><strong>証言活用：</strong>高味さん・下川さんのBefore/After、赤坂さん（伝達の不安解消）</p>
+        </div>
+
+        <h3 style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;margin:40px 0 20px;color:var(--gray-800)">📊 追加活用可能な強力な証言</h3>
+        <table class="impact-table">
+            <thead><tr><th>受講生</th><th>インパクトのある成果</th></tr></thead>
+            <tbody>
+                <tr><td>熊澤まさよ</td><td>成約率30%→50%、5ヶ月連続月100万超え</td></tr>
+                <tr><td>山本和輝</td><td>4ヶ月で300人受講、企業稟議1,300万一発承認</td></tr>
+                <tr><td>亀田さん</td><td>歯科売上大幅増、患者ロイヤリティ向上</td></tr>
+                <tr><td>飯田里奈子</td><td>社員の本音が聞けるように、研修参加率向上</td></tr>
+                <tr><td>小関洋子</td><td>クライアント紹介が次々増加、勉強会の評判向上</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<footer>
+    <p>カウンセラーの言語学 — 受講生インタビュー分析レポート</p>
+    <p style="margin-top:8px">© アナロギアレンマ株式会社</p>
+</footer>
+
+</body>
+</html>
