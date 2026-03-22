@@ -9,10 +9,10 @@
     <style>
         :root {
             /* LP-matching palette */
-            --navy: #1a1a4e;
-            --navy-light: #2d2d7b;
-            --gold: #c9a84c;
-            --gold-light: #e8d48b;
+            --navy: #1e293b;
+            --navy-light: #334155;
+            --gold: #cfae50;
+            --gold-light: #e6cd85;
             --red: #e74c3c;
             --yellow: #f39c12;
             --blue: #3498db;
@@ -26,18 +26,18 @@
             --white: #ffffff;
 
             /* Cluster colors (preserved for result logic) */
-            --amber: #c9a84c;
-            --amber-glow: #e8d48b;
+            --amber: #cfae50;
+            --amber-glow: #e6cd85;
             --amber-bg: #fef9e7;
-            --amber-gradient: linear-gradient(135deg, #c9a84c, #e8d48b);
-            --teal: #27ae60;
-            --teal-glow: #2ecc71;
-            --teal-bg: #eafaf1;
-            --teal-gradient: linear-gradient(135deg, #27ae60, #2ecc71);
-            --indigo: #3498db;
-            --indigo-glow: #5dade2;
-            --indigo-bg: #eaf4fd;
-            --indigo-gradient: linear-gradient(135deg, #3498db, #5dade2);
+            --amber-gradient: linear-gradient(135deg, #cfae50, #e6cd85);
+            --teal: #5e8b95;
+            --teal-glow: #89b6c2;
+            --teal-bg: #f0f6f8;
+            --teal-gradient: linear-gradient(135deg, #5e8b95, #89b6c2);
+            --indigo: #4facc8;
+            --indigo-glow: #6bc0d6;
+            --indigo-bg: #eaf5f8;
+            --indigo-gradient: linear-gradient(135deg, #4facc8, #6bc0d6);
 
             --dark: var(--gray-50);
             --dark-card: var(--white);
@@ -66,7 +66,7 @@
             padding: 80px 20px 60px;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 50%, #3a3a8c 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
             color: var(--white);
             overflow: hidden;
         }
@@ -213,7 +213,7 @@
         }
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--navy), var(--navy-light));
+            background: linear-gradient(90deg, #1e293b, #cfae50);
             border-radius: 2px;
             transition: width 0.5s ease;
         }
@@ -550,6 +550,14 @@
         }
         .start-btn { animation: fadeInUp 0.8s ease-out 0.8s both, pulse 2s ease-in-out 2s infinite; }
 
+        /* Character intro */
+        .character-intro img {
+            transition: transform 0.3s;
+        }
+        .character-intro img:hover {
+            transform: scale(1.05);
+        }
+
         /* Hide/show */
         .hidden { display: none !important; }
 
@@ -581,19 +589,19 @@
 
     <div class="intro-cards">
         <div class="intro-card">
-            <div class="ic-icon">🔶</div>
-            <div class="ic-title">伝えられない壁</div>
-            <div class="ic-desc">技術はあるのに言葉にできず、価値が届かない</div>
+            <div class="ic-icon">📋</div>
+            <div class="ic-title">10問の質問</div>
+            <div class="ic-desc">日常のセッションを振り返る質問に答えるだけ</div>
         </div>
         <div class="intro-card">
-            <div class="ic-icon">🟢</div>
-            <div class="ic-title">深まらない壁</div>
-            <div class="ic-desc">傾聴しても核心に触れられず、変化が生まれない</div>
+            <div class="ic-icon">⏱</div>
+            <div class="ic-title">約2分で完了</div>
+            <div class="ic-desc">直感で答えてください。正解・不正解はありません</div>
         </div>
         <div class="intro-card">
-            <div class="ic-icon">🔵</div>
-            <div class="ic-title">選ばれない壁</div>
-            <div class="ic-desc">良いセッションなのに、継続やリピートにつながらない</div>
+            <div class="ic-icon">🎯</div>
+            <div class="ic-title">個別の処方箋</div>
+            <div class="ic-desc">あなたに今、必要なスキルが具体的にわかります</div>
         </div>
     </div>
 
@@ -722,6 +730,7 @@ const results = {
         colorGlow: "var(--amber-glow)",
         gradient: "var(--amber-gradient)",
         cardClass: "type-a",
+        character: { name: "灯（あかり）", img: "img/character_akari.png", desc: "心の中に温かい光を持っているのに、それを外に届ける言葉が見つからない" },
         strengths: [
             "実践と体験を通して、クライアントにリアルな変化を起こす力がある",
             "理想の未来を描き、自然に行動を促すことができる",
@@ -760,6 +769,7 @@ const results = {
         colorGlow: "var(--teal-glow)",
         gradient: "var(--teal-gradient)",
         cardClass: "type-b",
+        character: { name: "凪（なぎ）", img: "img/character_nagi.png", desc: "穏やかに深く聴く力があるのに、その先へ進めない" },
         strengths: [
             "クライアントに寄り添い、共感的な信頼関係を築ける",
             "丁寧に話を聴き、安心感を生み出すことができる",
@@ -798,6 +808,7 @@ const results = {
         colorGlow: "var(--indigo-glow)",
         gradient: "var(--indigo-gradient)",
         cardClass: "type-c",
+        character: { name: "栞（しおり）", img: "img/character_shiori.png", desc: "大切なページにしるしを残せるのに、また開いてもらえない" },
         strengths: [
             "クライアントの心の奥深くにある「根本原因」を見つけ出す力",
             "論理的に物事を整理・構造化する力",
@@ -918,6 +929,12 @@ function showResult() {
         <div class="result-header">
             <div class="small-label">YOUR DIAGNOSIS RESULT</div>
             <h2>あなたの診断結果</h2>
+        </div>
+
+        <div class="character-intro" style="text-align:center;margin-bottom:28px;animation:fadeInUp 0.8s ease-out 0.2s both;">
+            <img src="${r.character.img}" alt="${r.character.name}" style="width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid ${r.color}33;box-shadow:0 8px 30px rgba(0,0,0,0.08);margin-bottom:12px;">
+            <div style="font-family:'Noto Serif JP',serif;font-size:20px;font-weight:700;color:${r.color};">${r.character.name}</div>
+            <div style="font-size:13px;color:#64748b;margin-top:4px;line-height:1.6;">${r.character.desc}</div>
         </div>
 
         <div class="result-card ${r.cardClass}">
