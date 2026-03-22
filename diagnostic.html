@@ -874,7 +874,8 @@ function showResult() {
         </div>
 
         <div class="skills-section">
-            <h3>📚 あなたが学ぶべき5つのスキル</h3>
+            <h3>📚 あなたに今、不足している5つのスキル</h3>
+            <p style="font-size:13px;color:var(--text-soft);margin-bottom:16px;">診断結果から逆引きした、あなたの壁を突破するために必要なスキルです。</p>
             ${r.skills.map((s, i) => `
                 <div class="skill-card">
                     <div class="skill-num" style="background:${r.gradient};color:#fff;">${i + 1}</div>
@@ -887,7 +888,7 @@ function showResult() {
         </div>
 
         <div class="outcome-box" style="background:${r.color}11;border-color:${r.color}33;">
-            <div class="label" style="color:${r.color};">✨ これらを学んだら、こうなる</div>
+            <div class="label" style="color:${r.color};">✨ これらのスキルを学ぶと、こうなる</div>
             <p>${r.outcome}</p>
         </div>
 
@@ -903,9 +904,9 @@ function showResult() {
 
         <div class="result-cta">
             <a href="#register" class="cta-btn" style="background:${r.gradient};box-shadow:0 4px 20px ${r.color}44;">
-                この壁を突破する方法を学ぶ →
+                5日間チャレンジに参加する →
             </a>
-            <div class="cta-sub">LINEオープンチャットで、解決動画をプレゼント中</div>
+            <div class="cta-sub">診断結果から見えた「不足スキル」を5日間で体感しませんか？</div>
             <button class="retake-btn" onclick="retakeQuiz()">もう一度診断する</button>
         </div>
     `;
