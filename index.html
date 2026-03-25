@@ -537,6 +537,238 @@
         }
 
         /* ============================================= */
+        /* COMPARISON (❌ vs ✅)                          */
+        /* ============================================= */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 32px 0;
+        }
+        .comparison__col {
+            border-radius: 16px;
+            padding: 28px 24px;
+        }
+        .comparison__col--before {
+            background: var(--red-soft);
+            border: 1px solid #fecaca;
+        }
+        .comparison__col--after {
+            background: var(--green-soft);
+            border: 1px solid #bbf7d0;
+        }
+        .comparison__col h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .comparison__col--before h3 { color: #b91c1c; }
+        .comparison__col--after h3 { color: var(--green); }
+        .comparison__col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .comparison__col ul li {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--gray-600);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .comparison__col ul li:last-child { border-bottom: none; }
+        .comparison__result {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--gray-600);
+        }
+
+        /* ============================================= */
+        /* SOLUTION CORE (北風 vs 太陽 block)             */
+        /* ============================================= */
+        .solution-block {
+            background: linear-gradient(135deg, var(--primary-dark), #1a3a52);
+            border-radius: 20px;
+            padding: 48px 36px;
+            margin: 40px 0;
+            text-align: center;
+            color: var(--white);
+        }
+        .solution-block h3 {
+            font-family: 'Noto Serif JP', serif;
+            font-size: clamp(18px, 3.5vw, 24px);
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .solution-block p {
+            font-size: 14px;
+            line-height: 2;
+            color: rgba(255,255,255,0.85);
+        }
+        .solution-examples {
+            display: grid;
+            gap: 16px;
+            margin: 28px 0;
+            text-align: left;
+        }
+        .solution-example {
+            background: rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .solution-example__before {
+            font-size: 14px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+        }
+        .solution-example__after {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent-light);
+        }
+
+        /* ============================================= */
+        /* APP METAPHOR (iPhoneアプリ比喩)                */
+        /* ============================================= */
+        .app-metaphor {
+            text-align: center;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .app-metaphor p {
+            font-size: 15px;
+            line-height: 2;
+            color: var(--gray-600);
+        }
+        .app-formula {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin: 28px 0;
+            flex-wrap: wrap;
+        }
+        .app-formula__item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 20px 24px;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--gray-800);
+        }
+        .app-formula__item small {
+            display: block;
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
+        .app-formula__item.accent-item {
+            color: var(--accent);
+        }
+        .app-formula__plus,
+        .app-formula__equals {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+        .app-formula__result {
+            background: linear-gradient(135deg, var(--primary), var(--purple));
+            color: var(--white);
+            border: none;
+        }
+        .app-formula__result small {
+            color: rgba(255,255,255,0.7);
+        }
+        .app-metaphor__result {
+            font-size: 15px;
+            line-height: 1.9;
+            color: var(--gray-600);
+            margin-top: 24px;
+        }
+
+        /* ============================================= */
+        /* BONUS CARDS                                    */
+        /* ============================================= */
+        .bonus-cards {
+            display: grid;
+            gap: 20px;
+            margin: 32px 0;
+        }
+        .bonus-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 16px;
+            padding: 28px 24px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+        .bonus-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(207,174,80,0.1);
+            transform: translateY(-2px);
+        }
+        .bonus-card .bonus-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+        .bonus-card h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 6px;
+        }
+        .bonus-card p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--gray-600);
+        }
+        .bonus-card .bonus-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+        }
+        .bonus-live-message {
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 20px;
+        }
+
+        /* ============================================= */
+        /* MESSAGE BOX                                    */
+        /* ============================================= */
+        .message-box {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 20px;
+            padding: 40px 32px;
+            margin: 32px 0;
+        }
+        .message-box p {
+            font-size: 15px;
+            line-height: 2;
+            color: var(--gray-600);
+            margin-bottom: 16px;
+        }
+        .message-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ============================================= */
         /* RESPONSIVE                                     */
         /* ============================================= */
         @media (max-width: 640px) {
@@ -569,6 +801,22 @@
 
             .story-quote {
                 padding: 24px 20px;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-block {
+                padding: 36px 24px;
+            }
+
+            .app-formula {
+                flex-direction: column;
+            }
+
+            .message-box {
+                padding: 32px 20px;
             }
         }
     </style>
@@ -647,6 +895,122 @@
                     クライアントが自発的に変わる<br><em>太陽のセッション</em>へ。
                 </h3>
                 <p>ただ聴くだけ、あるいは無理やりアドバイスで説得する『北風のセッション』を手放す時が来ました。<br>NLPメタモデルとタイムラインセラピーという強力な『介入スキル』で、クライアント自身が内側から自発的に変わっていく『太陽のセッション』へとシフトしませんか。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- 北風vs太陽：「変えようとする言葉」→「自ら変わりたくなる言葉」 -->
+    <!-- ============================================= -->
+    <section class="section">
+        <div class="section-inner">
+            <h2 class="section-title">「変えようとする言葉」から<br>「自ら変わりたくなる言葉」へ</h2>
+
+            <div style="margin:32px 0;border-radius:16px;overflow:hidden;">
+                <img src="img/kitakaze_taiyo.png" alt="北風と太陽のセッション" style="width:100%;display:block;">
+            </div>
+
+            <div class="solution-block">
+                <h3>
+                    ❄️ 北風のセッション vs ☀️ 太陽のセッション
+                </h3>
+                <p style="margin-bottom:20px;">
+                    このプログラムの核心は、たったひとつ。<br>
+                    <strong style="color:var(--accent-light);">「変えようとする会話」を止めて、<br>「クライアントが自ら変わりたくなる会話」に変える</strong>こと。
+                </p>
+
+                <div class="solution-examples">
+                    <div class="solution-example">
+                        <p class="solution-example__before">❌「こうした方がいいですよ」とアドバイスする</p>
+                        <p class="solution-example__after">✅ クライアント自身が「そうか…私はこうしたかったんだ」と気づく</p>
+                    </div>
+                    <div class="solution-example">
+                        <p class="solution-example__before">❌ 正しい質問で問題を"分析"しようとする</p>
+                        <p class="solution-example__after">✅ クライアントが安心して本音を語り始め、自ら答えにたどり着く</p>
+                    </div>
+                </div>
+
+                <p>
+                    アドバイスや分析という<strong>"北風"のセッション</strong>を、<br>
+                    クライアントが内側から「自分で気づき、自分で動き出す」<br>
+                    <strong style="color:var(--accent-light);">『太陽のセッション』</strong>へシフトする──<br><br>
+                    心理学に基づいた『型』によって<br>
+                    <strong>"クライアントの潜在意識に届くセッション"</strong>に変える。<br><br>
+                    それを何年もかけて学ぶのではなく、<br>
+                    すぐに実践し効果を生み出すことができる<br>
+                    特別な…だけど型があって誰でもできる<br>
+                    <strong>手順とテンプレート</strong>があるのです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- ❌ vs ✅ 比較セクション                          -->
+    <!-- ============================================= -->
+    <section class="section bg-soft">
+        <div class="section-inner">
+            <h2 class="section-title">「あなたが言いたいこと」を止めて、<br>「クライアントがその気になる」言葉を伝える</h2>
+            <p class="section-body" style="margin-bottom:20px;">ここが最大の分岐点です。</p>
+
+            <div class="comparison">
+                <div class="comparison__col comparison__col--before">
+                    <h3>❌ 多くのカウンセラーが陥るパターン</h3>
+                    <ul>
+                        <li>「何を言えばクライアントが変わってくれるか」を考える</li>
+                        <li>正しい質問で問題を分析しようとする</li>
+                        <li>傾聴しているつもりが沈黙になる</li>
+                        <li>「こうした方がいい」とアドバイスしてしまう</li>
+                    </ul>
+                    <p class="comparison__result">
+                        どれだけ「正しいこと」を言っても<br>クライアントの心に届かなければ、<br>ただの<strong>押し付け</strong>──<br>変化は起きないんです。</p>
+                </div>
+                <div class="comparison__col comparison__col--after">
+                    <h3>✅ カウンセラーの言語学のアプローチ</h3>
+                    <ul>
+                        <li>クライアントが安心して本音を語り始める会話</li>
+                        <li>感情脳（大脳辺縁系）に共鳴する言葉を使う</li>
+                        <li>無意識に働きかける<strong>"喚起"の設計</strong>で自発的な気づきを生む</li>
+                        <li>クライアントが自ら「変わりたい」と動き出す</li>
+                    </ul>
+                    <p class="comparison__result">「先生と話すと安心する」<br>「自分でも気づかなかったことが見えた」<br>が<strong>クライアントの口から自然にこぼれる</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- iPhoneアプリ比喩                                -->
+    <!-- ============================================= -->
+    <section class="section">
+        <div class="section-inner">
+            <div class="app-metaphor">
+                <div style="font-size:48px;margin-bottom:16px;">📱</div>
+                <h2 class="section-title">心理学を何年もかけて学ぶ必要は、<br>ありません。</h2>
+                <p>
+                    あなたはiPhoneを"作る"ことはできないかもしれません。<br>
+                    でも、iPhoneの"アプリ"は使えますよね？<br><br>
+                    心理学を何年もかけて学ぶ必要はありません。<br>
+                    話し方教室に通う必要もありません。<br>
+                    コミュニケーションの天才になる必要もありません。
+                </p>
+                <div class="app-formula">
+                    <div class="app-formula__item">
+                        🔹 あなたのスキル<br><small>（iPhone）</small>
+                    </div>
+                    <div class="app-formula__plus">＋</div>
+                    <div class="app-formula__item accent-item">
+                        💎 潜在意識テンプレート<br><small>（言葉のアプリ）</small>
+                    </div>
+                    <div class="app-formula__equals">＝</div>
+                    <div class="app-formula__item app-formula__result">
+                        ✨ 即・実践可能<br><small>（結果）</small>
+                    </div>
+                </div>
+                <p class="app-metaphor__result">
+                    あなたのスキルに、もうひとつの力が加わったとき、<br>
+                    <strong>セッションの深さも、クライアントの変化も、リピート率も、<br>同時に動き始めます。</strong>
                 </p>
             </div>
         </div>
@@ -841,6 +1205,68 @@
                         エリクソン催眠の世界的権威ジェフリー・ザイク博士に5年間師事。催眠言語と行動経済学（ナッジ）を融合した独自メソッド「ヒプノナッジ」を開発。カウンセラー・セラピスト・コーチへの言語指導を10年間続け、延べ数千名の対人支援者の「言葉の壁」を突破させてきた。第3期では新たにNLPメタモデルとタイムラインセラピーの介入スキルを加え、「伝える力」と「変える技術」の両方を指導する。
                     </p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- ワークショップ参加特典                            -->
+    <!-- ============================================= -->
+    <section class="section">
+        <div class="section-inner">
+            <span class="section-label">— 参加特典</span>
+            <h2 class="section-title">ワークショップ参加特典</h2>
+            <p class="section-body" style="margin-bottom:8px;">参加するだけで豪華な特典をプレゼント！<br>課題に取り組むほど、さらに特別な特典が手に入ります。</p>
+
+            <div class="bonus-cards">
+                <div class="bonus-card">
+                    <div class="bonus-icon">💬</div>
+                    <div>
+                        <span class="bonus-tag">LINE登録特典</span>
+                        <h4>究極の承認テンプレート</h4>
+                        <p>クライアントとの信頼関係を一瞬で深める「究極の承認」のテンプレートを特別公開。</p>
+                    </div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-icon">📝</div>
+                    <div>
+                        <span class="bonus-tag">課題提出特典</span>
+                        <h4>セッションのNGワード集</h4>
+                        <p>課題1＆課題2を提出した方限定。無意識にクライアントを遠ざけている「NGワード」のリストを公開します。</p>
+                    </div>
+                </div>
+                <div class="bonus-card">
+                    <div class="bonus-icon">🏆</div>
+                    <div>
+                        <span class="bonus-tag">パーフェクト特典</span>
+                        <h4>スペシャル特典</h4>
+                        <p>全課題をコンプリートした方だけがもらえる特別な特典。あなたのセッションを劇的に変える秘密のテンプレートです。</p>
+                    </div>
+                </div>
+            </div>
+
+            <p class="bonus-live-message">🎁 さらに、毎回のライブ参加でスペシャルな特典もあります！</p>
+        </div>
+    </section>
+
+    <!-- ============================================= -->
+    <!-- 神さんからの個人メッセージ                       -->
+    <!-- ============================================= -->
+    <section class="section bg-soft">
+        <div class="section-inner">
+            <span class="section-label">— メッセージ</span>
+            <h2 class="section-title" style="text-align:center;">── 考案者 神 崇仁からのメッセージ ──</h2>
+
+            <div style="text-align:center;margin-bottom:24px;">
+                <img src="https://raw.githubusercontent.com/nomu-cls/gengo10th/main/%E5%86%99%E7%9C%9F/takahitoko/takahitoko-1.jpg" alt="神 崇仁" style="width:100%;max-width:480px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.1);">
+            </div>
+
+            <div class="message-box">
+                <p>AIがどれほど賢くなっても、心に傷を負ったクライアントが、誰かの言葉に救われ、涙し、勇気をもらうという体験は、生身の人間である<strong>「あなた」</strong>にしか提供することはできません。</p>
+                <p>会話は、クライアントをコントロールするための「武器」ではなく、<br>クライアントの人生を照らすための<strong>「ギフト」</strong>です。</p>
+                <p>これまでのセッションの悩みも、集客の苦しみも、すべてはこの技術を深く理解し、多くのクライアントを救うための肥やしになります。</p>
+                <p><strong>「温かな会話」で、あなたの大切なクライアントの未来を照らしてみませんか？</strong></p>
+                <p>ワークショップで、あなたと、そしてあなたの先にいる多くのクライアントの笑顔について語り合えるのを楽しみにしています。</p>
             </div>
         </div>
     </section>
