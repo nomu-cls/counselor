@@ -295,6 +295,7 @@
 
     // URL base for links
     const baseUrl = window.location.href.replace('admin.html', 'index.html');
+    const prodBaseUrl = 'https://counselor-five.vercel.app/tokuten/index.html';
 
     // ==========================================
     // Init
@@ -374,6 +375,9 @@
 
         const div = document.createElement('div');
         div.className = 'video-form-group';
+        const prodUrl = `${prodBaseUrl}?id=${v.slug}`;
+        const sheetText = `${v.bonus_type}\t${prodUrl}`;
+
         div.innerHTML = `
           <h4><span class="badge">${v.bonus_type}</span> ${v.title}</h4>
           
@@ -388,6 +392,14 @@
             <div style="width:250px;">
               <label>視聴期限（空なら無期限）</label>
               <input type="datetime-local" id="exp-${index}" value="${dtValue}">
+            </div>
+          </div>
+
+          <div style="margin-bottom:16px;">
+            <label>管理シート貼り付け用</label>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <input type="text" readonly value="${v.bonus_type}&#9;${prodUrl}" style="font-size:12px; color:#555;">
+              <button class="copy-btn" onclick="copyToClipboard(\`${sheetText}\`)">📋 シート用コピー</button>
             </div>
           </div>
           
