@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カウンセラーの言語学 | マルチセッション・プロトコル 5日間集中ワークショップ</title>
+<meta name="description" content="傾聴だけでは届かない。クライアントの心を動かす「言語化力×体験設計力×対応力」を5日間で体得する無料ワークショップ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1a3a4a;
+  --primary-light: #2a5a6a;
+  --primary-dark: #0d1f2d;
+  --accent: #c8a45c;
+  --accent-light: #e8c97c;
+  --accent-glow: #f5e6c0;
+  --warm: #f7f3ec;
+  --warm-dark: #ede5d8;
+  --text: #2c2c2c;
+  --text-light: #5a5a5a;
+  --white: #ffffff;
+  --red-accent: #b84a3c;
+  --green-accent: #3a7a5c;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --shadow: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.12);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--text);
+  background:var(--white);
+  line-height:1.9;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+.serif { font-family:'Noto Serif JP',serif; }
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(170deg, rgba(13,31,45,0.82) 0%, rgba(26,58,74,0.85) 40%, rgba(42,80,96,0.88) 100%), url('img/LP-img3.jpg') center/cover no-repeat;
+  color:var(--white);
+  padding:60px 20px 50px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before {
+  content:'';
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(200,164,92,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(200,164,92,0.05) 0%, transparent 50%);
+  pointer-events:none;
+  animation: shimmer 8s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,100% { transform:translateX(-10%) translateY(-10%); }
+  50% { transform:translateX(10%) translateY(10%); }
+}
+.hero-inner { max-width:680px; margin:0 auto; position:relative; z-index:1; }
+.hero-pretitle {
+  font-size:13px; letter-spacing:3px; color:var(--accent);
+  margin-bottom:30px; text-transform:uppercase;
+}
+.hero-pain {
+  font-size:20px; line-height:2.2; color:rgba(255,255,255,0.82);
+  margin-bottom:12px; font-weight:300;
+}
+.hero-pain strong { color:#fff; font-weight:500; }
+.hero-pain-em {
+  display:block; font-size:15px; color:rgba(255,255,255,0.55);
+  margin-top:4px; margin-bottom:28px;
+}
+.hero-turn {
+  font-size:20px; color:var(--accent-light);
+  margin:32px 0 10px; font-weight:600; letter-spacing:1px;
+}
+.hero-question { font-size:15px; color:rgba(255,255,255,0.7); line-height:2; margin-bottom:8px; }
+.hero-question-main {
+  font-size:22px; color:var(--accent); font-weight:700;
+  line-height:1.7; margin:16px 0 8px;
+}
+.hero-question-sub {
+  font-size:14px; color:rgba(255,255,255,0.6);
+  line-height:1.9; margin-bottom:30px;
+}
+.hero-bridge {
+  font-size:16px; line-height:2.2;
+  color:rgba(255,255,255,0.85); margin-bottom:36px;
+}
+.hero-title-block {
+  border-top:1px solid rgba(200,164,92,0.3);
+  border-bottom:1px solid rgba(200,164,92,0.3);
+  padding:30px 0; margin:0 0 28px;
+}
+.hero-catch { font-size:14px; color:rgba(255,255,255,0.65); margin-bottom:12px; letter-spacing:1px; }
+.hero-title {
+  font-size:clamp(32px, 7vw, 48px); font-weight:700; color:var(--accent);
+  letter-spacing:2px; line-height:1.4; margin-bottom:10px;
+}
+.hero-subtitle {
+  font-size:clamp(22px, 5vw, 32px); color:var(--white); font-weight:600;
+  letter-spacing:3px; margin-bottom:8px;
+}
+.hero-offer {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:var(--primary); font-size:15px; font-weight:700;
+  padding:10px 32px; border-radius:30px; letter-spacing:1px; margin-top:8px;
+}
+
+/* ===== CTA ===== */
+.cta-section {
+  background:linear-gradient(135deg, var(--accent-glow), #fff8ee);
+  padding:40px 20px; text-align:center;
+}
+.cta-section.dark {
+  background:linear-gradient(170deg, #0d1f2d, #1a3a4a);
+}
+.cta-label { font-size:14px; color:var(--text-light); margin-bottom:8px; letter-spacing:1px; }
+.cta-label.light { color:rgba(255,255,255,0.6); }
+.cta-note { font-size:13px; color:var(--text-light); margin-top:12px; }
+.cta-note.light { color:rgba(255,255,255,0.5); }
+.cta-btn-email {
+  display:inline-block;
+  background:linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:var(--primary); font-size:20px; font-weight:700;
+  padding:16px 44px; border-radius:50px; text-decoration:none;
+  letter-spacing:1px; box-shadow:0 4px 20px rgba(200,164,92,0.3);
+  transition:all 0.3s; cursor:pointer; border:none;
+}
+.cta-btn-email:hover {
+  transform:translateY(-2px);
+  box-shadow:0 6px 28px rgba(200,164,92,0.4);
+}
+
+/* ===== EMAIL FORM ===== */
+.email-form-wrap { max-width:480px; margin:20px auto 0; }
+.email-form { display:flex; gap:8px; margin-bottom:10px; }
+.email-form input[type="email"] {
+  flex:1; padding:14px 18px; border:2px solid var(--accent);
+  border-radius:50px; font-size:15px; font-family:'Noto Sans JP',sans-serif;
+  outline:none; transition:border-color 0.3s;
+}
+.email-form input[type="email"]:focus { border-color:var(--primary); }
+.email-form input[type="email"]::placeholder { color:#aaa; }
+.email-form button {
+  padding:14px 28px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:var(--primary); font-size:15px; font-weight:700;
+  border:none; border-radius:50px; cursor:pointer;
+  white-space:nowrap; transition:all 0.3s;
+}
+.email-form button:hover {
+  transform:translateY(-1px);
+  box-shadow:0 4px 16px rgba(200,164,92,0.3);
+}
+.form-privacy { font-size:11px; color:var(--text-light); text-align:center; }
+
+/* ===== BONUS SECTION (NEW) ===== */
+.bonus-section {
+  background: url('img/image2.png') center/cover no-repeat;
+  position: relative;
+  padding: 80px 20px;
+}
+.bonus-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.92);
+}
+.bonus-inner {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 1;
+}
+.bonus-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+/* Gold Ribbon CSS */
+.gold-ribbon-wrap {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+.gold-ribbon {
+  display: inline-block;
+  background: var(--primary);
+  padding: 16px 40px;
+  position: relative;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 4px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  border: 1px solid rgba(207,174,80,0.5);
+}
+.gold-ribbon::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 1px solid rgba(207,174,80,0.3);
+  pointer-events: none;
+}
+.gold-ribbon .present-icon {
+  margin-right: 12px;
+  font-size: 22px;
+  vertical-align: middle;
+}
+.bonus-intro-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+/* Bonus Box */
+.bonus-box {
+  background: #fff;
+  border: 2px solid #e8c97c;
+  border-radius: 12px;
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+.bonus-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 1px solid rgba(200,164,92,0.3);
+  border-radius: 10px;
+  margin: 4px;
+  pointer-events: none;
+}
+.bonus-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 80px;
+}
+.bonus-badge-ribbon {
+  width: 70px;
+  height: 100px;
+  background: #a91c1c; /* Crimson Red */
+  position: absolute;
+  left: 20px;
+  top: 0;
+}
+.bonus-badge-ribbon::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  border-width: 10px 35px 20px;
+  border-style: solid;
+  border-color: #a91c1c #a91c1c transparent #a91c1c;
+}
+.bonus-badge-coin {
+  position: absolute;
+  top: 15px;
+  left: 5px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(ellipse at top left, #fceabb 0%, #cca03c 100%);
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2), inset 0 0 15px rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.bonus-badge-coin span {
+  font-size: 15px;
+  font-weight: 900;
+  color: #333;
+  line-height: 1.2;
+}
+.bonus-badge-coin small {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.bonus-content {
+  margin-left: 100px; /* Space for the badge */
+  flex: 1;
+}
+.bonus-tag {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a91c1c;
+  border: 1px solid #a91c1c;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+.bonus-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.bonus-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+.bonus-video-icon {
+  width: 120px;
+  flex-shrink: 0;
+  margin-left: 20px;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.video-frame {
+  background: #333;
+  border-radius: 8px;
+  padding: 5px;
+  position: relative;
+  width: 100%;
+}
+.video-frame::before {
+  content: '';
+  display: block;
+  height: 6px;
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%);
+  background-size: 20px 10px;
+  margin-bottom: 5px;
+}
+.video-frame::after {
+  content: '';
+  display: block;
+  height: 6px;
+  background-image: linear-gradient(90deg, #ccc 50%, transparent 50%);
+  background-size: 20px 10px;
+  margin-top: 5px;
+}
+.video-red-box {
+  background: #cc0000;
+  padding: 15px 0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+}
+.play-btn {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.play-btn::after {
+  content: '';
+  border-top: 8px solid transparent;
+  border-left: 12px solid #cc0000;
+  border-bottom: 8px solid transparent;
+  margin-left: 4px;
+}
+.video-tag {
+  font-size: 11px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 8px;
+  background: #eee;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+@media (max-width: 640px) {
+  .bonus-box {
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 130px;
+  }
+  .bonus-badge {
+    left: 50%;
+    transform: translateX(-60px);
+  }
+  .bonus-content {
+    margin-left: 0;
+    text-align: center;
+  }
+  .bonus-video-icon {
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .gold-ribbon {
+    font-size: 16px;
+    padding: 14px 24px;
+    letter-spacing: 2px;
+  }
+  .gold-ribbon .present-icon { 
+    font-size: 18px; 
+    margin-right: 8px; 
+  }
+}
+
+/* ===== SECTIONS ===== */
+.section { padding:60px 20px; max-width:720px; margin:0 auto; }
+.section-wide { padding:60px 20px; }
+.section-inner { max-width:720px; margin:0 auto; }
+.section-label {
+  font-size:12px; letter-spacing:3px; color:var(--accent);
+  text-align:center; margin-bottom:8px; text-transform:uppercase;
+}
+.section-title {
+  font-size:24px; font-weight:700; text-align:center;
+  line-height:1.7; margin-bottom:36px; color:var(--primary);
+}
+.section-title .highlight {
+  color:var(--accent); border-bottom:2px solid var(--accent); padding-bottom:2px;
+}
+
+/* ===== PAIN ===== */
+.pain-bg { background:#faf7f2; }
+.pain-list { list-style:none; padding:0; }
+.pain-list li {
+  background:var(--white); border-left:4px solid var(--accent);
+  padding:18px 22px; margin-bottom:14px; border-radius:0 8px 8px 0;
+  font-size:15px; line-height:1.9; box-shadow:0 2px 8px rgba(0,0,0,0.04);
+  position:relative;
+}
+.pain-list li::before {
+  content:'✅'; margin-right:10px;
+}
+.pain-bottom {
+  text-align:center; margin-top:32px; font-size:16px;
+  line-height:2; color:var(--text-light);
+}
+.pain-bottom strong {
+  color:var(--primary); font-size:clamp(20px, 4vw, 28px); display:block; margin-top:8px;
+}
+
+/* ===== MISCONCEPTIONS ===== */
+.misconception-bg { background:var(--primary); color:var(--white); }
+.misconception-intro {
+  text-align:center; font-size:15px; color:rgba(255,255,255,0.7);
+  margin-bottom:32px; line-height:2;
+}
+.mc-card {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px; padding:24px; margin-bottom:20px;
+}
+.mc-number { font-size:12px; color:var(--accent); letter-spacing:2px; margin-bottom:6px; }
+.mc-myth {
+  font-size:20px; color:var(--white); font-weight:600;
+  margin-bottom:12px; line-height:1.7;
+}
+.mc-arrow { color:var(--accent); font-size:14px; margin-bottom:6px; }
+.mc-truth-container {
+  position: relative;
+}
+.mc-truth {
+  font-size:20px; font-weight:600; color:var(--accent-light); line-height:1.8;
+  filter: blur(6px); user-select: none; pointer-events: none; opacity: 0.5;
+}
+.mc-lock {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  color: var(--accent-light); text-align: center;
+  font-weight: 700; font-size: 15px; text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  pointer-events: none; width: 100%;
+}
+
+
+/* ===== RATIO 15/85 ===== */
+.ratio-bg { background:linear-gradient(170deg, #f7f3ec, #fff); }
+.ratio-visual {
+  display:flex; align-items:center; justify-content:center;
+  gap:12px; margin:28px 0; flex-wrap:wrap;
+}
+.ratio-bar { border-radius:8px; padding:20px; text-align:center; font-weight:700; }
+.ratio-bar.small {
+  background:rgba(184,74,60,0.1); color:var(--red-accent);
+  width:100px; font-size:28px;
+}
+.ratio-bar.large {
+  background:linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:var(--accent); flex:1; min-width:200px; font-size:42px;
+}
+.ratio-bar span { display:block; font-size:13px; font-weight:400; margin-top:4px; opacity:0.8; }
+.ratio-bar.large span { color:rgba(255,255,255,0.7); }
+.ratio-text {
+  font-size:16px; line-height:2.2; text-align:center;
+  color:var(--text); margin-top:24px;
+}
+.ratio-text strong { color:var(--primary); }
+
+/* ===== SKILL CARDS ===== */
+.skill-card-wrap { display:grid; gap:20px; margin:32px 0; }
+.skill-card {
+  background:var(--white); border-radius:16px; padding:28px 24px;
+  box-shadow:var(--shadow); border-left:4px solid var(--accent);
+  transition:all 0.3s;
+}
+.skill-card:hover {
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-lg);
+}
+.skill-num {
+  display:inline-block; padding:4px 14px;
+  background:linear-gradient(135deg, var(--primary), var(--primary-light));
+  color:var(--accent-light); border-radius:20px;
+  font-size:11px; font-weight:700; letter-spacing:2px; margin-bottom:12px;
+}
+.skill-card h4 {
+  font-size:clamp(20px, 4vw, 28px); font-weight:700; color:var(--primary);
+  margin-bottom:10px; line-height:1.6;
+}
+.skill-card p { font-size:14px; line-height:2; color:var(--text-light); }
+
+/* ===== TRANSFORMATION ===== */
+.transform-bg { background:#faf7f2; }
+.transform-grid {
+  display:grid; grid-template-columns:1fr auto 1fr;
+  gap:16px; align-items:start; margin-bottom:20px;
+}
+.transform-before, .transform-after {
+  padding:20px; border-radius:12px; font-size:14px; line-height:2;
+}
+.transform-before {
+  background:rgba(184,74,60,0.06); border:1px solid rgba(184,74,60,0.15);
+  color:var(--text-light);
+}
+.transform-after {
+  background:rgba(58,122,92,0.06); border:1px solid rgba(58,122,92,0.15);
+  color:var(--text);
+}
+.transform-arrow { font-size:28px; color:var(--accent); padding-top:30px; }
+.transform-label { font-size:12px; font-weight:700; letter-spacing:2px; margin-bottom:8px; }
+.transform-label.before { color:var(--red-accent); }
+.transform-label.after { color:var(--green-accent); }
+
+/* ===== VOICE ===== */
+.voice-card {
+  background:var(--white); border-radius:12px; padding:24px;
+  margin-bottom:16px; box-shadow:0 2px 12px rgba(0,0,0,0.05);
+  position:relative;
+}
+.voice-card::before {
+  content:'"'; font-size:48px; color:var(--accent);
+  position:absolute; top:10px; left:18px; opacity:0.3; font-family:serif;
+}
+.voice-text { font-size:15px; line-height:2; padding-left:8px; margin-bottom:10px; }
+.voice-attr { font-size:13px; color:var(--text-light); text-align:right; font-weight:600; }
+.voice-header {
+  margin-bottom:16px; border-radius:12px; overflow:hidden;
+}
+.voice-header img {
+  width:100%; display:block;
+}
+.voice-header .voice-attr {
+  display:none;
+}
+
+/* ===== NOT FOR ===== */
+.not-for-content { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.not-for-box { padding:24px; border-radius:12px; font-size:14px; line-height:2; }
+.not-for-box.no {
+  background:rgba(184,74,60,0.04); border:1px solid rgba(184,74,60,0.12);
+}
+.not-for-box.yes {
+  background:rgba(58,122,92,0.04); border:1px solid rgba(58,122,92,0.12);
+}
+.not-for-box h4 { font-size:15px; margin-bottom:12px; }
+.not-for-box.no h4 { color:var(--red-accent); }
+.not-for-box.yes h4 { color:var(--green-accent); }
+.not-for-box ul { list-style:none; padding:0; }
+.not-for-box ul li { padding:4px 0 4px 20px; position:relative; }
+.not-for-box.no ul li::before { content:'❌'; position:absolute; left:0; font-size:12px; }
+.not-for-box.yes ul li::before { content:'⭕️'; position:absolute; left:0; font-size:12px; top:6px; }
+
+/* ===== Q&A ===== */
+.obj-item { margin-bottom:28px; }
+.obj-q {
+  font-size:15px; font-weight:600; color:var(--primary);
+  margin-bottom:6px; padding-left:24px; position:relative;
+}
+.obj-q::before { content:'Q'; position:absolute; left:0; color:var(--accent); font-weight:700; }
+.obj-a { font-size:14px; color:var(--text-light); line-height:2; padding-left:24px; }
+
+/* ===== PROFILE ===== */
+.profile-section { margin:40px 0; }
+.profile-img-wrap {
+  text-align:center; margin-bottom:24px;
+}
+.profile-img-wrap img {
+  width:280px; height:280px; max-width:80%; border-radius:50%; object-fit:cover;
+  border:4px solid var(--accent); box-shadow:0 8px 30px rgba(0,0,0,0.15);
+}
+
+/* ===== FINAL CTA ===== */
+.final-cta {
+  background:linear-gradient(170deg, #0d1f2d 0%, #1a3a4a 50%, #2a5060 100%);
+  color:var(--white); padding:60px 20px; text-align:center;
+}
+.final-cta-inner { max-width:600px; margin:0 auto; }
+.final-message {
+  font-size:20px; line-height:2.2; margin-bottom:12px;
+  color:rgba(255,255,255,0.85);
+}
+.final-message strong { color:var(--accent); font-weight:700; }
+.final-sub {
+  font-size:14px; color:rgba(255,255,255,0.5);
+  margin-bottom:32px; line-height:1.9;
+}
+.step-flow {
+  display:flex; justify-content:center; align-items:center;
+  gap:10px; margin:28px 0; flex-wrap:wrap;
+}
+.step-item {
+  background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15);
+  border-radius:10px; padding:14px 18px; text-align:center; min-width:140px;
+}
+.step-num { font-size:11px; color:var(--accent); letter-spacing:2px; margin-bottom:4px; }
+.step-text { font-size:14px; font-weight:500; }
+.step-arrow { font-size:22px; color:var(--accent); }
+
+/* ===== FOOTER ===== */
+.footer {
+  background:#0a1520; color:rgba(255,255,255,0.35);
+  text-align:center; padding:24px 20px; font-size:12px; line-height:1.8;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+  background:rgba(0,0,0,0.6); z-index:1000;
+  align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.active { display:flex; }
+.modal-box {
+  background:var(--white); border-radius:16px; max-width:480px;
+  width:100%; padding:40px 32px; text-align:center;
+  position:relative; box-shadow:var(--shadow-lg);
+}
+.modal-close {
+  position:absolute; top:12px; right:16px;
+  background:none; border:none; font-size:22px;
+  cursor:pointer; color:var(--text-light);
+}
+.modal-title { font-size:20px; font-weight:700; color:var(--primary); margin-bottom:8px; }
+.modal-desc { font-size:14px; color:var(--text-light); margin-bottom:24px; line-height:1.8; }
+.modal-form input[type="email"] {
+  width:100%; padding:14px 18px; border:2px solid #ddd;
+  border-radius:10px; font-size:15px; font-family:'Noto Sans JP',sans-serif;
+  margin-bottom:12px; outline:none; transition:border-color 0.3s;
+}
+.modal-form input[type="email"]:focus { border-color:var(--accent); }
+.modal-form button {
+  width:100%; padding:16px;
+  background:linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:var(--primary); font-size:16px; font-weight:700;
+  border:none; border-radius:10px; cursor:pointer;
+  transition:all 0.3s; margin-bottom:10px;
+}
+.modal-form button:hover { box-shadow:0 4px 16px rgba(200,164,92,0.3); }
+.modal-privacy { font-size:11px; color:#999; }
+.thankyou-screen { display:none; text-align:center; }
+.thankyou-screen.active { display:block; }
+.thankyou-icon { font-size:48px; margin-bottom:16px; }
+.thankyou-title { font-size:22px; font-weight:700; color:var(--primary); margin-bottom:12px; }
+.thankyou-desc { font-size:14px; color:var(--text-light); margin-bottom:24px; line-height:1.9; }
+.line-btn {
+  display:inline-block; background:#06c755; color:#fff;
+  font-size:20px; font-weight:700; padding:16px 40px;
+  border-radius:50px; text-decoration:none;
+  box-shadow:0 4px 16px rgba(6,199,85,0.3); transition:all 0.3s;
+}
+.line-btn:hover { transform:translateY(-2px); box-shadow:0 6px 24px rgba(6,199,85,0.4); }
+.line-btn-note { display:block; font-size:12px; margin-top:12px; color:var(--text-light); }
+
+/* ===== FLOATING CTA ===== */
+.floating-cta {
+  position:fixed; bottom:0; left:0; right:0;
+  background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
+  padding:12px 20px; box-shadow:0 -4px 20px rgba(0,0,0,0.1);
+  z-index:900; text-align:center;
+  transform:translateY(100%); transition:transform 0.4s ease;
+}
+.floating-cta.visible { transform:translateY(0); }
+.floating-cta button {
+  background:linear-gradient(135deg, var(--accent), var(--accent-light));
+  color:var(--primary); font-size:15px; font-weight:700;
+  padding:12px 36px; border:none; border-radius:50px;
+  cursor:pointer; box-shadow:0 2px 12px rgba(200,164,92,0.3);
+}
+.floating-cta .float-sub { font-size:11px; color:var(--text-light); margin-top:4px; }
+.divider { text-align:center; padding:20px 0; color:var(--accent); font-size:20px; letter-spacing:8px; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:640px) {
+  .hero { padding:48px 18px 40px; }
+  .hero-pain { font-size:15px; line-height:2; }
+  .hero-turn { font-size:clamp(20px, 4vw, 28px); }
+  .hero-question-main { font-size:19px; }
+  .hero-title { font-size:34px; }
+  .hero-subtitle { font-size:22px; }
+  .section-title { font-size:20px; }
+  .email-form { flex-direction:column; }
+  .email-form button { width:100%; }
+  .ratio-bar.large { font-size:clamp(40px, 8vw, 56px); }
+  .transform-grid { grid-template-columns:1fr; text-align:center; }
+  .transform-arrow { transform:rotate(90deg); padding:0; }
+  .not-for-content { grid-template-columns:1fr; }
+  .step-flow { flex-direction:column; }
+  .step-arrow { transform:rotate(90deg); }
+  .final-message { font-size:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-pretitle">for Counselors who keep learning</p>
+    <p class="hero-pain">
+      多くのカウンセラーが直面する<br>
+      <strong>「傾聴の限界」</strong>という壁――<br>
+      時間だけが過ぎるもどかしさ…
+    </p>
+    <p class="hero-turn">「聴いているのに変わらない」<br>
+    その停滞を突破する、新しい傾聴の視点。</p>
+    <p class="hero-question-main serif">
+      『傾聴』と『聴く』の違いを<br>知っていますか？
+    </p>
+    <p class="hero-question-sub">
+      これを体得している支援者だけが<br>
+      セッションを成功に導き、プロの対価を受け取るための本質的な関わりができる。
+    </p>
+    <p class="hero-bridge serif">
+      相手が自ら心を開き始める、深い対話の技術<br>
+      表情をパッと明るく照らす、<br>
+      カウンセラーの本質的な<strong style="color:var(--accent);">"ありかた"</strong>とは？
+    </p>
+    <div class="hero-title-block">
+      <p class="hero-catch">自信がなくても、これまでの常識を超えた関わりで<br>クライアントの未来を共に開く</p>
+      <h1 class="hero-title serif">カウンセラーの言語学</h1>
+      <p class="hero-subtitle">"マルチセッション・プロトコル"</p>
+      <span class="hero-offer">５日間集中ワークショップ／今なら無料でご招待</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA: UTAGE FORM ===== -->
+<section class="cta-section" id="cta-top" style="background:linear-gradient(135deg, var(--primary) 0%, #0f2030 100%); padding:48px 20px; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);">
+  <div style="max-width:520px; margin:0 auto; text-align:center;">
+    <p style="font-size:12px; font-weight:700; color:var(--accent); letter-spacing:3px; margin-bottom:12px;">FREE WORKSHOP</p>
+    <p style="font-size:clamp(18px, 4vw, 24px); font-weight:700; color:#fff; line-height:1.6; margin-bottom:8px; font-family:'Noto Serif JP',serif;">5日間集中ワークショップ<br>無料ご招待</p>
+    <p style="font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:24px;">メールアドレスをご登録ください。詳細をお届けします。</p>
+    <form action="https://tkal.analogialemma.co.jp/r/jDgpoytydDIQ/store" method="post" style="max-width:400px; margin:0 auto;">
+      <div style="margin-bottom:12px;">
+        <input class="form-control" required id="mail" type="email" name="mail" value="" autocomplete="email" placeholder="example@email.com" style="width:100%; padding:16px 20px; border:2px solid rgba(200,164,92,0.4); border-radius:8px; font-size:16px; background:rgba(255,255,255,0.08); color:#fff; outline:none; box-sizing:border-box; transition:border-color 0.3s;">
+      </div>
+      <button type="submit" style="width:100%; padding:18px; background:linear-gradient(135deg, #c8a45c, #e6cd85); color:var(--primary); font-size:17px; font-weight:800; border:none; border-radius:8px; cursor:pointer; letter-spacing:1px; box-shadow:0 4px 20px rgba(200,164,92,0.4); transition:transform 0.2s, box-shadow 0.2s;">無料で参加する →</button>
+    </form>
+    <p style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:12px; line-height:1.6;">※ご登録後、ワークショップの詳細をお届けします。いつでも解除可能です。</p>
+    <p style="font-size:12px; color:#e6cd85; margin-top:8px; line-height:1.6; font-weight:600;">⚠ icloud、ezwebのメールアドレスはエラーとなる場合があります</p>
+  </div>
+</section>
+
+<!-- ===== PAIN ===== -->
+<section class="section-wide pain-bg">
+  <div class="section-inner">
+    <p class="section-label">Your Reality</p>
+    <h2 class="section-title">こんな経験、ありませんか？</h2>
+    <div style="margin:32px 0;border-radius:16px;overflow:hidden;">
+      <img src="img/image3.jpg" alt="言語化できないカウンセラー" style="width:100%;display:block;">
+    </div>
+    <ul class="pain-list">
+      <li>一生懸命うなずいて、オウム返しもして、沈黙も待った。<br>なのにクライアントの表情が最後まで曖昧だった</li>
+      <li>お試しセッションで「すごく良かったです！」と<br>言われたのに、その後の連絡が途絶えた</li>
+      <li>マニュアル通りに質問を重ねていたのに、<br>クライアントが予想外の反応をした瞬間、専門家として『言葉の詰まり』という課題に直面する</li>
+      <li>「あなたのカウンセリングって何が違うの？」<br>と聞かれて、言葉に詰まった</li>
+      <li>NLP、コーチング、心理学、マーケティング…<br>たくさん学んできたのに、根本的に何かが変わった実感がない</li>
+    </ul>
+    <p class="pain-bottom">
+      もし一つでも当てはまるなら、<br>知ってほしいことがあります。
+      <strong class="serif">それは「才能の問題」ではありません。</strong>
+    </p>
+  </div>
+</section>
+
+<div class="divider">― ― ―</div>
+
+<!-- ===== REASON ===== -->
+<section class="section">
+  <p class="section-label">The Real Reason</p>
+  <h2 class="section-title">なぜ、学んでも<br><span class="highlight">セッションが変わらない</span>のか？</h2>
+
+  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
+    NLPもコーチングも傾聴も、あなたが学んできたものは間違っていません。
+  </p>
+  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
+    ただ、それらはすべて<strong>「メソッド」</strong>――つまりセッションを構成する要素のうち、ほんの一部にすぎません。
+  </p>
+  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
+    どれだけ優れたメソッドを手に入れても、それを<strong>「自分の言葉」に変換し、「目の前の相手」に届け、「セッション全体の体験」として設計する力</strong>がなければ、クライアントの心は動きません。
+  </p>
+  <p style="font-size:16px; line-height:2.2; color:var(--primary); font-weight:600; text-align:center; margin-top:28px;" class="serif">
+    そして、この力を体系的に教えてくれる場所は<br>これまで、どこにもありませんでした。
+  </p>
+  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-top:28px; text-align:center;">
+    そして成果が出ないカウンセラーさんには<br><strong>ある特徴がある</strong>のをご存知でしょうか？
+  </p>
+</section>
+
+<!-- ===== 5 MISCONCEPTIONS ===== -->
+<section class="section-wide misconception-bg">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--accent);">5 Misconceptions</p>
+    <h2 class="section-title" style="color:var(--white);">成果が出ない支援者が信じている<br><span style="color:var(--accent);">5つの「常識」という名の誤解</span></h2>
+    <p class="misconception-intro">
+      業界で「当たり前」とされてきたこと。<br>
+      でも、成果を出しているカウンセラーは、実は全く違うことをしています。
+    </p>
+    <div style="margin:0 0 32px;border-radius:16px;overflow:hidden;">
+      <img src="img/image5.jpg" alt="パラダイムシフト" style="width:100%;display:block;">
+    </div>
+    <div class="mc-card">
+      <p class="mc-number">MISCONCEPTION 01</p>
+      <p class="mc-myth">カウンセラーは「話す」よりも「聴く」を磨くべき</p>
+      <p class="mc-arrow">▼ 真実</p>
+      <div class="mc-truth-container"><p class="mc-truth">聴いた内容を「言語化」して返す力こそが、クライアントの"わかってもらえた"を生む</p><div class="mc-lock"><span style="font-size:24px;display:block;margin-bottom:4px;">🔒</span>5日間集中ワークショップで公開</div></div>
+    </div>
+    <div class="mc-card">
+      <p class="mc-number">MISCONCEPTION 02</p>
+      <p class="mc-myth">しっかり傾聴すれば、相手は心を開いてくれる</p>
+      <p class="mc-arrow">▼ 真実</p>
+      <div class="mc-truth-container"><p class="mc-truth">心を開くのは「聴かれた瞬間」ではなく、自分の感情を「言葉にしてもらえた瞬間」</p><div class="mc-lock"><span style="font-size:24px;display:block;margin-bottom:4px;">🔒</span>5日間集中ワークショップで公開</div></div>
+    </div>
+    <div class="mc-card">
+      <p class="mc-number">MISCONCEPTION 03</p>
+      <p class="mc-myth">良いセッションができれば、契約してもらえる</p>
+      <p class="mc-arrow">▼ 真実</p>
+      <div class="mc-truth-container"><p class="mc-truth">契約を生むのは「良かった」ではなく「この人となら変われる」という"期待の体験設計"</p><div class="mc-lock"><span style="font-size:24px;display:block;margin-bottom:4px;">🔒</span>5日間集中ワークショップで公開</div></div>
+    </div>
+    <div class="mc-card">
+      <p class="mc-number">MISCONCEPTION 04</p>
+      <p class="mc-myth">的確な質問を重ねれば、根本原因にたどり着ける</p>
+      <p class="mc-arrow">▼ 真実</p>
+      <div class="mc-truth-container"><p class="mc-truth">質問は「設計図」にすぎない。目の前の反応に即応する「対応力」がなければ深まらない</p><div class="mc-lock"><span style="font-size:24px;display:block;margin-bottom:4px;">🔒</span>5日間集中ワークショップで公開</div></div>
+    </div>
+    <div class="mc-card">
+      <p class="mc-number">MISCONCEPTION 05</p>
+      <p class="mc-myth">実力ある先生のやり方を真似ればうまくいく</p>
+      <p class="mc-arrow">▼ 真実</p>
+      <div class="mc-truth-container"><p class="mc-truth">他人のメソッドを「自分の言葉」に変換する力がなければ、借り物のまま終わる</p><div class="mc-lock"><span style="font-size:24px;display:block;margin-bottom:4px;">🔒</span>5日間集中ワークショップで公開</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 15% vs 85% ===== -->
+<section class="section-wide ratio-bg">
+  <div class="section-inner">
+    <p class="section-label">The Core Insight</p>
+    <h2 class="section-title serif">違いを生み出すもの…それは</h2>
+    <p style="font-size:16px; text-align:center; color:var(--text); margin-bottom:8px;">同じメソッドを使っても<br>成果が出る人と出ない人がいる。<br>その差は――</p>
+    <div class="ratio-visual">
+      <div class="ratio-bar small">15%<span>メソッド</span></div>
+      <div style="font-size:24px; color:var(--text-light);">：</div>
+      <div class="ratio-bar large">85%<span>カスタマー・エクスペリエンス<br>（言語化 × 体験設計 × 対応力）</span></div>
+    </div>
+    <p class="ratio-text">
+      NLP、コーチング、傾聴――これらのメソッドはセッション全体の<strong>15%</strong>。<br>
+      残りの<strong>85%</strong>は、それを<strong>「どう言語化し」「どう体験として設計し」<br>「目の前の相手にどうカスタマイズするか」</strong>で決まります。<br><br>
+      これまで学んだメソッドを、ついに<strong style="color:var(--accent);">"自分の言葉"</strong>として使いこなすための、<br>
+      <strong style="color:var(--accent);">最後のピース</strong>が埋まります。
+    </p>
+  </div>
+</section>
+
+
+
+<!-- ===== 3 SKILLS ===== -->
+<section class="section">
+  <p class="section-label">3 Core Skills</p>
+  <h2 class="section-title">あなたは磨いてますか？<br>無視してますか？</h2>
+
+  <p style="font-size:15px; line-height:2.2; text-align:center; color:var(--text); margin-bottom:12px;">
+    結果を出す支援者には特徴があります<br>
+    才能…個性…それはひとそれぞれ異なる要因です
+  </p>
+  <p style="font-size:16px; line-height:2.2; text-align:center; color:var(--primary); font-weight:600; margin-bottom:8px;" class="serif">
+    でも、最も重要なことは、<br>次の３つの能力…
+  </p>
+  <p style="font-size:15px; text-align:center; color:var(--text-light); margin-bottom:12px;">
+    全ての人が持ち合わせている３つの能力。<br>それは才能ではありません。
+  </p>
+  <p style="font-size:clamp(20px, 4vw, 28px); text-align:center; color:var(--accent); font-weight:700; margin-bottom:32px;" class="serif">
+    『磨いているか、無視しているか』<br>
+    <span style="font-size:14px; color:var(--text-light); font-weight:400;">の違いでしかないのです。</span>
+  </p>
+
+  <div class="skill-card-wrap">
+    <div class="skill-card">
+      <div style="text-align:center; margin-bottom:16px;"><img src="img/icon_verbalization.png" alt="言語化力" style="width:120px; height:120px; border-radius:12px;"></div>
+      <span class="skill-num">SKILL 01</span>
+      <h4>言語化力<br><span style="font-size:14px; color:var(--text-light); font-weight:500;">― 聴いたことを"言葉にして返す"力</span></h4>
+      <p>クライアントの話を聴いた後、何を、どんな言葉で返せば「わかってもらえた」が生まれるのか。質問が尋問にならない「種を蒔く言葉遣い」の技術。傾聴の"その先"が手に入ります。</p>
+    </div>
+    <div class="skill-card">
+      <div style="text-align:center; margin-bottom:16px;"><img src="img/icon_experience.png" alt="体験設計力" style="width:120px; height:120px; border-radius:12px;"></div>
+      <span class="skill-num">SKILL 02</span>
+      <h4>体験設計力<br><span style="font-size:14px; color:var(--text-light); font-weight:500;">― セッションを"変容の体験"にする力</span></h4>
+      <p>「良い人だった」で終わらない。「この人となら変われる」という確信を、セッション体験そのもので生み出す設計力。お試しから契約・リピートへの自然な流れが生まれます。</p>
+    </div>
+    <div class="skill-card">
+      <div style="text-align:center; margin-bottom:16px;"><img src="img/icon_adaptability.png" alt="対応力" style="width:120px; height:120px; border-radius:12px;"></div>
+      <span class="skill-num">SKILL 03</span>
+      <h4>対応力<br><span style="font-size:14px; color:var(--text-light); font-weight:500;">― 台本を超え、目の前の人に最適化する力</span></h4>
+      <p>クライアントが予想外の反応をしても、もう怖くない。マニュアルに頼らず、自分の判断で柔軟に寄り添える即興力。あなただけのセッションスタイルが確立します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSFORMATION ===== -->
+<section class="section-wide transform-bg">
+  <div class="section-inner">
+    <p class="section-label">Transformation</p>
+    <h2 class="section-title">5日間で体得する"視点の転換"。<br>その先にある、クライアントとの新しい関わりを体感してください</h2>
+    <div class="transform-grid">
+      <div class="transform-before">
+        <p class="transform-label before">BEFORE</p>
+        聴いているのに「伝わっている実感」がない<br>
+        台本から外れると頭が真っ白<br>
+        お試しは好評でも契約に至らない<br>
+        他のカウンセラーと比べて自信がない<br>
+        自分のメソッドを言語化できない
+      </div>
+      <div class="transform-arrow">→</div>
+      <div class="transform-after">
+        <p class="transform-label after">AFTER</p>
+        クライアントが「わかってもらえた！」と涙する<br>
+        想定外の反応にも落ち着いて対応できる<br>
+        「この人しかいない」と選ばれる体験設計ができる<br>
+        自分だけのスタイルに自信を持てる<br>
+        想いやメソッドを自分の言葉で語れる
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== NEW BONUS SECTION ===== -->
+<section class="bonus-section">
+  <div class="bonus-inner">
+    <div class="bonus-header">
+      <div class="gold-ribbon-wrap">
+        <div class="gold-ribbon">
+          <span class="present-icon">🎁</span>
+          参加者限定 豪華6大特典
+        </div>
+      </div>
+      <p class="bonus-intro-text">ワークショップに参加し、課題に取り組むことで<br>臨床現場ですぐに活かせる【限定動画講義】をプレゼント！</p>
+    </div>
+
+    <!-- Bonus 1: 初期登録 -->
+    <div class="bonus-box">
+      <div class="bonus-badge">
+        <div class="bonus-badge-ribbon"></div>
+        <div class="bonus-badge-coin">
+          <small>登録特典</small>
+          <span>1</span>
+        </div>
+      </div>
+      <div class="bonus-content">
+        <span class="bonus-tag">メール登録ですぐに見れる！</span>
+        <h3 class="bonus-title">心を開かない原因はあなたかも…「会話が噛み合わない」と感じる時、知っておくべき支援者が陥りがちな６つの罠</h3>
+        <p class="bonus-desc">良かれと思ってやっているその声かけが、実は相手を遠ざけているかもしれません。無意識の「6つの罠」に気づき、関係性を修復するアプローチを公開。</p>
+      </div>
+      <div class="bonus-video-icon">
+        <div class="video-frame">
+          <div class="video-red-box"><div class="play-btn"></div></div>
+        </div>
+        <span class="video-tag">動画講義</span>
+      </div>
+    </div>
+
+    <!-- Bonus 2: LINE登録 -->
+    <div class="bonus-box">
+      <div class="bonus-badge">
+        <div class="bonus-badge-ribbon"></div>
+        <div class="bonus-badge-coin">
+          <small>LINE特典</small>
+          <span>2</span>
+        </div>
+      </div>
+      <div class="bonus-content">
+        <span class="bonus-tag">LINE登録プレゼント</span>
+        <h3 class="bonus-title">裏切られた！突然キャンセルするクライアント。その理由とがっかりしないための予防策</h3>
+        <p class="bonus-desc">ドタキャンに傷つく必要はありません。「なぜ彼らはキャンセルしたのか」の構造をひも解き、事前に防ぐためのセッションの終わり方をお伝えします。</p>
+      </div>
+      <div class="bonus-video-icon">
+        <div class="video-frame">
+          <div class="video-red-box"><div class="play-btn"></div></div>
+        </div>
+        <span class="video-tag">動画講義</span>
+      </div>
+    </div>
+
+    <!-- Bonus 3: DAY1提出 -->
+    <div class="bonus-box">
+      <div class="bonus-badge">
+        <div class="bonus-badge-ribbon"></div>
+        <div class="bonus-badge-coin">
+          <small>Day1特典</small>
+          <span>3</span>
+        </div>
+      </div>
+      <div class="bonus-content">
+        <span class="bonus-tag">Day1 課題提出プレゼント</span>
+        <h3 class="bonus-title">順調だったのに突然来なくなった…自分を責める代わりにできること</h3>
+        <p class="bonus-desc">「期待に応えられなかったのでは」という強烈な自己否定から抜け出し、事実を客観的に捉え直して次のセッションに活かすためのフレームワーク。</p>
+      </div>
+      <div class="bonus-video-icon">
+        <div class="video-frame">
+          <div class="video-red-box"><div class="play-btn"></div></div>
+        </div>
+        <span class="video-tag">動画讲義</span>
+      </div>
+    </div>
+
+    <!-- Bonus 4: DAY2提出 -->
+    <div class="bonus-box">
+      <div class="bonus-badge">
+        <div class="bonus-badge-ribbon"></div>
+        <div class="bonus-badge-coin">
+          <small>Day2特典</small>
+          <span>4</span>
+        </div>
+      </div>
+      <div class="bonus-content">
+        <span class="bonus-tag">Day2 課題提出プレゼント</span>
+        <h3 class="bonus-title">信頼されてない？「話せない」を「話したくない」にしてしまうクライアントへの質問の誤り</h3>
+        <p class="bonus-desc">沈黙が続く時、あなたの矢のような質問が相手を委縮させているかもしれません。「答えるのが怖い」を「話したい」に変える質問の技術。</p>
+      </div>
+      <div class="bonus-video-icon">
+        <div class="video-frame">
+          <div class="video-red-box"><div class="play-btn"></div></div>
+        </div>
+        <span class="video-tag">動画講義</span>
+      </div>
+    </div>
+
+    <!-- Bonus 5 & 6: コンプリート -->
+    <div class="bonus-box" style="flex-direction:column; align-items:center; padding:40px 20px;">
+      <h3 style="font-size:24px; font-weight:800; color:#a91c1c; margin-bottom:20px; text-align:center;">5日間 コンプリート達成プレゼント</h3>
+      <div style="width:100%; max-width:500px; margin:0 auto 28px; border-radius:12px; overflow:hidden;">
+          <img src="img/complete_bonus.png" alt="コンプリート特典動画" style="width:100%; display:block;">
+      </div>
+      <div style="display:flex; flex-direction:column; gap:16px; width:100%; max-width:600px;">
+        <div style="background:linear-gradient(135deg, #faf6ef, #f5ede0); border-radius:14px; padding:20px 24px; border-left:4px solid var(--accent);">
+          <p style="font-size:12px; font-weight:700; color:var(--accent); letter-spacing:2px; margin-bottom:6px;">BONUS ①</p>
+          <h4 style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.8; margin:0;">「伝わってない？」 納得いってない表情のクライアントは、あなたのマズい伝え方の鏡！<br>寄り道・迷子の伝え方の改善法</h4>
+        </div>
+        <div style="background:linear-gradient(135deg, #faf6ef, #f5ede0); border-radius:14px; padding:20px 24px; border-left:4px solid var(--accent);">
+          <p style="font-size:12px; font-weight:700; color:var(--accent); letter-spacing:2px; margin-bottom:6px;">BONUS ②</p>
+          <h4 style="font-size:16px; font-weight:700; color:var(--primary); line-height:1.8; margin:0;">プロ失格？？ 壮絶な人生のクライアントが来るといつも話に巻き込まれてしまう。<br>そんな聴くだけを終了するための方法は？</h4>
+        </div>
+      </div>
+      <p style="font-size:14px; color:var(--text-light); margin-top:20px; text-align:center; line-height:1.8;">これらは全て動画でご提供します。<br>すべての課題をやり遂げた方限定の特別講義です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VOICES ===== -->
+<section class="section-wide pain-bg">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">受講された方の声</h2>
+
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/%E9%87%8E%E6%9D%91%20%E4%BF%8A%E9%9B%84.png" alt="野村俊雄さん">
+        <p class="voice-attr">野村俊雄さん</p>
+      </div>
+      <p class="voice-text">無料セッションからリピートとか継続というところがなかなか繋がらないなというところを悩んでいましたが。4回、5回、6回と有料セッションが継続してくれるようになりましたね。継続して受けてくださってる方はもう20回以上受けてくださってる方もいますので、受けてくださるクライアントさんの満足度が高まっていると思っています。</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/%E7%A8%B2%E5%B2%A1%E3%81%98%E3%82%85%E3%82%93%E3%81%93.png" alt="稲岡じゅんこさん">
+        <p class="voice-attr">稲岡じゅんこさん</p>
+      </div>
+      <p class="voice-text">共感力が課題なんですけれどもクライアントさんから良い評価をいただけるようになって、「自分の話を聞いてくれた」とか「とても向き合ってくれた」っていうようなことをお話してくださるようになりました！</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/voice-kumazawa.png" alt="熊澤まさよさん">
+        <p class="voice-attr">熊澤まさよさん</p>
+      </div>
+      <p class="voice-text">私はお試しセッションをさせていただいてからバックエンドの提案をするっていう形でやっているんですけど、体験会の前からもう体験セッションが始まってるという意識に変わり、成約率の推移を実感し、提案の打率が目に見えて変わったという声をいただいています。</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/%E5%B1%B1%E6%9C%AC%20%E5%92%8C%E8%BC%9D.png" alt="山本和輝さん">
+        <p class="voice-attr">山本和輝さん</p>
+      </div>
+      <p class="voice-text">企業の中で講師などもやってるんですけども私が開く講座に突然人が集まるようになって、言語学をやり始めて4ヶ月で300人ぐらい受講者が集まりました。直接のトレーニングをやると6回の講座を今継続でしてるんですけども30人ぐらいがずっと継続して受け続けていただいてます！</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/voice-takamisan.png" alt="高味ひさこさん">
+        <p class="voice-attr">高味ひさこさん</p>
+      </div>
+      <p class="voice-text">カウンセリングの場に限らず いろんな方とお話をするときにも言語学のスキルを使ってみると、ものすごく相手の方が抵抗感を持たずにすっと聞いてくださる。聞く耳を持ってくださる♪日常の会話の中でものすごく役に立ったというのが本音の感想です。</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-header">
+        <img src="img/%E4%B8%8B%E5%B7%9D%E5%92%8C%E6%9E%9D.png" alt="下川和枝さん">
+        <p class="voice-attr">下川和枝さん</p>
+      </div>
+      <p class="voice-text">相談内容が深くなったり、家族に紹介が広がったり、思いがけず遠くから相談に来られたりっていう信用度が全然違ってきたなってすごく感じました。仕事に関しては集客の悩みから解放され、本来の支援活動に集中できる安心感が手に入りましたし、繋がりができてきたのですごく気持ちが楽で、すごいオープンになった感じです♪</p>
+      <p style="font-size:10px; color:var(--text-light); opacity:0.5; margin-top:8px;">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NOT FOR ===== -->
+<section class="section">
+  <p class="section-label">For You?</p>
+  <h2 class="section-title">このワークショップは<br>すべての方に向けたものではありません</h2>
+  <div class="not-for-content">
+    <div class="not-for-box no">
+      <h4>こんな方には向きません</h4>
+      <ul>
+        <li>新しいメソッドやテクニックを増やしたい方</li>
+        <li>資格を取ることが目的の方</li>
+        <li>集客・売上の仕組みだけを学びたい方</li>
+        <li>自分のやり方を変える気がない方</li>
+      </ul>
+    </div>
+    <div class="not-for-box yes">
+      <h4>こんな方にこそ届けたい</h4>
+      <ul>
+        <li>学んできたのに成果が出ず、何を変えればいいかわからない方</li>
+        <li>聴くだけでなく「言葉で人の心を動かしたい」と感じている方</li>
+        <li>お試しから契約・リピートにつなげたい方</li>
+        <li>自分だけのセッションスタイルを確立したい方</li>
+        <li>「次に何を学べばいいか、もうわからない」と感じている方</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Q&A ===== -->
+<section class="section-wide pain-bg">
+  <div class="section-inner">
+    <p class="section-label">Q&A</p>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="obj-item">
+      <p class="obj-q">公的な心理資格を持っていませんが、参加できますか？</p>
+      <p class="obj-a">はい、もちろんです。このワークショップは「資格」ではなく「セッション力」を高めるためのものです。資格の有無に関わらず、クライアントの前に座っている全てのカウンセラーに必要な力をお伝えします。</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">NLPやコーチングを学んでいないと難しいですか？</p>
+      <p class="obj-a">いいえ。むしろ、特定のメソッドに依存しない「土台の力」を身につける場です。既にメソッドを学んでいる方は、それを"自分の言葉"に変換する力が手に入ります。これから学ぶ方は、どんなメソッドも活かせる土台が先に手に入ります。</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">また新しいメソッドを覚えるのは正直しんどいです…</p>
+      <p class="obj-a">そのお気持ち、よくわかります。安心してください。このワークショップでは新しいメソッドを追加しません。あなたが「すでに持っているもの」を言語化し、セッションとして設計する"視点"を手に入れていただきます。学び疲れしている方にこそ、受けてほしいワークショップです。</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">5日間で本当に変わりますか？</p>
+      <p class="obj-a">5日間で全てが完成するとは言いません。しかし、「何を変えればいいか」が明確になります。今まで「もっと学ばなければ」と感じていたループから抜け出す、決定的な"視点の転換"が起きる5日間です。</p>
+    </div>
+    <div class="obj-item">
+      <p class="obj-q">無料とのことですが、なぜですか？</p>
+      <p class="obj-a">このワークショップは「カウンセラーの言語学」の考え方を体験していただくための場です。5日間で"視点の転換"を体験し、ご自身のセッションの可能性を実感してください。体験の先に、さらに深く学びたい方のための継続プログラムをご用意しています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROFILE ===== -->
+<section class="section">
+  <p class="section-label">Instructor</p>
+  <h2 class="section-title">誰が教えるのか？</h2>
+
+  <div class="profile-img-wrap">
+    <img src="img/LP-profile.jpg" alt="神 崇仁">
+  </div>
+
+  <p style="font-size:15px; line-height:2; text-align:center; color:var(--text-light); margin-bottom:20px;">
+    人の内側に眠る可能性を目覚めさせる<br>
+    しぐさとことば、エリクソン催眠のプロフェッショナル。
+  </p>
+  <p style="font-size:14px; line-height:2; text-align:center; color:var(--text); margin-bottom:24px;">
+    ことばが持つ心に与える影響力をテンプレート化した『潜在意識テンプレート』で<br>経験やスキルレベルに関わらず、クライアントの自発的な変化を可能にする<br><strong>【カウンセラーの言語学】の開発者</strong>
+  </p>
+
+  <h3 style="font-size:22px; font-weight:700; text-align:center; margin-bottom:4px; color:var(--primary);" class="serif">神 崇仁（Takahito KO）</h3>
+  <p style="text-align:center; font-size:13px; color:var(--accent); font-weight:600; margin-bottom:28px;">アナロギアレンマ株式会社 代表</p>
+
+  <div style="font-size:14px; line-height:2; color:var(--text-light);">
+    <p style="margin-bottom:16px;">無意識から変容を起こす伝説の催眠療法家、ミルトン・エリクソンを１７年にわたって探求し、エリクソンの自伝的映画『砂漠の魔術師』のアジアプロデューサー、エリクソンの伝説のセミナー動画を日本に導入するなど、<strong style="color:var(--text);">日本におけるエリクソン研究のトップランナー</strong>として活躍。</p>
+    <p style="margin-bottom:16px;">心の深い変容を扱う心理療法の世界的権威、マイケル・ヤプコ博士、世界的コーチであるスティーブン・ギリガン博士から直接学び、日本に招聘する活動のほか、アーネスト・ロッシ博士など14人の弟子、家族から、直接エリクソン催眠の薫陶を受ける。また、<strong style="color:var(--text);">『ミルトン・エリクソン財団』の創設者であり、現理事長のジェフリー・ザイク博士よりエリクソンのレガシーを次世代に残す活動の功績を認められた唯一の日本人</strong>でもある。</p>
+    <p style="margin-bottom:16px;">心理キャリアのスタートはNLPから。その最高峰に位置するメタ・マスタートレーナー、クリスティナ・ホール女史から言語の持つ可能性を学び、そのトレーニングの最中、卓越した言葉遣い<strong style="color:var(--text);">『言語モデリング』</strong>の手法を発見する。</p>
+    <p style="margin-bottom:16px;">そのモデリング手法を、クリス本人のほか、スティーブン・ギリガン博士、ジェフリー・ザイク博士のセッションやセミナーでの言葉遣いに適用、さらにはミルトン・エリクソンの数々のセッション動画の分析にも応用することで、セラピーの文脈でなくても、<strong style="color:var(--text);">「人が自然と自らの意志で動き出す」会話の方程式を確立し、それを『潜在意識テンプレート』として体系化</strong>した。</p>
+    <p style="margin-bottom:16px;">現在は、「メソッドや手技を超えてクライアントを幸せにしたい」「自分の口下手を克服して相手に貢献したい」という施術家、医療関係者、カウンセラーたちに「テンプレートを読むだけで変化を生み、口下手を克服できる」メソッドを広める活動に尽力中。</p>
+  </div>
+
+  <div style="margin:28px 0; border-radius:12px; overflow:hidden; box-shadow:0 8px 30px rgba(0,0,0,0.15);">
+    <img src="img/profile-collage.png" alt="プロフィールコラージュ" style="width:100%; display:block;">
+  </div>
+
+  <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:16px; padding:24px; text-align:center; margin-top:28px;">
+    <p style="font-size:13px; font-weight:600; color:var(--accent); margin-bottom:12px;">📰 メディア掲載</p>
+    <p style="font-size:14px; color:var(--text-light); margin-bottom:16px;">対人援助専門雑誌「セラピスト」様にて、神 崇仁のメソッドが紹介されました。</p>
+    <div style="border-radius:12px; overflow:hidden;">
+      <img src="img/magazine-therapist.png" alt="セラピスト誌 掲載" style="width:100%; display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL MESSAGE + CTA ===== -->
+<section class="final-cta" id="cta-final">
+  <div class="final-cta-inner">
+    <p style="font-size:13px; color:var(--accent); letter-spacing:3px; margin-bottom:20px;">LAST MESSAGE</p>
+    <p style="font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:16px;">あなたへのメッセージ</p>
+
+    <p class="final-message serif">
+      本当は、聴いてるだけじゃダメだって<br>
+      <strong>わかってる</strong>。<br><br>
+      でも"何を言えばいいか"がわからないから、<br>
+      聴くしかなかった。<br><br>
+      その答えが、ここにあります。
+    </p>
+    <p class="final-sub">
+      あなたが学んできたことは、何一つ無駄になっていません。<br>
+      足りなかったのは「たった一つの視点」でした。
+    </p>
+
+    <div style="border-top:1px solid rgba(200,164,92,0.2); padding-top:28px; margin-top:16px;">
+      <p style="font-size:16px; line-height:2.4; color:rgba(255,255,255,0.8);" class="serif">
+        この５日間のワークショップに参加することが<br>あなたにとって<br><br>
+        <strong style="color:var(--accent); font-size:clamp(20px, 4vw, 28px);">どのようにあなたの未来を輝かすのか？</strong><br><br>
+        それはまだわかりませんが、<br>
+        これまでのあなたのもどかしさや<br>
+        もっとこうできたら？の背景にある、<br><br>
+        <strong style="color:var(--accent);">「ほんとうのあなたのあるべき姿」</strong><br><br>
+        をワークショップの中で<br>
+        僕が伝える内容を鏡として向き合うことで<br><br>
+        これまでにない<br>
+        <span style="font-size:20px; color:var(--accent); font-weight:700;">新たな可能性を確信する</span><br><br>
+        その価値を手に入れてください。<br><br>
+        <span style="color:var(--accent-light);">あなたの参加をお待ちしています！</span>
+      </p>
+    </div>
+
+    <div style="margin-top:36px;">
+      <p style="font-size:14px; color:rgba(255,255,255,0.5); margin-bottom:20px;">ここからの流れ</p>
+      <div class="step-flow">
+        <div class="step-item">
+          <p class="step-num">STEP 1</p>
+          <p class="step-text">メールアドレス登録</p>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step-item">
+          <p class="step-num">STEP 2</p>
+          <p class="step-text">LINE登録</p>
+        </div>
+        <span class="step-arrow">→</span>
+        <div class="step-item">
+          <p class="step-num">STEP 3</p>
+          <p class="step-text">5日間WS参加</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:28px; text-align:center;">
+      <a href="#cta-top" style="display:inline-block; padding:20px 56px; background:linear-gradient(135deg, #c8a45c, #e6cd85); color:var(--primary); font-size:18px; font-weight:800; border-radius:8px; text-decoration:none; box-shadow:0 4px 20px rgba(200,164,92,0.4); transition:transform 0.2s;">無料で参加する →</a>
+      <p class="form-privacy" style="color:rgba(255,255,255,0.4); margin-top:12px;">※メール登録のみ。いつでも解除可能です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  カウンセラーの言語学 | マルチセッション・プロトコル<br>
+  &copy; 2026 All Rights Reserved.
+</footer>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="floating-cta" id="floatingCta">
+  <a href="#cta-top" style="display:block; width:100%; max-width:400px; margin:0 auto; padding:14px 24px; background:linear-gradient(135deg, #c8a45c, #e6cd85); color:var(--primary); font-size:15px; font-weight:800; border-radius:8px; text-decoration:none; text-align:center; box-shadow:0 4px 16px rgba(200,164,92,0.4);">無料ワークショップに今すぐ参加する ↑</a>
+</div>
+
+<script>
+  // Floating CTA
+  const floatingCta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const footer = document.querySelector('.footer');
+    const footerTop = footer.offsetTop - window.innerHeight;
+    if (window.scrollY > heroBottom && window.scrollY < footerTop) {
+      floatingCta.classList.add('visible');
+    } else {
+      floatingCta.classList.remove('visible');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href="#cta-top"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('cta-top').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  // Form input focus effect
+  const formInput = document.querySelector('#cta-top input[name="mail"]');
+  if (formInput) {
+    formInput.addEventListener('focus', () => { formInput.style.borderColor = 'var(--accent)'; });
+    formInput.addEventListener('blur', () => { formInput.style.borderColor = 'rgba(200,164,92,0.4)'; });
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.mc-card, .skill-card, .voice-card, .pain-list li, .obj-item, .bonus-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>

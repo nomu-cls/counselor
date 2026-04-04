@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カウンセラーの言語学 | マルチセッション・プロトコル 5日間集中ワークショップ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;900&family=Noto+Serif+JP:wght@400;500;600;700&display=swap');
+
+  :root {
+    --primary: #3a2e28;
+    --primary-deep: #2a1f1a;
+    --accent: #b08d6e;
+    --accent-light: #d4b896;
+    --accent-glow: #f5ece2;
+    --warm: #faf6f1;
+    --warm-mid: #f0e8de;
+    --sage: #7a9181;
+    --sage-light: #a3bfac;
+    --sage-bg: #f0f5f2;
+    --text: #3a3430;
+    --text-light: #7a716a;
+    --white: #ffffff;
+    --rose: #c4847a;
+    --rose-light: #f5e0dc;
+    --shadow: 0 4px 24px rgba(58,46,40,0.06);
+    --shadow-lg: 0 8px 40px rgba(58,46,40,0.10);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.9;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .serif { font-family: 'Noto Serif JP', serif; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(175deg, #f7f0e8 0%, #ede3d6 40%, #e4d8c8 100%);
+    color: var(--text);
+    padding: 60px 20px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.6) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 660px; margin: 0 auto; position: relative; z-index: 1; }
+
+  .hero-pretitle {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero-pain {
+    font-size: 17px;
+    line-height: 2.3;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-weight: 400;
+  }
+  .hero-pain strong {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .hero-pain-accent {
+    color: var(--rose);
+    font-weight: 500;
+  }
+  .hero-pain-dots {
+    display: block;
+    font-size: 14px;
+    color: var(--text-light);
+    margin: 6px 0 28px;
+    letter-spacing: 2px;
+  }
+
+  .hero-turn {
+    display: inline-block;
+    background: rgba(255,255,255,0.7);
+    border-radius: 8px;
+    padding: 16px 28px;
+    font-size: 16px;
+    color: var(--primary);
+    line-height: 2;
+    margin: 0 0 32px;
+    font-weight: 500;
+  }
+  .hero-turn strong {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  .hero-message {
+    font-size: 16px;
+    line-height: 2.4;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .hero-message-em {
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.8;
+    display: block;
+    margin: 12px 0;
+  }
+  .hero-message-soft {
+    font-size: 15px;
+    color: var(--text-light);
+    line-height: 2.2;
+  }
+
+  .hero-title-block {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow-lg);
+    margin: 0 0 8px;
+  }
+  .hero-catch {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 14px;
+    line-height: 1.9;
+  }
+  .hero-title {
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 2px;
+    line-height: 1.5;
+    margin-bottom: 6px;
+  }
+  .hero-subtitle {
+    font-size: 18px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 12px;
+  }
+  .hero-offer {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 30px;
+    border-radius: 30px;
+    letter-spacing: 1px;
+  }
+
+  /* ===== CTA / FORM ===== */
+  .cta-section {
+    background: var(--warm);
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .cta-section.dark-bg {
+    background: linear-gradient(170deg, var(--primary-deep), var(--primary));
+  }
+  .cta-label {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+    letter-spacing: 1px;
+  }
+  .cta-label.light { color: rgba(255,255,255,0.55); }
+
+  .email-form-wrap { max-width: 480px; margin: 16px auto 0; }
+  .email-form { display: flex; gap: 8px; margin-bottom: 10px; }
+  .email-form input[type="email"] {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid var(--accent-light);
+    border-radius: 50px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+    background: var(--white);
+  }
+  .email-form input[type="email"]:focus { border-color: var(--accent); }
+  .email-form input[type="email"]::placeholder { color: #bbb; }
+  .email-form button {
+    padding: 14px 26px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .email-form button:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(176,141,110,0.3); }
+  .form-privacy { font-size: 11px; color: var(--text-light); text-align: center; }
+
+  /* ===== SECTIONS ===== */
+  .section { padding: 64px 20px; max-width: 700px; margin: 0 auto; }
+  .section-wide { padding: 64px 20px; }
+  .section-inner { max-width: 700px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .section-title {
+    font-size: 23px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.8;
+    margin-bottom: 36px;
+    color: var(--primary);
+  }
+  .section-title .hl { color: var(--accent); border-bottom: 2px solid var(--accent-light); padding-bottom: 2px; }
+  .section-title .hl-sage { color: var(--sage); }
+
+  /* ===== PAIN ===== */
+  .pain-bg { background: var(--warm); }
+  .pain-list { list-style: none; padding: 0; }
+  .pain-list li {
+    background: var(--white);
+    border-left: 3px solid var(--rose);
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    border-radius: 0 10px 10px 0;
+    font-size: 15px;
+    line-height: 1.9;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    position: relative;
+    padding-left: 38px;
+  }
+  .pain-list li::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 20px;
+    width: 8px;
+    height: 8px;
+    background: var(--rose);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .pain-bottom {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 15px;
+    line-height: 2.2;
+    color: var(--text-light);
+  }
+  .pain-bottom strong {
+    color: var(--primary);
+    font-size: 17px;
+    display: block;
+    margin-top: 10px;
+    line-height: 1.9;
+  }
+
+  /* ===== BOUNDARY LINE (質問と尋問の境界) ===== */
+  .boundary-bg { background: var(--white); }
+  .boundary-visual {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: 28px 0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .boundary-side {
+    flex: 1;
+    padding: 28px 24px;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .boundary-left {
+    background: var(--rose-light);
+    color: var(--primary);
+  }
+  .boundary-center {
+    width: 3px;
+    background: linear-gradient(to bottom, var(--rose), var(--sage));
+    position: relative;
+  }
+  .boundary-center-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--white);
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+  }
+  .boundary-right {
+    background: var(--sage-bg);
+    color: var(--primary);
+  }
+  .boundary-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  .boundary-label.rose { color: var(--rose); }
+  .boundary-label.sage { color: var(--sage); }
+
+  .boundary-text {
+    font-size: 15px;
+    line-height: 2.2;
+    text-align: center;
+    color: var(--text);
+    margin-top: 28px;
+  }
+
+  /* ===== SEED METAPHOR ===== */
+  .seed-bg {
+    background: linear-gradient(170deg, var(--primary-deep), var(--primary) 70%, #4a3e38);
+    color: var(--white);
+  }
+  .seed-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+  .seed-quote {
+    font-size: 20px;
+    line-height: 2.2;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 20px;
+  }
+  .seed-quote strong { color: var(--accent-light); font-weight: 600; }
+  .seed-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 2;
+  }
+
+  /* ===== 3 SKILLS ===== */
+  .skill-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .skill-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .skill-icon.a { background: var(--accent-glow); color: var(--accent); }
+  .skill-icon.b { background: var(--sage-bg); color: var(--sage); }
+  .skill-icon.c { background: var(--rose-light); color: var(--rose); }
+  .skill-body { flex: 1; }
+  .skill-num {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .skill-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .skill-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 2;
+  }
+
+  /* ===== 5 MISCONCEPTIONS ===== */
+  .mc-bg { background: var(--warm); }
+  .mc-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .mc-num {
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+  .mc-myth {
+    font-size: 14px;
+    color: var(--text-light);
+    text-decoration: line-through;
+    text-decoration-color: var(--rose);
+    margin: 4px 0 8px;
+    line-height: 1.7;
+  }
+  .mc-truth {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 1.8;
+    padding-left: 16px;
+    border-left: 3px solid var(--sage);
+  }
+
+  /* ===== 15% vs 85% ===== */
+  .ratio-bg { background: var(--white); }
+  .ratio-bar-wrap {
+    display: flex;
+    gap: 4px;
+    margin: 24px 0;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 80px;
+    box-shadow: var(--shadow);
+  }
+  .ratio-bar-small {
+    width: 15%;
+    background: var(--rose-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--rose);
+    font-weight: 700;
+    font-size: 22px;
+  }
+  .ratio-bar-large {
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary), var(--primary-deep));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-light);
+    font-weight: 700;
+    font-size: 32px;
+  }
+  .ratio-bar-small span, .ratio-bar-large span {
+    font-size: 11px;
+    font-weight: 400;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+  .ratio-bar-large span { color: rgba(255,255,255,0.5); }
+
+  .ratio-text {
+    font-size: 15px;
+    line-height: 2.2;
+    text-align: center;
+    color: var(--text);
+    margin-top: 20px;
+  }
+  .ratio-text strong { color: var(--primary); }
+
+  /* ===== WORKSHOP 5DAYS ===== */
+  .ws-bg { background: var(--warm); }
+  .day-card {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+  .day-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 2px solid var(--accent-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .day-badge-label { font-size: 9px; letter-spacing: 1px; }
+  .day-badge-num { font-size: 20px; line-height: 1; }
+  .day-content {
+    flex: 1;
+    background: var(--white);
+    border-radius: 12px;
+    padding: 20px 22px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .day-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .day-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 2;
+  }
+
+  /* ===== TRANSFORMATION ===== */
+  .transform-bg { background: var(--white); }
+  .tf-row {
+    display: grid;
+    grid-template-columns: 1fr 32px 1fr;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .tf-before {
+    background: var(--rose-light);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-light);
+    text-align: center;
+  }
+  .tf-arrow { text-align: center; color: var(--accent); font-size: 18px; }
+  .tf-after {
+    background: var(--sage-bg);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* ===== VOICE ===== */
+  .voice-bg { background: var(--warm); }
+  .voice-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 24px 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    position: relative;
+  }
+  .voice-mark {
+    font-size: 40px;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 4px;
+    font-family: serif;
+  }
+  .voice-text {
+    font-size: 15px;
+    line-height: 2;
+    margin-bottom: 10px;
+  }
+  .voice-attr {
+    font-size: 13px;
+    color: var(--text-light);
+    text-align: right;
+  }
+
+  /* ===== FOR / NOT FOR ===== */
+  .fit-bg { background: var(--white); }
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .fit-box {
+    padding: 24px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .fit-box.no { background: rgba(196,132,122,0.06); border: 1px solid rgba(196,132,122,0.15); }
+  .fit-box.yes { background: rgba(122,145,129,0.06); border: 1px solid rgba(122,145,129,0.15); }
+  .fit-box h4 { font-size: 15px; margin-bottom: 12px; }
+  .fit-box.no h4 { color: var(--rose); }
+  .fit-box.yes h4 { color: var(--sage); }
+  .fit-box ul { list-style: none; padding: 0; }
+  .fit-box ul li { padding: 3px 0 3px 22px; position: relative; }
+  .fit-box.no ul li::before { content: '−'; position: absolute; left: 0; color: var(--rose); font-weight: 700; }
+  .fit-box.yes ul li::before { content: '+'; position: absolute; left: 0; color: var(--sage); font-weight: 700; font-size: 16px; }
+
+  /* ===== Q&A ===== */
+  .qa-bg { background: var(--warm); }
+  .qa-item { margin-bottom: 24px; }
+  .qa-q {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 6px;
+    padding-left: 26px;
+    position: relative;
+  }
+  .qa-q::before {
+    content: 'Q';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .qa-a {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 2;
+    padding-left: 26px;
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    background: linear-gradient(175deg, #f7f0e8, #ede3d6 50%, #e4d8c8);
+    padding: 64px 20px;
+    text-align: center;
+    position: relative;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(255,255,255,0.5) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .final-inner { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+  .final-message {
+    font-size: 19px;
+    line-height: 2.4;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+  .final-message strong { color: var(--primary); font-weight: 700; }
+  .final-message em { color: var(--accent); font-style: normal; font-weight: 600; }
+  .final-sub {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 30px;
+    line-height: 2;
+  }
+
+  .step-flow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+  }
+  .step-item {
+    background: var(--white);
+    border: 1px solid var(--accent-light);
+    border-radius: 12px;
+    padding: 12px 18px;
+    text-align: center;
+    min-width: 130px;
+  }
+  .step-num { font-size: 10px; color: var(--accent); letter-spacing: 2px; margin-bottom: 2px; font-weight: 600; }
+  .step-text { font-size: 14px; font-weight: 500; color: var(--primary); }
+  .step-arrow { font-size: 20px; color: var(--accent); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(58,46,40,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .modal-overlay.active { display: flex; }
+  .modal-box {
+    background: var(--white);
+    border-radius: 20px;
+    max-width: 460px;
+    width: 100%;
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: var(--shadow-lg);
+  }
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: var(--text-light);
+  }
+  .modal-title {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+  }
+  .modal-desc {
+    font-size: 14px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+    line-height: 1.9;
+  }
+  .modal-form input[type="email"] {
+    width: 100%;
+    padding: 14px 18px;
+    border: 2px solid var(--accent-light);
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-bottom: 12px;
+    outline: none;
+  }
+  .modal-form input[type="email"]:focus { border-color: var(--accent); }
+  .modal-form button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .modal-form button:hover { box-shadow: 0 4px 16px rgba(176,141,110,0.3); }
+  .modal-privacy { font-size: 11px; color: #aaa; margin-top: 8px; }
+
+  .thankyou-screen { display: none; text-align: center; }
+  .thankyou-screen.active { display: block; }
+  .thankyou-icon { font-size: 48px; margin-bottom: 14px; color: var(--sage); }
+  .thankyou-title { font-size: 20px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+  .thankyou-desc { font-size: 14px; color: var(--text-light); margin-bottom: 22px; line-height: 1.9; }
+  .line-btn {
+    display: inline-block;
+    background: #06c755;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 15px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 16px rgba(6,199,85,0.25);
+    transition: all 0.3s;
+  }
+  .line-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(6,199,85,0.35); }
+  .line-note { display: block; font-size: 12px; margin-top: 10px; color: var(--text-light); }
+
+  /* ===== FLOATING CTA ===== */
+  .floating-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    padding: 12px 20px;
+    box-shadow: 0 -2px 20px rgba(0,0,0,0.08);
+    z-index: 900;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.4s ease;
+  }
+  .floating-cta.visible { transform: translateY(0); }
+  .floating-cta button {
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 34px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+  .floating-cta .float-sub { font-size: 11px; color: var(--text-light); margin-top: 4px; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--primary-deep);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    text-align: center;
+    padding: 16px 0;
+    color: var(--accent-light);
+    font-size: 16px;
+    letter-spacing: 12px;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    .hero { padding: 48px 18px 40px; }
+    .hero-pain { font-size: 15px; }
+    .hero-title { font-size: 22px; }
+    .hero-subtitle { font-size: 16px; }
+    .section-title { font-size: 19px; }
+    .email-form { flex-direction: column; }
+    .email-form button { width: 100%; }
+    .boundary-visual { flex-direction: column; }
+    .boundary-center { width: 100%; height: 3px; }
+    .boundary-center-label { top: auto; bottom: -14px; }
+    .tf-row { grid-template-columns: 1fr; gap: 6px; }
+    .tf-arrow { transform: rotate(90deg); }
+    .fit-grid { grid-template-columns: 1fr; }
+    .step-flow { flex-direction: column; }
+    .step-arrow { transform: rotate(90deg); }
+    .skill-card { flex-direction: column; text-align: center; align-items: center; }
+    .final-message { font-size: 17px; }
+    .ratio-bar-large { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-inner">
+    <p class="hero-pretitle">The Language of Counselors</p>
+
+    <p class="hero-pain">
+      しっかり傾聴して、<br>
+      マニュアル通り質問してる…でも<br>
+      <span class="hero-pain-accent">「心を開いてくれない」</span>という焦りがある
+    </p>
+
+    <div class="hero-turn">
+      それ、<br>
+      <strong>『聴く』と『伝える』のバランス</strong>が<br>
+      崩れてるせいかもしれません
+    </div>
+
+    <p class="hero-message">
+      <span class="hero-message-em serif">質問が尋問になる境界線があります。</span>
+      <span class="hero-message-soft">
+        相手の内側に種を蒔く<br>
+        <strong style="color:var(--accent);">『言葉遣い』</strong>を身につけて<br>
+        クライアントを傷つけることなく<br>
+        ココロの奥深くにそっと触れ、<br>
+        自信を持って変容のプロセスを伴走する
+      </span>
+    </p>
+
+    <div class="hero-title-block">
+      <p class="hero-catch">資格があってもなくても、<br>クライアントを輝く未来に導く</p>
+      <h1 class="hero-title serif">カウンセラーの言語学</h1>
+      <p class="hero-subtitle">"マルチセッション・プロトコル"</p>
+      <span class="hero-offer">5日間集中ワークショップ｜今なら無料ご招待</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA 1 ===== -->
+<section class="cta-section">
+  <p class="cta-label">ワークショップの詳細を受け取る</p>
+  <div class="email-form-wrap">
+    <div class="email-form">
+      <input type="email" id="email-top" placeholder="メールアドレスを入力">
+      <button onclick="handleEmail('email-top')">無料で受け取る</button>
+    </div>
+    <p class="form-privacy">※ご登録後、ワークショップの詳細をお届けします。いつでも解除可能です。</p>
+  </div>
+</section>
+
+<!-- ===== PAIN ===== -->
+<section class="section-wide pain-bg">
+  <div class="section-inner">
+    <p class="section-label">Your Inner Voice</p>
+    <h2 class="section-title">心のどこかで、<br>こう感じたことはありませんか？</h2>
+
+    <ul class="pain-list">
+      <li>質問を重ねるほど、クライアントの表情がこわばっていく気がする</li>
+      <li>「もっと深く聴かなきゃ」と思うほど、何を聞けばいいかわからなくなる</li>
+      <li>言葉を返したいのに、「それって押しつけじゃない？」と自分にブレーキをかけてしまう</li>
+      <li>セッション後、「もっとうまくやれたはず」と毎回自分を責めてしまう</li>
+      <li>クライアントは「良かった」と言ってくれるのに、本当に変化につながっている実感がない</li>
+      <li>学んだメソッドを試すほど、「借り物の言葉」で話している違和感が大きくなる</li>
+    </ul>
+
+    <p class="pain-bottom">
+      もしこの中に一つでも心当たりがあるなら、<br>
+      <strong class="serif">それは「あなたの能力」の問題ではありません。<br>
+      『聴く』と『伝える』のバランスを<br>教わる機会がなかっただけです。</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ===== DIVIDER ===== -->
+<div class="divider">...</div>
+
+<!-- ===== BOUNDARY LINE ===== -->
+<section class="section boundary-bg">
+  <p class="section-label">The Boundary Line</p>
+  <h2 class="section-title">質問が<span class="hl">「尋問」</span>に変わる<br>その境界線を、知っていますか？</h2>
+
+  <div class="boundary-visual">
+    <div class="boundary-side boundary-left">
+      <p class="boundary-label rose">尋問になる質問</p>
+      答えを"引き出そう"とする<br>
+      カウンセラーの意図が透ける<br>
+      クライアントが「試されている」と感じる<br>
+      正解を求められている圧迫感
+    </div>
+    <div class="boundary-center">
+      <span class="boundary-center-label">境界線</span>
+    </div>
+    <div class="boundary-side boundary-right">
+      <p class="boundary-label sage">種を蒔く言葉</p>
+      相手の内側に"気づき"を置く<br>
+      クライアント自身が答えを見つける<br>
+      「わかってもらえた」と安心が生まれる<br>
+      変容への扉が自然に開く
+    </div>
+  </div>
+
+  <p class="boundary-text">
+    この境界線は、テクニックの問題ではありません。<br>
+    <strong>「何を言うか」ではなく「どう届けるか」</strong>――<br>
+    つまり<strong style="color:var(--accent);">言語化の"ありかた"</strong>の問題です。
+  </p>
+</section>
+
+<!-- ===== SEED METAPHOR ===== -->
+<section class="section-wide seed-bg">
+  <div class="seed-inner" style="padding: 0 20px;">
+    <p class="section-label" style="color:var(--accent-light);">The Missing Piece</p>
+    <p class="seed-quote serif">
+      クライアントを傷つけることなく<br>
+      ココロの奥深くに<strong>そっと触れる</strong>。<br><br>
+      それは「優しさ」だけでは実現できません。<br>
+      <strong>「言葉の精度」</strong>が必要です。<br><br>
+      そしてその精度は、<br>
+      才能ではなく<strong>「技術」</strong>として<br>
+      身につけることができます。
+    </p>
+    <p class="seed-sub">
+      この技術を、私たちは<br>
+      「カウンセラーの言語学」と呼んでいます。
+    </p>
+  </div>
+</section>
+
+<!-- ===== 5 MISCONCEPTIONS ===== -->
+<section class="section-wide mc-bg">
+  <div class="section-inner">
+    <p class="section-label">5 Misconceptions</p>
+    <h2 class="section-title">成果が出ないカウンセラーが<br>信じている<span class="hl">5つの「常識」</span></h2>
+
+    <div class="mc-item">
+      <p class="mc-num">01</p>
+      <p class="mc-myth">カウンセラーは「話す」よりも「聴く」を磨くべき</p>
+      <p class="mc-truth">聴いた内容を「言語化して返す」力こそが、"わかってもらえた"を生む</p>
+    </div>
+    <div class="mc-item">
+      <p class="mc-num">02</p>
+      <p class="mc-myth">しっかり傾聴すれば、相手は心を開いてくれる</p>
+      <p class="mc-truth">心が開くのは「聴かれた瞬間」ではなく「自分の感情を言葉にしてもらえた瞬間」</p>
+    </div>
+    <div class="mc-item">
+      <p class="mc-num">03</p>
+      <p class="mc-myth">良いセッションができれば、自然と契約につながる</p>
+      <p class="mc-truth">「良かった」ではなく「この人となら変われる」という"期待の体験設計"が契約を生む</p>
+    </div>
+    <div class="mc-item">
+      <p class="mc-num">04</p>
+      <p class="mc-myth">的確な質問を重ねれば、根本原因にたどり着ける</p>
+      <p class="mc-truth">質問は設計図。目の前の反応に即応する「対応力」がなければ深まらない</p>
+    </div>
+    <div class="mc-item">
+      <p class="mc-num">05</p>
+      <p class="mc-myth">実力のある先生のやり方を真似すればうまくいく</p>
+      <p class="mc-truth">他人のメソッドを「自分の言葉」に変換できなければ、借り物のまま終わる</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 15% vs 85% ===== -->
+<section class="section ratio-bg">
+  <p class="section-label">The Core Insight</p>
+  <h2 class="section-title serif">同じメソッドなのに<br>成果が出る人と出ない人がいる。<br>その差は――</h2>
+
+  <div class="ratio-bar-wrap">
+    <div class="ratio-bar-small">
+      15%
+      <span>メソッド</span>
+    </div>
+    <div class="ratio-bar-large">
+      85%
+      <span>カスタマー・エクスペリエンス</span>
+    </div>
+  </div>
+
+  <p class="ratio-text">
+    NLP、コーチング、傾聴――それらは全体の<strong>15%</strong>。<br>
+    残り<strong>85%</strong>は<strong>「どう言語化し、どう体験として届け、<br>どうカスタマイズするか」</strong>で決まります。<br><br>
+    あなたに足りなかったのは、メソッドではありません。<br>
+    <strong style="color:var(--accent);">メソッドを"自分の言葉"にする技術です。</strong>
+  </p>
+</section>
+
+<!-- ===== CTA 2 ===== -->
+<section class="cta-section">
+  <p class="cta-label">この「85%」を5日間で体得する</p>
+  <div class="email-form-wrap">
+    <div class="email-form">
+      <input type="email" id="email-mid" placeholder="メールアドレスを入力">
+      <button onclick="handleEmail('email-mid')">無料ワークショップに参加する</button>
+    </div>
+    <p class="form-privacy">※メールで詳細をお届けした後、LINE登録のご案内をお送りします</p>
+  </div>
+</section>
+
+<!-- ===== 3 SKILLS ===== -->
+<section class="section">
+  <p class="section-label">3 Core Skills</p>
+  <h2 class="section-title">5日間で手に入れる<br><span class="hl">3つの力</span></h2>
+
+  <div class="skill-card">
+    <div class="skill-icon a" style="font-family:'Noto Serif JP',serif;">言</div>
+    <div class="skill-body">
+      <p class="skill-num">SKILL 01</p>
+      <p class="skill-title">言語化力 ― 聴いたことを"言葉にして返す"力</p>
+      <p class="skill-desc">クライアントの話を聴いた後、何を、どんな言葉で返せば「わかってもらえた」が生まれるのか。質問が尋問にならない「種を蒔く言葉遣い」の技術。傾聴の"その先"が手に入ります。</p>
+    </div>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-icon b" style="font-family:'Noto Serif JP',serif;">設</div>
+    <div class="skill-body">
+      <p class="skill-num">SKILL 02</p>
+      <p class="skill-title">体験設計力 ― セッションを"変容の体験"にする力</p>
+      <p class="skill-desc">「良い人だった」で終わらない。「この人となら変われる」という確信を、セッション体験そのもので生み出す設計力。お試しから契約・リピートへの自然な流れが生まれます。</p>
+    </div>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-icon c" style="font-family:'Noto Serif JP',serif;">応</div>
+    <div class="skill-body">
+      <p class="skill-num">SKILL 03</p>
+      <p class="skill-title">対応力 ― 台本を超え、目の前の人に最適化する力</p>
+      <p class="skill-desc">クライアントが予想外の反応をしても、もう怖くない。マニュアルに頼らず、自分の判断で柔軟に寄り添える即興力。あなただけのセッションスタイルが確立します。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5DAY WORKSHOP ===== -->
+<section class="section-wide ws-bg">
+  <div class="section-inner">
+    <p class="section-label">5-Day Program</p>
+    <h2 class="section-title">5日間の流れ</h2>
+
+    <div class="day-card">
+      <div class="day-badge"><span class="day-badge-label">DAY</span><span class="day-badge-num">1</span></div>
+      <div class="day-content">
+        <p class="day-title">傾聴の"その先"を知る</p>
+        <p class="day-desc">「聴く」と「傾聴」の本質的な違い。なぜ聴いているだけでは心が開かないのか。メソッドの15%と体験の85%の全体像を掴みます。</p>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge"><span class="day-badge-label">DAY</span><span class="day-badge-num">2</span></div>
+      <div class="day-content">
+        <p class="day-title">「種を蒔く言葉遣い」の実践</p>
+        <p class="day-desc">質問と尋問の境界線を体感レベルで理解。クライアントを傷つけずに内側に触れる言語化テクニックを、ワーク形式で身につけます。</p>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge"><span class="day-badge-label">DAY</span><span class="day-badge-num">3</span></div>
+      <div class="day-content">
+        <p class="day-title">「変容の体験」を設計する</p>
+        <p class="day-desc">セッション全体を一つの体験として捉え、導入から展開、クロージングまでの流れを設計。「良い人」で終わらないセッションの骨格を作ります。</p>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge"><span class="day-badge-label">DAY</span><span class="day-badge-num">4</span></div>
+      <div class="day-content">
+        <p class="day-title">お試しセッションの体験設計</p>
+        <p class="day-desc">「話しやすかった」だけで終わらない。「この人となら変われる」という期待を生む、お試しセッションの体験設計。契約率を構造的に変えます。</p>
+      </div>
+    </div>
+
+    <div class="day-card">
+      <div class="day-badge"><span class="day-badge-label">DAY</span><span class="day-badge-num">5</span></div>
+      <div class="day-content">
+        <p class="day-title">台本を手放し、"自分の言葉"で伴走する</p>
+        <p class="day-desc">マニュアルに頼らず、目の前のクライアントに最適化する対応力。借り物ではない、あなた自身の言葉でセッションを導けるようになる最終日。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRANSFORMATION ===== -->
+<section class="section transform-bg">
+  <p class="section-label">Before → After</p>
+  <h2 class="section-title">5日後、あなたのセッションはこう変わります</h2>
+
+  <div class="tf-row">
+    <div class="tf-before">質問するほどクライアントがこわばる</div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-after">言葉を返すたびに表情がほどけていく</div>
+  </div>
+  <div class="tf-row">
+    <div class="tf-before">「伝えたい」のに自分にブレーキをかける</div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-after">傷つけない言葉の精度で、安心して伝えられる</div>
+  </div>
+  <div class="tf-row">
+    <div class="tf-before">台本から外れると頭が真っ白になる</div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-after">想定外の反応にも、自分の言葉で寄り添える</div>
+  </div>
+  <div class="tf-row">
+    <div class="tf-before">お試しで「良い人」止まり、契約に至らない</div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-after">「この人となら変われる」と感じてもらえる</div>
+  </div>
+  <div class="tf-row">
+    <div class="tf-before">借り物のメソッドで話している違和感</div>
+    <div class="tf-arrow">→</div>
+    <div class="tf-after">自分だけの言葉とスタイルで自信を持って導ける</div>
+  </div>
+</section>
+
+<!-- ===== VOICE ===== -->
+<section class="section-wide voice-bg">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">受講された方の声</h2>
+
+    <div class="voice-card">
+      <p class="voice-mark">"</p>
+      <p class="voice-text">ずっと「質問が怖い」と感じていました。深く聞こうとするほどクライアントが引いていく感覚があって。このワークショップで「尋問と言語化の境界線」を体感した瞬間、10年分の霧が晴れました。今は自信を持って言葉を返せています。</p>
+      <p class="voice-attr">50代女性・個人開業カウンセラー歴10年</p>
+    </div>
+
+    <div class="voice-card">
+      <p class="voice-mark">"</p>
+      <p class="voice-text">「傷つけたらどうしよう」が口癖でした。だから言葉を飲み込んで、ひたすら聴いていた。でも「言葉の精度を上げれば、傷つけずに触れられる」と知って、やっと自分の言葉を使う許可を自分に出せました。クライアントの反応が全く変わりました。</p>
+      <p class="voice-attr">40代女性・心理カウンセラー歴4年</p>
+    </div>
+
+    <div class="voice-card">
+      <p class="voice-mark">"</p>
+      <p class="voice-text">資格がないことがずっとコンプレックスでした。でもこの講座で「資格は知識の証明、言語化力は現場の実力」と言われた時、初めて自分の価値を認められた気がしました。お試しからの契約率が劇的に変わっています。</p>
+      <p class="voice-attr">50代男性・コーチ兼カウンセラー歴6年</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOR / NOT FOR ===== -->
+<section class="section fit-bg">
+  <p class="section-label">Is This For You?</p>
+  <h2 class="section-title">このワークショップは<br>すべての方に向けたものではありません</h2>
+
+  <div class="fit-grid">
+    <div class="fit-box no">
+      <h4>こんな方には向きません</h4>
+      <ul>
+        <li>新しいメソッドやテクニックを増やしたい方</li>
+        <li>資格を取ることが目的の方</li>
+        <li>集客の仕組みだけを学びたい方</li>
+        <li>自分のやり方を変える気がない方</li>
+      </ul>
+    </div>
+    <div class="fit-box yes">
+      <h4>こんな方にこそ届けたい</h4>
+      <ul>
+        <li>「伝えたい」のに自分にブレーキをかけてしまう方</li>
+        <li>クライアントを傷つけることが怖くて言葉を飲み込んでいる方</li>
+        <li>借り物ではない「自分の言葉」でセッションをしたい方</li>
+        <li>お試しから契約・リピートにつなげたい方</li>
+        <li>資格の有無に関わらず、現場の実力を高めたい方</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Q&A ===== -->
+<section class="section-wide qa-bg">
+  <div class="section-inner">
+    <p class="section-label">Q&A</p>
+    <h2 class="section-title">よくあるご質問</h2>
+
+    <div class="qa-item">
+      <p class="qa-q">公的な心理資格を持っていませんが、参加できますか？</p>
+      <p class="qa-a">はい。このワークショップのテーマ「資格があってもなくても、クライアントを輝く未来に導く」が示す通り、資格の有無は関係ありません。現場でクライアントと向き合っている全ての方に必要な「言語化力」をお伝えします。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="qa-q">口下手でも大丈夫ですか？</p>
+      <p class="qa-a">むしろ口下手な方にこそ受けてほしいワークショップです。流暢に話す必要はありません。大切なのは「何を言うか」ではなく「どの言葉を選ぶか」。少ない言葉でも、精度の高い一言がクライアントの心に届きます。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="qa-q">クライアントを傷つけてしまいそうで、言葉を返すのが怖いです</p>
+      <p class="qa-a">その繊細さこそ、カウンセラーとしての最大の武器です。このワークショップでは「傷つけない言葉の精度」を具体的に学びます。怖さの正体は「言葉の選び方を知らない」だけ。技術として身につければ、安心して言葉を使えるようになります。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="qa-q">また新しいメソッドを覚える余裕がないのですが…</p>
+      <p class="qa-a">新しいメソッドは追加しません。あなたが今まで学んできたものを「自分の言葉」に変換する技術を手に入れていただきます。学び疲れしている方にこそ、最も価値のある5日間になるはずです。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="qa-q">なぜ無料で提供するのですか？</p>
+      <p class="qa-a">「カウンセラーの言語学」の考え方を、まず体験していただきたいからです。5日間で"視点の転換"を実感し、セッションが変わり始める手応えを掴んでください。さらに深く学びたい方のための継続プログラムもご用意しています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" id="cta-final">
+  <div class="final-inner">
+    <p style="font-size:11px; color:var(--accent); letter-spacing:4px; margin-bottom:20px;">LAST MESSAGE</p>
+
+    <p class="final-message serif">
+      本当は「伝えたい」ことがある。<br>
+      でも傷つけてしまうかもしれないから、<br>
+      <strong>言葉を飲み込んできた。</strong><br><br>
+      その優しさは、あなたの強さです。<br><br>
+      あとは、その優しさを<br>
+      <em>「届く言葉」に変える技術</em>を<br>
+      手に入れるだけです。
+    </p>
+
+    <p class="final-sub">
+      あなたが学んできたことは、何一つ無駄になっていません。<br>
+      足りなかったのは「たった一つの視点」でした。
+    </p>
+
+    <div class="step-flow">
+      <div class="step-item">
+        <p class="step-num">STEP 1</p>
+        <p class="step-text">メールアドレス登録</p>
+      </div>
+      <span class="step-arrow">→</span>
+      <div class="step-item">
+        <p class="step-num">STEP 2</p>
+        <p class="step-text">LINE登録</p>
+      </div>
+      <span class="step-arrow">→</span>
+      <div class="step-item">
+        <p class="step-num">STEP 3</p>
+        <p class="step-text">5日間WS参加</p>
+      </div>
+    </div>
+
+    <div class="email-form-wrap" style="margin-top:24px;">
+      <div class="email-form">
+        <input type="email" id="email-bottom" placeholder="メールアドレスを入力">
+        <button onclick="handleEmail('email-bottom')">無料で参加する</button>
+      </div>
+      <p class="form-privacy" style="color:var(--text-light);">※ご登録後すぐにワークショップの詳細をお届けします</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  カウンセラーの言語学 | マルチセッション・プロトコル<br>
+  &copy; 2026 All Rights Reserved.
+</footer>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="floating-cta" id="floatingCta">
+  <button onclick="openModal()">無料ワークショップに今すぐ参加する</button>
+  <p class="float-sub">5日間集中ワークショップ｜メアド登録で詳細をお届け</p>
+</div>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+
+    <div id="modalStep1">
+      <p class="modal-title">無料ワークショップに参加する</p>
+      <p class="modal-desc">
+        メールアドレスをご登録ください。<br>
+        ワークショップの詳細と参加方法をお届けします。
+      </p>
+      <div class="modal-form">
+        <input type="email" id="modal-email" placeholder="example@email.com">
+        <button onclick="submitModalEmail()">次のステップへ進む</button>
+      </div>
+      <p class="modal-privacy">※迷惑メールは送りません。いつでも解除できます。</p>
+    </div>
+
+    <div class="thankyou-screen" id="modalStep2">
+      <p class="thankyou-icon">&#10003;</p>
+      <p class="thankyou-title">ご登録ありがとうございます</p>
+      <p class="thankyou-desc">
+        詳細メールをお送りしました。<br>
+        次に、<strong>LINE登録</strong>でワークショップ参加を完了してください。<br>
+        LINEではリアルタイムの案内や限定コンテンツをお届けします。
+      </p>
+      <a href="#" class="line-btn" id="lineLink">
+        LINEに登録して参加を完了する
+      </a>
+      <span class="line-note">※LINEの友だち追加画面が開きます</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Floating CTA
+  const floatingCta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const hero = document.querySelector('.hero');
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    const footer = document.querySelector('.footer');
+    const footerTop = footer.offsetTop - window.innerHeight;
+    if (scrollY > heroBottom && scrollY < footerTop) {
+      floatingCta.classList.add('visible');
+    } else {
+      floatingCta.classList.remove('visible');
+    }
+  });
+
+  // Modal
+  function openModal() {
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Email
+  function handleEmail(inputId) {
+    const input = document.getElementById(inputId);
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = '#c4847a';
+      input.setAttribute('placeholder', '正しいメールアドレスを入力してください');
+      return;
+    }
+    window._registeredEmail = email;
+    document.getElementById('modalStep1').style.display = 'none';
+    document.getElementById('modalStep2').classList.add('active');
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    console.log('Email registered:', email);
+  }
+
+  function submitModalEmail() {
+    const input = document.getElementById('modal-email');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      input.style.borderColor = '#c4847a';
+      input.setAttribute('placeholder', '正しいメールアドレスを入力してください');
+      return;
+    }
+    window._registeredEmail = email;
+    document.getElementById('modalStep1').style.display = 'none';
+    document.getElementById('modalStep2').classList.add('active');
+    console.log('Email registered:', email);
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.mc-item, .skill-card, .voice-card, .pain-list li, .day-card, .tf-row').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
