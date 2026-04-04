@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特典管理画面 - カウンセラーの言語学</title>
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #152238;
+      --accent: #c8a45c;
+      --text: #333333;
+      --bg: #f4f6f9;
+      --border: #e0e6ed;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    .header {
+      background: white;
+      padding: 20px 40px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 32px;
+    }
+    
+    /* サイドバー (Campaign List) */
+    .sidebar {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 20px;
+      height: fit-content;
+    }
+    .sidebar h2 {
+      font-size: 16px;
+      margin-top: 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+    .campaign-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .campaign-item {
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .campaign-item:hover {
+      background: var(--bg);
+    }
+    .campaign-item.active {
+      background: rgba(200,164,92,0.1);
+      border-left: 3px solid var(--accent);
+      font-weight: bold;
+      color: var(--primary);
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 20px;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+    }
+
+    /* メインエリア (Video Settings) */
+    .main-content {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 30px;
+    }
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .course-title {
+      font-size: 24px;
+      margin: 0 0 8px 0;
+    }
+    .video-form-group {
+      margin-bottom: 24px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fafbfc;
+    }
+    .video-form-group h4 {
+      margin: 0 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .badge {
+      background: var(--primary);
+      color: white;
+      padding: 4px 8px;
+      font-size: 12px;
+      border-radius: 4px;
+    }
+    .control-row {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      color: #777;
+      margin-bottom: 4px;
+    }
+    input[type="text"], input[type="datetime-local"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: inherit;
+    }
+    input[readonly] {
+      background: #eee;
+      color: #666;
+    }
+    .copy-btn {
+      padding: 8px 12px;
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .save-banner {
+      position: sticky;
+      bottom: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 16px;
+      border: 1px solid var(--accent);
+    }
+    
+    #toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #27ae60;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-box {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>特典システム管理画面</h1>
+    <span style="font-size:13px; color:#888;">Counselor Landing Page System</span>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>クール（期）一覧</h2>
+      <ul class="campaign-list" id="campaign-list">
+        <li>読み込み中...</li>
+      </ul>
+      <button class="btn btn-outline" onclick="openDuplicateModal()" id="dup-btn" style="display:none;">
+        ＋ 選択中のクールを複製（次期作成）
+      </button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="main-editor" style="display:none;">
+      <div class="main-header">
+        <div>
+          <h2 class="course-title" id="editor-campaign-name">---</h2>
+          <p style="margin:0; color:#666;" id="editor-campaign-desc"></p>
+        </div>
+      </div>
+
+      <div id="videos-container">
+        <!-- フォーム動的生成 -->
+      </div>
+
+      <div class="save-banner" id="save-banner">
+        <span style="font-size:14px;color:#666;">変更があります</span>
+        <button class="btn" style="width:auto; margin:0;" onclick="saveChanges()">変更を保存する</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast">保存しました！</div>
+
+  <!-- Modal -->
+  <div class="modal" id="dup-modal">
+    <div class="modal-box">
+      <h3>新しいクールを複製作成</h3>
+      <p style="font-size:13px; color:#666;">選択中の構成（10特典）を複製し、新しいURLを発行します。</p>
+      
+      <label style="margin-top:20px;">新しいクール名</label>
+      <input type="text" id="new-campaign-name" placeholder="例: 第4期カウンセラーの言語学 2026年6月">
+      <br><br>
+      <div style="display:flex; justify-content:flex-end; gap:12px;">
+        <button class="copy-btn" onclick="closeDuplicateModal()">キャンセル</button>
+        <button class="btn" style="width:auto; margin:0;" onclick="executeDuplicate()">複製を作成</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ==========================================
+    // Supabase 設定
+    // ==========================================
+    const SUPABASE_URL = "https://yqluegvlauzvgqywnejj.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlxbHVlZ3ZsYXV6dmdxeXduZWpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0MTAzMDYsImV4cCI6MjA4MTk4NjMwNn0.VRSfZybmSi4bUYfITm3K1X6dwBnA68_QZ50a-P_R8-8"; 
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let campaigns = [];
+    let currentCampaignId = null;
+    let currentVideos = [];
+
+    // URL base for links
+    const baseUrl = window.location.href.replace('admin.html', 'index.html');
+
+    // ==========================================
+    // Init
+    // ==========================================
+    window.addEventListener('DOMContentLoaded', loadCampaigns);
+
+    async function loadCampaigns() {
+      const { data, error } = await supabaseClient
+        .from('bonus_campaigns')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        alert("データの読み込みに失敗しました。キー設定等を確認してください。");
+        console.error(error);
+        return;
+      }
+
+      campaigns = data;
+      renderSidebar();
+      
+      if (campaigns.length > 0) {
+        selectCampaign(campaigns[0].id);
+        document.getElementById('dup-btn').style.display = 'block';
+      }
+    }
+
+    function renderSidebar() {
+      const list = document.getElementById('campaign-list');
+      list.innerHTML = '';
+      campaigns.forEach(c => {
+        const li = document.createElement('li');
+        li.className = `campaign-item ${c.id === currentCampaignId ? 'active' : ''}`;
+        li.textContent = c.name;
+        li.onclick = () => selectCampaign(c.id);
+        list.appendChild(li);
+      });
+    }
+
+    async function selectCampaign(id) {
+      currentCampaignId = id;
+      renderSidebar();
+
+      const campaign = campaigns.find(c => c.id === id);
+      document.getElementById('editor-campaign-name').textContent = campaign.name;
+      document.getElementById('editor-campaign-desc').textContent = campaign.description || '';
+
+      const { data, error } = await supabaseClient
+        .from('bonus_videos')
+        .select('*')
+        .eq('campaign_id', id)
+        .order('number', { ascending: true });
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      currentVideos = data;
+      renderEditor();
+      document.getElementById('main-editor').style.display = 'block';
+    }
+
+    function renderEditor() {
+      const container = document.getElementById('videos-container');
+      container.innerHTML = '';
+
+      currentVideos.forEach((v, index) => {
+        const viewerUrl = `${baseUrl}?id=${v.slug}`;
+        
+        // Convert ISO timestamp to datetime-local format format string YYYY-MM-DDTHH:mm
+        let dtValue = '';
+        if (v.expires_at) {
+          const d = new Date(v.expires_at);
+          dtValue = new Date(d.getTime() - (d.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
+        }
+
+        const div = document.createElement('div');
+        div.className = 'video-form-group';
+        div.innerHTML = `
+          <h4><span class="badge">${v.bonus_type}</span> ${v.title}</h4>
+          
+          <div style="display:flex; gap:12px; margin-bottom:16px;">
+            <div style="flex:1;">
+              <label>視聴用URL（クライアントに渡すリンク）</label>
+              <div style="display:flex; gap:8px;">
+                <input type="text" readonly value="${viewerUrl}">
+                <button class="copy-btn" onclick="copyToClipboard('${viewerUrl}')">コピー</button>
+              </div>
+            </div>
+            <div style="width:250px;">
+              <label>視聴期限（空なら無期限）</label>
+              <input type="datetime-local" id="exp-${index}" value="${dtValue}">
+            </div>
+          </div>
+          
+          <div>
+            <label>UTAGE 動画URL（動画共有URL / iframeではなく直接URL）</label>
+            <input type="text" id="url-${index}" placeholder="https://utage-system.com/..." value="${v.video_url || ''}">
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    async function saveChanges() {
+      const updates = currentVideos.map((v, index) => {
+        const inputUrl = document.getElementById(`url-${index}`).value.trim();
+        const inputExpOrigin = document.getElementById(`exp-${index}`).value;
+        const inputExp = inputExpOrigin ? new Date(inputExpOrigin).toISOString() : null;
+
+        return {
+          id: v.id,
+          video_url: inputUrl,
+          expires_at: inputExp
+        };
+      });
+
+      // supabase.upsert を使うこともできますが、簡単なループ更新で対応
+      for (const update of updates) {
+        await supabaseClient.from('bonus_videos').update({
+          video_url: update.video_url,
+          expires_at: update.expires_at
+        }).eq('id', update.id);
+      }
+
+      showToast("保存しました！");
+    }
+
+    // ==========================================
+    // クール複製ロジック
+    // ==========================================
+    function openDuplicateModal() {
+      document.getElementById('dup-modal').style.display = 'flex';
+    }
+    
+    function closeDuplicateModal() {
+      document.getElementById('dup-modal').style.display = 'none';
+    }
+
+    async function executeDuplicate() {
+      const newName = document.getElementById('new-campaign-name').value.trim();
+      if (!newName) return alert("名前を入力してください");
+
+      // 1. キャンペーン作成 (slugはSQL内で自動生成)
+      const { data: newCampaign, error: campErr } = await supabaseClient
+        .from('bonus_campaigns')
+        .insert({ name: newName })
+        .select()
+        .single();
+        
+      if (campErr) {
+        console.error(campErr);
+        return alert("作成エラー");
+      }
+
+      // 2. 現在の動画データをコピーしてインサート
+      const clonedVideos = currentVideos.map(v => ({
+        campaign_id: newCampaign.id,
+        number: v.number,
+        bonus_type: v.bonus_type,
+        title: v.title,
+        // video_url と expires_at は新クールではリセットするか引き継ぐか。今回は引き継がない(NULLにする)
+        video_url: null, 
+        expires_at: null
+        // slugは指定しないことでDB側で default(gen_random_bytes) によって一意に生成される
+      }));
+
+      const { error: vidErr } = await supabaseClient
+        .from('bonus_videos')
+        .insert(clonedVideos);
+
+      if (vidErr) {
+        console.error(vidErr);
+        return alert("動画コピー中にエラー");
+      }
+
+      closeDuplicateModal();
+      document.getElementById('new-campaign-name').value = '';
+      showToast("複製が完了しました！");
+      await loadCampaigns();
+    }
+
+    // Tools
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("コピーしました");
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.style.opacity = 1;
+      setTimeout(() => { toast.style.opacity = 0; }, 3000);
+    }
+  </script>
+</body>
+</html>

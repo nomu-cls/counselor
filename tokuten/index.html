@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特典視聴 - カウンセラーの言語学</title>
+  <!-- Supabase JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #152238;
+      --accent: #c8a45c;
+      --text: #333333;
+      --bg: #f8f9fa;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: var(--bg);
+      color: var(--text);
+    }
+    .header {
+      background: var(--primary);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      border-bottom: 3px solid var(--accent);
+    }
+    .header h1 {
+      margin: 0;
+      font-family: 'Noto Serif JP', serif;
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 2px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .video-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      overflow: hidden;
+      display: none; /* Initially hidden */
+    }
+    .video-header {
+      padding: 30px;
+      border-bottom: 1px solid #eee;
+    }
+    .bonus-type {
+      display: inline-block;
+      background: rgba(200,164,92,0.1);
+      color: #b58b38;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+    .video-title {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .status-message {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .status-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #999;
+    }
+    #loading { display: block; }
+    #expired, #error { display: none; color: #e74c3c; }
+    
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: #888;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>カウンセラーの言語学</h1>
+  </div>
+
+  <div class="container">
+    <!-- Messages -->
+    <div id="loading" class="status-message">
+      <div class="status-icon">🔄</div>
+      <h3>動画を読み込み中...</h3>
+    </div>
+    
+    <div id="error" class="status-message">
+      <div class="status-icon">⚠️</div>
+      <h3>動画が見つかりません</h3>
+      <p>URLが間違っているか、削除された可能性があります。</p>
+    </div>
+    
+    <div id="expired" class="status-message">
+      <div class="status-icon">⏳</div>
+      <h3>視聴期限が終了しました</h3>
+      <p>この特典動画の公開期間は終了いたしました。</p>
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-content" class="video-card">
+      <div class="video-header">
+        <span class="bonus-type" id="display-type">---</span>
+        <h2 class="video-title" id="display-title">---</h2>
+      </div>
+      <div class="video-wrapper" id="video-frame-container">
+        <!-- Iframe will be injected here -->
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 カウンセラーの言語学 All Rights Reserved.
+  </div>
+
+  <script>
+    // ==========================================
+    // Supabase 設定
+    // ==========================================
+    const SUPABASE_URL = "https://yqluegvlauzvgqywnejj.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlxbHVlZ3ZsYXV6dmdxeXduZWpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY0MTAzMDYsImV4cCI6MjA4MTk4NjMwNn0.VRSfZybmSi4bUYfITm3K1X6dwBnA68_QZ50a-P_R8-8"; 
+
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ==========================================
+    // メインロジック
+    // ==========================================
+    async function loadVideo() {
+      // URLからslugを取得 (?id=XXXXX)
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('id');
+
+      if (!slug) {
+        showStatus('error');
+        return;
+      }
+
+      try {
+        // Supabaseからデータ取得
+        const { data, error } = await supabaseClient
+          .from('bonus_videos')
+          .select('*, bonus_campaigns!inner(is_active)')
+          .eq('slug', slug)
+          .single();
+
+        if (error || !data) {
+          console.error("Fetch error:", error);
+          showStatus('error');
+          return;
+        }
+
+        // キャンペーン全体の有効確認
+        if (!data.bonus_campaigns.is_active || !data.is_active) {
+            showStatus('error');
+            return;
+        }
+
+        // 期限チェック
+        if (data.expires_at) {
+          const now = new Date();
+          const expire = new Date(data.expires_at);
+          if (now > expire) {
+            showStatus('expired');
+            return;
+          }
+        }
+
+        // 正常：動画情報を表示
+        document.getElementById('display-type').textContent = data.bonus_type;
+        document.getElementById('display-title').textContent = data.title;
+        
+        const videoContainer = document.getElementById('video-frame-container');
+        if (data.video_url) {
+          // UTAGE等のiframeURLと想定
+          videoContainer.innerHTML = `<iframe src="${data.video_url}" allowfullscreen></iframe>`;
+        } else {
+            videoContainer.innerHTML = `<p style="padding:40px;text-align:center;color:#666;">現在準備中です</p>`;
+        }
+
+        showStatus('content');
+
+      } catch (err) {
+        console.error("System error:", err);
+        showStatus('error');
+      }
+    }
+
+    function showStatus(state) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+      document.getElementById('expired').style.display = 'none';
+      document.getElementById('video-content').style.display = 'none';
+
+      if (state === 'content') {
+        document.getElementById('video-content').style.display = 'block';
+      } else {
+        document.getElementById(state).style.display = 'block';
+      }
+    }
+
+    // 初期化
+    window.addEventListener('DOMContentLoaded', loadVideo);
+  </script>
+</body>
+</html>
