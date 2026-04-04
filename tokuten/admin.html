@@ -248,6 +248,7 @@
           <h2 class="course-title" id="editor-campaign-name">---</h2>
           <p style="margin:0; color:#666;" id="editor-campaign-desc"></p>
         </div>
+        <button class="copy-btn" style="padding:10px 20px; font-size:14px;" onclick="copyAllForSheet()">📋 管理シート用 全件コピー</button>
       </div>
 
       <div id="videos-container">
@@ -395,13 +396,7 @@
             </div>
           </div>
 
-          <div style="margin-bottom:16px;">
-            <label>管理シート貼り付け用</label>
-            <div style="display:flex; gap:8px; align-items:center;">
-              <input type="text" readonly value="${v.bonus_type}&#9;${prodUrl}" style="font-size:12px; color:#555;">
-              <button class="copy-btn" onclick="copyToClipboard(\`${sheetText}\`)">📋 シート用コピー</button>
-            </div>
-          </div>
+
           
           <div>
             <label>UTAGE 動画URL（動画共有URL / iframeではなく直接URL）</label>
@@ -494,6 +489,17 @@
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         showToast("コピーしました");
+      });
+    }
+
+    function copyAllForSheet() {
+      const lines = currentVideos.map(v => {
+        const url = `${prodBaseUrl}?id=${v.slug}`;
+        return `${v.bonus_type}\t${url}`;
+      });
+      const text = lines.join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`${currentVideos.length}件コピーしました`);
       });
     }
 
