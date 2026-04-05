@@ -811,6 +811,69 @@ body {
       これらはすべて、スキル不足が原因ではありません。<br>
       <strong class="serif">あなたの「内部対話」——自分自身に語りかけている言葉——<br>そのパターンが、あなたの力を封じています。</strong>
     </p>
+
+  <!-- 内部対話のループ図解 SVG -->
+  <div style="margin:40px 0 10px;">
+    <h4 style="font-size:15px; color:#b84a3c; text-align:center; margin-bottom:16px;">内部対話と「もっと学ばなきゃ」のループ</h4>
+    <svg viewBox="0 0 390 448" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;display:block;margin:0 auto;">
+
+      <!-- BOX 1: ENTRY (navy) -->
+      <rect x="30" y="10" width="280" height="52" rx="10" fill="#1a2f3e"/>
+      <text x="170" y="30" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#c8a45c" font-weight="700" letter-spacing="3">ENTRY</text>
+      <text x="170" y="50" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#fff">新しいスキルやメソッドを学ぶ</text>
+
+      <!-- Arrow 1 -->
+      <line x1="170" y1="62" x2="170" y2="71" stroke="#9ca3af" stroke-width="1.5"/>
+      <polygon points="164,67 176,67 170,78" fill="#9ca3af"/>
+
+      <!-- BOX 2: 内部対話 -->
+      <rect x="30" y="78" width="280" height="52" rx="10" fill="rgba(184,74,60,0.08)" stroke="#b84a3c" stroke-width="1.5"/>
+      <text x="170" y="109" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">「ちゃんとできてる？」「次は何を言う？」</text>
+
+      <!-- Arrow 2 -->
+      <line x1="170" y1="130" x2="170" y2="139" stroke="#9ca3af" stroke-width="1.5"/>
+      <polygon points="164,135 176,135 170,146" fill="#9ca3af"/>
+
+      <!-- BOX 3 -->
+      <rect x="30" y="146" width="280" height="54" rx="10" fill="rgba(184,74,60,0.08)" stroke="#b84a3c" stroke-width="1.5"/>
+      <text x="170" y="170" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">内部対話のノイズで</text>
+      <text x="170" y="190" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">クライアントの声に集中できない</text>
+
+      <!-- Arrow 3 -->
+      <line x1="170" y1="200" x2="170" y2="209" stroke="#9ca3af" stroke-width="1.5"/>
+      <polygon points="164,205 176,205 170,216" fill="#9ca3af"/>
+
+      <!-- BOX 4 -->
+      <rect x="30" y="216" width="280" height="52" rx="10" fill="rgba(184,74,60,0.08)" stroke="#b84a3c" stroke-width="1.5"/>
+      <text x="170" y="248" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">学びが「借り物の言葉」になる</text>
+
+      <!-- Arrow 4 -->
+      <line x1="170" y1="268" x2="170" y2="277" stroke="#9ca3af" stroke-width="1.5"/>
+      <polygon points="164,273 176,273 170,284" fill="#9ca3af"/>
+
+      <!-- BOX 5 -->
+      <rect x="30" y="284" width="280" height="66" rx="10" fill="rgba(184,74,60,0.08)" stroke="#b84a3c" stroke-width="1.5"/>
+      <text x="170" y="311" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">セッションで手応えが得られず</text>
+      <text x="170" y="339" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#1a2f3e">「私には向いてない…」と自己否定</text>
+
+      <!-- Arrow 5 -->
+      <line x1="170" y1="350" x2="170" y2="359" stroke="#9ca3af" stroke-width="1.5"/>
+      <polygon points="164,355 176,355 170,366" fill="#9ca3af"/>
+
+      <!-- BOX 6 (emphasized) -->
+      <rect x="30" y="366" width="280" height="52" rx="10" fill="rgba(184,74,60,0.18)" stroke="#b84a3c" stroke-width="2"/>
+      <text x="170" y="398" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#b84a3c" font-weight="700">「もっと学ばなきゃ」と次のスキルを探す</text>
+
+      <!-- Loop-back arc (right side, dashed red) -->
+      <path d="M310,392 C372,392 372,104 310,104" fill="none" stroke="#b84a3c" stroke-width="2" stroke-dasharray="6,4"/>
+      <!-- Arrow tip pointing left at box 2 -->
+      <polygon points="318,100 310,104 318,108" fill="#b84a3c"/>
+
+      <!-- 悪循環 label (rotated vertically) -->
+      <text transform="translate(382,248) rotate(90)" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#b84a3c" font-weight="700" letter-spacing="3">悪 循 環</text>
+
+    </svg>
+  </div>
   </div>
 </section>
 
@@ -998,24 +1061,21 @@ body {
       <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
         <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>1</div>
         <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">誤解されてきた傾聴</h4>
-          <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.9;">「聴く」と「傾聴」の本質的な違い。</p>
+          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">誤解されてきた傾聴<br>「聴く」と「傾聴」の本質的な違い。</h4>
         </div>
       </div>
 
       <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
         <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>2</div>
         <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">質問が尋問に変わる時</h4>
-          <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.9;">質問と尋問の境界線を体感レベルで理解。</p>
+          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">質問が尋問に変わる時<br>質問と尋問の境界線を体感レベルで理解。</h4>
         </div>
       </div>
 
       <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
         <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>3</div>
         <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">だからこそ今、『伝える』を再認識する</h4>
-          <p style="font-size:14px; color:rgba(255,255,255,0.7); line-height:1.9;">『聴く』と同等に２つの「伝える」が変容を導く</p>
+          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">だからこそ今、『伝える』を再認識する<br>『聴く』と同等に２つの「伝える」が変容を導く</h4>
         </div>
       </div>
 
