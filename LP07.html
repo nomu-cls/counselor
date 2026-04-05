@@ -900,55 +900,107 @@ body {
   <p class="section-label">The Real Reason</p>
   <h2 class="section-title">同じ場面で<br><span class="highlight">何が違うのか？</span></h2>
 
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
-    フリーズする人は「準備された質問リスト」に頼り、<br>
-    想定外の展開に対応できません。
-  </p>
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
-    臨機応変に対応できる人は、<strong>今この瞬間に「何を見ればいいか」</strong>を知っています。<br>
-    だから、どんな展開にも言葉が出てくる。
-  </p>
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px; text-align:center;">
-    その違いは<strong>才能ではなく「視点の技術」</strong>です。<br>
-    何を見るかがわかれば、何を言うかは自然に決まります。
-  </p>
+  
+<style>
+  /* ===== FREEZE → FLOW BUBBLES ===== */
+  .ff-container { margin:40px auto; max-width:540px; }
+  .ff-scenario { position:relative; margin-bottom:64px; background:#fff; padding:32px 24px; border-radius:20px; border:1px solid rgba(200,164,92,0.3); box-shadow:0 12px 40px rgba(0,0,0,0.06); }
+  .ff-scenario-label { font-size:14px; font-weight:800; text-align:center; color:var(--primary); letter-spacing:1px; background:#fff; display:inline-block; padding:8px 24px; border-radius:30px; position:absolute; top:-20px; left:50%; transform:translateX(-50%); box-shadow:0 4px 12px rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.3); }
+  .ff-timeline { position:relative; padding-left:14px; margin-top:24px; }
+  .ff-timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:rgba(200,164,92,0.3); }
+  .ff-moment { position:relative; margin-bottom:24px; }
+  .ff-moment::before { content:''; position:absolute; left:-18px; top:16px; width:10px; height:10px; border-radius:50%; background:var(--accent); }
+  .ff-bubble { background:#f8fafc; padding:20px; border-radius:12px; font-size:15px; line-height:1.7; position:relative; box-shadow:0 4px 12px rgba(0,0,0,0.03); color:var(--text); }
+  .ff-bubble.freeze { background:rgba(226,99,114,0.06); border-left:4px solid #e26372; }
+  .ff-bubble.flow-hl { background:rgba(69,147,116,0.06); border-left:4px solid #459374; }
+  .speaker { display:block; font-size:12px; font-weight:800; letter-spacing:2px; margin-bottom:8px; }
+  .speaker.client { color:#64748b; }
+  .speaker.inner { color:#e26372; }
+  .speaker.you { color:var(--primary); }
+  .ff-vs { text-align:center; font-size:24px; color:var(--accent); margin:40px 0; letter-spacing:8px; font-weight:800; }
+  .flow-hl .speaker.inner { color:#459374; }
+  .ff-narrative { background:rgba(30,41,59,0.03); border-radius:16px; padding:32px; text-align:center; font-size:16px; line-height:2.2; color:var(--text); margin-top:32px; border:1px solid rgba(30,41,59,0.05); }
+</style>
 
-  <div style="text-align:center; margin:32px 0 16px;">
-    <img src="img/ill_focus_jp.png" alt="深く繋がるカウンセリング" style="width:100%; max-width:400px; border-radius:20px; box-shadow:0 12px 32px rgba(0,0,0,0.08); border:1px solid rgba(200,164,92,0.15);">
+<div class="ff-container">
+  <!-- FREEZE -->
+  <div class="ff-scenario">
+    <div class="ff-scenario-label">BEFORE ── フリーズするセッション</div>
+    <div class="ff-timeline">
+      <div class="ff-moment">
+        <div class="ff-bubble">
+          <span class="speaker client">CLIENT</span>
+          「実は…離婚を考えていて…」
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble freeze">
+          <span class="speaker inner">YOUR MIND</span>
+          （えっ、離婚？聞いてない…どうしよう）<br>
+          （何を言えばいい？傾聴？質問？）<br>
+          （NLPのあの技法？いや違う…）
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble">
+          <span class="speaker you">YOU</span>
+          「…そうなんですね。それは大変ですね…」
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble">
+          <span class="speaker client">CLIENT</span>
+          <span style="color:#64748b;">（…やっぱりわかってもらえない）</span>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- 視点の技術の図解 SVG -->
-  <div style="margin:28px 0;">
-    <svg viewBox="0 0 480 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:540px;display:block;margin:0 auto;">
-      <!-- リスト依存 -->
-      <rect x="20" y="10" width="440" height="85" rx="12" fill="rgba(226,99,114,0.06)" stroke="#e26372" stroke-width="1.5" stroke-dasharray="4,4"/>
-      <rect x="0" y="32" width="140" height="34" rx="8" fill="#e26372"/>
-      <text x="70" y="55" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="700">フリーズする人</text>
-      <text x="235" y="54" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#4b5563">「準備された質問リスト」に頼る</text>
-      <!-- Error Result -->
-      <path d="M350,49 L378,49" fill="none" stroke="#e26372" stroke-width="2"/>
-      <line x1="378" y1="39" x2="378" y2="59" stroke="#e26372" stroke-width="3"/>
-      <text x="385" y="54" text-anchor="start" font-family="sans-serif" font-size="12" fill="#e26372" font-weight="700">想定外で止まる</text>
+  <div class="ff-vs">▼ ▼ ▼</div>
 
-      <!-- Arrow down -->
-      <path d="M240,105 L240,115" fill="none" stroke="#ca9851" stroke-width="2"/>
-      <polygon points="235,115 245,115 240,125" fill="#ca9851"/>
-
-      <!-- 視点の技術 -->
-      <rect x="20" y="125" width="440" height="85" rx="12" fill="rgba(69,147,116,0.06)" stroke="#459374" stroke-width="1.5"/>
-      <rect x="0" y="148" width="140" height="34" rx="8" fill="#459374"/>
-      <text x="70" y="171" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#fff" font-weight="700">臨機応変な人</text>
-      <text x="235" y="170" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#4b5563">今、この瞬間に「何を見るか」</text>
-      <!-- Smooth Flow -->
-      <path d="M350,165 L378,165" fill="none" stroke="#459374" stroke-width="2"/>
-      <polygon points="373,160 383,165 373,170" fill="#459374"/>
-      <text x="385" y="169" text-anchor="start" font-family="sans-serif" font-size="12" fill="#459374" font-weight="700">言葉が自然に出る</text>
-    </svg>
+  <!-- FLOW -->
+  <div class="ff-scenario">
+    <div class="ff-scenario-label" style="background:#fff; border-color:rgba(69,147,116,0.3); color:#459374; box-shadow:0 4px 12px rgba(69,147,116,0.15);">AFTER ── 対応力のあるセッション</div>
+    <div class="ff-timeline">
+      <div class="ff-moment">
+        <div class="ff-bubble">
+          <span class="speaker client">CLIENT</span>
+          「実は…離婚を考えていて…」
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble flow-hl">
+          <span class="speaker inner">YOUR MIND</span>
+          （今、何が起きている？）<br>
+          （この人がこれを打ち明けた"意味"は？）<br>
+          （まだ言葉にできていない感情は何だろう）
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble flow-hl">
+          <span class="speaker you">YOU</span>
+          「"考えている"って言葉を使われましたね。<br>もう決めたわけじゃなくて、まだ揺れている…<br>その揺れている気持ちを、誰かにわかってほしかったんですね」
+        </div>
+      </div>
+      <div class="ff-moment">
+        <div class="ff-bubble flow-hl">
+          <span class="speaker client">CLIENT</span>
+          「……そうなんです。誰にも言えなくて…」<br>
+          <span style="color:#459374; font-weight:800; display:inline-block; margin-top:8px;">（心が繋がり、会話が自然と動き出す）</span>
+        </div>
+      </div>
+    </div>
   </div>
-  <p style="font-size:16px; line-height:2.2; color:var(--primary); font-weight:600; text-align:center; margin-top:28px;" class="serif">
-    この<strong style="color:var(--accent);">「視点の技術」</strong>を3つの力として<br>
-    体系化したのが「カウンセラーの言語学」です。
-  </p>
+</div>
+
+<div class="ff-narrative">
+  違いは<strong>「何を見ているか」</strong>。<br>
+  フリーズする時、意識は「自分」に向いている。<br>
+  対応力がある時、意識は<strong>「今、目の前で起きていること」</strong>に向いています。<br><br>
+  この切り替えを<strong style="color:var(--accent);">スキルとして体得できる</strong>のが<br>
+  「カウンセラーの言語学」です。
+</div>
+
   <p style="font-size:15px; line-height:2.2; color:var(--text); margin-top:28px; text-align:center;">
     そして理想の成果を追求する支援者ほど<br><strong>見落としていることがある</strong>のをご存知でしょうか？
   </p>
