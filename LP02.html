@@ -721,7 +721,7 @@ body {
   .hero-turn { font-size:clamp(20px, 4vw, 28px); }
   .hero-question-main { font-size:19px; }
   .hero-title { font-size:34px; }
-  .hero-subtitle { font-size:22px; }
+  .hero-subtitle { font-size:20px; }
   .section-title { font-size:20px; }
   .email-form { flex-direction:column; }
   .email-form button { width:100%; }
@@ -742,22 +742,18 @@ body {
   <div class="hero-inner">
     <p class="hero-pretitle">for Counselors who keep learning</p>
     <p class="hero-pain">
-      多くのカウンセラーが直面する<br>
-      <strong>「傾聴の限界」</strong>という壁――<br>
-      時間だけが過ぎるもどかしさ…
+      しっかり傾聴して、マニュアル通り質問してる…でも<br>
+      <strong>「心を開いてくれない」という焦りがある</strong>
     </p>
-    <p class="hero-turn">「聴いているのに変わらない」<br>
-    その停滞を突破する、新しい傾聴の視点。</p>
+    <p class="hero-turn">それ、<br>『聴く』と『伝える』のバランスが崩れてるせいかもしれません</p>
     <p class="hero-question-main serif">
-      『傾聴』と『聴く』の違いを<br>知っていますか？
+      質問が「尋問」になる境界線を<br>知っていますか？
     </p>
     <p class="hero-question-sub">
-      これを体得している支援者だけが<br>
-      セッションを成功に導き、プロの対価を受け取るための本質的な関わりができる。
+      相手の内側に種を蒔く『言葉遣い』を身につけて<br>クライアントを傷つけることなくココロの奥深くにそっと触れる
     </p>
     <p class="hero-bridge serif">
-      相手が自ら心を開き始める、深い対話の技術<br>
-      表情をパッと明るく照らす、<br>
+      自信を持って、変容のプロセスを伴走する<br>
       カウンセラーの本質的な<strong style="color:var(--accent);">"ありかた"</strong>とは？
     </p>
     <div class="hero-title-block">
@@ -774,7 +770,12 @@ body {
   <div style="max-width:520px; margin:0 auto; text-align:center;">
     <p style="font-size:12px; font-weight:700; color:var(--accent); letter-spacing:3px; margin-bottom:12px;">FREE WORKSHOP</p>
     <p style="font-size:clamp(18px, 4vw, 24px); font-weight:700; color:#fff; line-height:1.6; margin-bottom:8px; font-family:'Noto Serif JP',serif;">5日間集中ワークショップ<br>無料ご招待</p>
-    <p style="font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:24px;">メールアドレスをご登録ください。詳細をお届けします。</p>
+    <p style="font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:16px;">メールアドレスをご登録ください。詳細をお届けします。</p>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:20px;">
+      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">📺 LIVE形式</span>
+      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">🎁 登録後すぐボーナス動画が届く</span>
+      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">✅ 完全無料</span>
+    </div>
     <form action="https://tkal.analogialemma.co.jp/r/jDgpoytydDIQ/store" method="post" style="max-width:400px; margin:0 auto;">
       <div style="margin-bottom:12px;">
         <input class="form-control" required id="mail" type="email" name="mail" value="" autocomplete="email" placeholder="example@email.com" style="width:100%; padding:16px 20px; border:2px solid rgba(200,164,92,0.4); border-radius:8px; font-size:16px; background:rgba(255,255,255,0.08); color:#fff; outline:none; box-sizing:border-box; transition:border-color 0.3s;">
@@ -795,15 +796,16 @@ body {
       <img src="img/image3.jpg" alt="言語化できないカウンセラー" style="width:100%;display:block;">
     </div>
     <ul class="pain-list">
-      <li>一生懸命うなずいて、オウム返しもして、沈黙も待った。<br>なのにクライアントの表情が最後まで曖昧だった</li>
-      <li>お試しセッションで「すごく良かったです！」と<br>言われたのに、その後の連絡が途絶えた</li>
-      <li>マニュアル通りに質問を重ねていたのに、<br>クライアントが予想外の反応をした瞬間、専門家として『言葉の詰まり』という課題に直面する</li>
-      <li>「あなたのカウンセリングって何が違うの？」<br>と聞かれて、言葉に詰まった</li>
-      <li>NLP、コーチング、心理学、マーケティング…<br>たくさん学んできたのに、根本的に何かが変わった実感がない</li>
+      <li>質問を重ねるほど、クライアントの表情がこわばっていく気がする</li>
+      <li>「もっと深く聴かなきゃ」と思うほど、何を聞けばいいかわからなくなる</li>
+      <li>言葉を返したいのに、「それって押しつけじゃない？」と自分にブレーキをかけてしまう</li>
+      <li>セッション後、「もっとうまくやれたはず」と毎回自分を責めてしまう</li>
+      <li>クライアントは「良かった」と言ってくれるのに、本当に変化につながっている実感がない</li>
+      <li>学んだメソッドを試すほど、「借り物の言葉」で話している違和感が大きくなる</li>
     </ul>
     <p class="pain-bottom">
       もし一つでも当てはまるなら、<br>知ってほしいことがあります。
-      <strong class="serif">それは「才能の問題」ではありません。</strong>
+      <strong class="serif">それは「あなたの能力の問題」ではありません。<br>『聴く』と『伝える』のバランスを教わる機会がなかっただけです。</strong>
     </p>
   </div>
 </section>
@@ -815,20 +817,31 @@ body {
   <p class="section-label">The Real Reason</p>
   <h2 class="section-title">なぜ、学んでも<br><span class="highlight">セッションが変わらない</span>のか？</h2>
 
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
-    NLPもコーチングも傾聴も、あなたが学んできたものは間違っていません。
+  <p style="font-size:16px; font-weight:600; color:var(--primary); text-align:center; margin-bottom:20px;">
+    質問が「尋問」に変わる、その境界線をご存知でしょうか？
   </p>
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
-    ただ、それらはすべて<strong>「メソッド」</strong>――つまりセッションを構成する要素のうち、ほんの一部にすぎません。
-  </p>
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px;">
-    どれだけ優れたメソッドを手に入れても、それを<strong>「自分の言葉」に変換し、「目の前の相手」に届け、「セッション全体の体験」として設計する力</strong>がなければ、クライアントの心は動きません。
-  </p>
-  <p style="font-size:16px; line-height:2.2; color:var(--primary); font-weight:600; text-align:center; margin-top:28px;" class="serif">
-    そして、この力を体系的に教えてくれる場所は<br>これまで、どこにもありませんでした。
-  </p>
-  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-top:28px; text-align:center;">
-    そして理想の成果を追求する支援者ほど<br><strong>見落としていることがある</strong>のをご存知でしょうか？
+  
+  <div style="display:grid; grid-template-columns:1fr; gap:16px; margin:28px 0;">
+    <div style="background:rgba(184,74,60,0.06); border:1px solid rgba(184,74,60,0.15); border-radius:12px; padding:20px;">
+      <h4 style="color:var(--red-accent); font-size:15px; margin-bottom:12px; text-align:center;">❌ 尋問になる質問</h4>
+      <p style="font-size:14px; line-height:2; color:var(--text-light); text-align:center;">
+        答えを"引き出そう"とする / カウンセラーの意図が透ける<br>
+        クライアントが「試されている」と感じる / 正解を求められている圧迫感
+      </p>
+    </div>
+    <div style="background:rgba(58,122,92,0.06); border:1px solid rgba(58,122,92,0.15); border-radius:12px; padding:20px;">
+      <h4 style="color:var(--green-accent); font-size:15px; margin-bottom:12px; text-align:center;">⭐️ 境界線を超える関わり</h4>
+      <p style="font-size:14px; line-height:2; color:var(--text); text-align:center;">
+        種を蒔く言葉 / 相手の内側に"気づき"を置く<br>
+        クライアント自身が答えを見つける / 「わかってもらえた」と安心が生まれる / 変容への扉が自然に開く
+      </p>
+    </div>
+  </div>
+
+  <p style="font-size:15px; line-height:2.2; color:var(--text); margin-bottom:20px; text-align:center;">
+    この境界線は、テクニックの問題ではありません。<br>
+    「何を言うか」ではなく「どう届けるか」――<br>
+    つまり、<strong>言語化の"ありかた"</strong>の問題です。
   </p>
 </section>
 
@@ -955,20 +968,20 @@ body {
     <div class="transform-grid">
       <div class="transform-before">
         <p class="transform-label before">BEFORE</p>
-        聴いているのに「伝わっている実感」がない<br>
+        質問するほどクライアントがこわばる<br>
+        「伝えたい」のに自分にブレーキをかける<br>
         台本から外れると言葉が出なくなる<br>
-        お試しは好評でも契約に至らない<br>
-        他のカウンセラーと比べて自信がない<br>
-        自分のメソッドを言語化できない
+        お試しで「良い人」止まり、契約に至らない<br>
+        借り物のメソッドで話している違和感
       </div>
       <div class="transform-arrow">→</div>
       <div class="transform-after">
         <p class="transform-label after">AFTER</p>
-        クライアントが「わかってもらえた！」と涙する<br>
-        想定外の反応にも落ち着いて対応できる<br>
-        「この人しかいない」と選ばれる体験設計ができる<br>
-        自分だけのスタイルに自信を持てる<br>
-        想いやメソッドを自分の言葉で語れる
+        言葉を返すたびに表情がほどけていく<br>
+        傷つけない言葉の精度で、安心して伝えられる<br>
+        想定外の反応にも、自分の言葉で寄り添える<br>
+        「この人となら変われる」と感じてもらえる<br>
+        自分だけの言葉とスタイルで自信を持って導ける
       </div>
     </div>
   </div>
@@ -1370,6 +1383,7 @@ body {
   &copy; 2026 All Rights Reserved.
 </footer>
 
+<!-- ===== FLOATING CTA ===== -->
 <!-- ===== FLOATING CTA ===== -->
 <div class="floating-cta" id="floatingCta">
   <a href="#cta-top" style="display:block; width:100%; max-width:400px; margin:0 auto; padding:14px 24px; background:linear-gradient(135deg, #c8a45c, #e6cd85); color:var(--primary); font-size:15px; font-weight:800; border-radius:8px; text-decoration:none; text-align:center; box-shadow:0 4px 16px rgba(200,164,92,0.4);">無料ワークショップに今すぐ参加する ↑</a>
