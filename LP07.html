@@ -802,24 +802,27 @@ body {
 </section>
 
 <!-- ===== CTA: UTAGE FORM ===== -->
-<section class="cta-section" id="cta-top" style="background:linear-gradient(135deg, var(--primary) 0%, #0f2030 100%); padding:48px 20px; border-top:2px solid var(--accent); border-bottom:2px solid var(--accent);">
-  <div style="max-width:520px; margin:0 auto; text-align:center;">
-    <p style="font-size:12px; font-weight:700; color:var(--accent); letter-spacing:3px; margin-bottom:12px;">FREE WORKSHOP</p>
-    <p style="font-size:clamp(18px, 4vw, 24px); font-weight:700; color:#fff; line-height:1.6; margin-bottom:8px; font-family:'Noto Serif JP',serif;">5日間集中ワークショップ<br>無料ご招待</p>
-    <p style="font-size:13px; color:rgba(255,255,255,0.6); margin-bottom:16px;">メールアドレスをご登録ください。詳細をお届けします。</p>
-    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-bottom:20px;">
-      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">📺 LIVE形式</span>
-      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">🎁 登録後すぐボーナス動画が届く</span>
-      <span style="background:rgba(200,164,92,0.15); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:#e6cd85; font-weight:600;">✅ 完全無料</span>
+<section class="cta-section" id="cta-top" style="background:linear-gradient(135deg, var(--primary) 0%, #0f2030 100%); padding:80px 20px;">
+  <!-- WHITE CARD ZABUTON -->
+  <div style="background:#fff; max-width:640px; margin:0 auto; border-radius:32px; padding:48px 32px; box-shadow:0 24px 60px rgba(0,0,0,0.4); border:1px solid rgba(200,164,92,0.3); text-align:center;">
+    <p style="font-size:12px; font-weight:800; color:var(--accent); letter-spacing:4px; margin-bottom:12px;">FREE WORKSHOP</p>
+    <p style="font-size:clamp(20px, 5vw, 26px); font-weight:900; color:var(--text); line-height:1.6; margin-bottom:12px; font-family:'Noto Serif JP',serif;">5日間集中ワークショップ<br><span style="color:var(--primary);">無料ご招待</span></p>
+    <p style="font-size:14px; color:var(--text-light); margin-bottom:24px; font-weight:500;">メールアドレスをご登録ください。詳細をお届けします。</p>
+    
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px; margin-bottom:32px;">
+      <span style="background:rgba(200,164,92,0.1); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:var(--primary); font-weight:700;">📺 LIVE形式</span>
+      <span style="background:rgba(200,164,92,0.1); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:var(--primary); font-weight:700;">🎁 登録後すぐボーナス動画</span>
+      <span style="background:rgba(200,164,92,0.1); border:1px solid rgba(200,164,92,0.4); border-radius:20px; padding:6px 14px; font-size:12px; color:var(--primary); font-weight:700;">✅ 完全無料</span>
     </div>
-    <form action="https://tkal.analogialemma.co.jp/r/jDgpoytydDIQ/store" method="post" style="max-width:400px; margin:0 auto;">
-      <div style="margin-bottom:12px;">
-        <input class="form-control" required id="mail" type="email" name="mail" value="" autocomplete="email" placeholder="example@email.com" style="width:100%; padding:16px 20px; border:2px solid rgba(200,164,92,0.4); border-radius:8px; font-size:16px; background:rgba(255,255,255,0.08); color:#fff; outline:none; box-sizing:border-box; transition:border-color 0.3s;">
+
+    <form action="https://tkal.analogialemma.co.jp/r/jDgpoytydDIQ/store" method="post" style="max-width:440px; margin:0 auto;">
+      <div style="margin-bottom:16px;">
+        <input class="form-control" required id="mail" type="email" name="mail" value="" autocomplete="email" placeholder="メールアドレスを入力" style="width:100%; padding:18px 20px; border:2px solid rgba(0,0,0,0.1); border-radius:12px; font-size:16px; background:#f8f9fa; color:var(--text); outline:none; box-sizing:border-box; transition:all 0.3s;" onfocus="this.style.borderColor='var(--accent)'; this.style.background='#fff'; this.style.boxShadow='0 4px 12px rgba(200,164,92,0.1)';" onblur="this.style.borderColor='rgba(0,0,0,0.1)'; this.style.background='#f8f9fa'; this.style.boxShadow='none';">
       </div>
-      <button type="submit" style="width:100%; padding:18px; background:linear-gradient(135deg, #ca9851, #e6cd85); color:var(--primary); font-size:17px; font-weight:800; border:none; border-radius:8px; cursor:pointer; letter-spacing:1px; box-shadow:0 4px 20px rgba(200,164,92,0.4); transition:transform 0.2s, box-shadow 0.2s;">無料で参加する →</button>
+      <button type="submit" style="width:100%; padding:20px; background:linear-gradient(135deg, #ca9851, #e6cd85); color:var(--primary); font-size:18px; font-weight:800; border:none; border-radius:12px; cursor:pointer; letter-spacing:2px; box-shadow:0 8px 24px rgba(200,164,92,0.4); transition:all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 32px rgba(200,164,92,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 8px 24px rgba(200,164,92,0.4)';">無料で参加する →</button>
     </form>
-    <p style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:12px; line-height:1.6;">※ご登録後、ワークショップの詳細をお届けします。いつでも解除可能です。</p>
-    <p style="font-size:12px; color:#e6cd85; margin-top:8px; line-height:1.6; font-weight:600;">⚠ icloud、ezwebのメールアドレスはエラーとなる場合があります</p>
+    <p style="font-size:12px; color:var(--text-light); margin-top:20px; line-height:1.6;">※ご登録後、ワークショップの詳細をお届けします。いつでも解除可能です。</p>
+    <p style="font-size:13px; color:#e26372; margin-top:12px; line-height:1.6; font-weight:700;">⚠ icloud、ezwebのメールアドレスはエラーとなる場合があります</p>
   </div>
 </section>
 
