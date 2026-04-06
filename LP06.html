@@ -838,7 +838,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
 
     <form action="https://tkal.analogialemma.co.jp/r/jDgpoytydDIQ/store" method="post" referrerpolicy="unsafe-url" style="max-width:440px; margin:0 auto;">
-      <input type="hidden" name="url" value="">
+      <input type="hidden" name="referrer" value="">
       <div style="margin-bottom:16px;">
         <input class="form-control" required id="mail" type="email" name="mail" value="" autocomplete="email" placeholder="メールアドレスを入力" style="width:100%; padding:18px 20px; border:2px solid rgba(0,0,0,0.1); border-radius:12px; font-size:16px; background:#f8f9fa; color:var(--text); outline:none; box-sizing:border-box; transition:all 0.3s;" onfocus="this.style.borderColor='var(--accent)'; this.style.background='#fff'; this.style.boxShadow='0 4px 12px rgba(200,164,92,0.1)';" onblur="this.style.borderColor='rgba(0,0,0,0.1)'; this.style.background='#f8f9fa'; this.style.boxShadow='none';">
       </div>
@@ -1615,12 +1615,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Form input focus effect
   // Set current URL for UTAGE tracking
   var currentPageUrl = window.location.href;
-  var urlField = document.querySelector('input[name="url"]');
+  var urlField = document.querySelector('input[name="referrer"]');
   if (urlField) urlField.value = currentPageUrl;
   var regForm = document.querySelector('form[action*="tkal.analogialemma.co.jp"]');
   if (regForm) {
     var sep = regForm.action.indexOf('?') >= 0 ? '&' : '?';
-    regForm.action = regForm.action + sep + 'url=' + encodeURIComponent(currentPageUrl);
+    regForm.action = regForm.action + sep + 'referrer=' + encodeURIComponent(currentPageUrl);
   }
 
   const formInput = document.querySelector('#cta-top input[name="mail"]');
