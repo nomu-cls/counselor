@@ -716,12 +716,13 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width:640px) {
-  .hero { padding:48px 18px 40px; }
+  .hero { padding:32px 0 36px; min-height:unset; }
+  .hero-inner { padding: 0 16px !important; }
   .hero-pain { font-size:15px; line-height:2; }
   .hero-turn { font-size:clamp(20px, 4vw, 28px); }
   .hero-question-main { font-size:19px; }
   .hero-title { font-size:34px; }
-  .hero-subtitle { font-size:22px; }
+  .hero-subtitle { font-size:20px; letter-spacing:3px !important; }
   .section-title { font-size:20px; }
   .email-form { flex-direction:column; }
   .email-form button { width:100%; }
@@ -732,6 +733,16 @@ body {
   .step-flow { flex-direction:column; }
   .step-arrow { transform:rotate(90deg); }
   .final-message { font-size:20px; }
+  /* Hero new layout mobile tweaks */
+  .hero-inner > p:first-of-type { font-size:18px !important; line-height:2 !important; margin-bottom:16px !important; }
+  .hero-inner > p:first-of-type strong { font-size:22px !important; }
+  .hero-inner > p + p { font-size:20px !important; margin-bottom:28px !important; }
+  /* Zabuton mobile */
+  .hero-inner > div[style*="zabuton"], .hero-inner > div[style*="border-radius:32px"] { padding:24px 18px 20px !important; border-radius:20px !important; }
+  /* CTA white card mobile */
+  .cta-section { padding:40px 16px !important; }
+  .cta-section > div { padding:32px 20px !important; border-radius:24px !important; }
+  /* Curriculum mobile: make DAY badge smaller */
 }
 </style>
 </head>
@@ -845,7 +856,7 @@ body {
     </ul>
     <p class="pain-bottom">
       これらはすべて、スキル不足が原因ではありません。<br>
-      <strong class="serif">あなたの「内部対話」——自分自身に語りかけている言葉——<br>そのパターンが、あなたの力を封じています。</strong>
+      <strong class="serif">あなたの「内部対話」——<br>自分自身に語りかけている言葉——<br>そのパターンが、あなたの力を封じています。</strong>
     </p>
 
   <div style="text-align:center; margin:32px 0 16px;">
@@ -1119,44 +1130,43 @@ body {
     <p class="section-label" style="color:var(--accent);">Workshop Curriculum</p>
     <h2 class="section-title" style="color:var(--white);">5日間ワークショップの内容</h2>
 
-    <div style="display:flex; flex-direction:column; gap:20px;">
-
-      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
-        <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>1</div>
-        <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">誤解されてきた傾聴<br>「聴く」と「傾聴」の本質的な違い。</h4>
+    <div style="display:flex; flex-direction:column; gap:24px; max-width:680px; margin:0 auto;">
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(200,164,92,0.25); border-radius:16px; padding:28px 24px; display:flex; align-items:flex-start; gap:24px; transition:background 0.3s;">
+        <div style="flex-shrink:0; width:72px; height:72px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; color:var(--primary); line-height:1.3; text-align:center; letter-spacing:1px; box-shadow:0 6px 20px rgba(200,164,92,0.3);">DAY<br><span style="font-size:28px; font-weight:900; line-height:1;">1</span></div>
+        <div style="flex:1;">
+          <h4 style="font-size:clamp(17px, 4vw, 21px); font-weight:800; color:#fff; margin-bottom:6px; line-height:1.55; font-family:'Noto Serif JP', serif;">誤解されてきた傾聴<br>「聴く」と「傾聴」の本質的な違い。</h4>
         </div>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
-        <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>2</div>
-        <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">質問が尋問に変わる時<br>質問と尋問の境界線を体感レベルで理解。</h4>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(200,164,92,0.25); border-radius:16px; padding:28px 24px; display:flex; align-items:flex-start; gap:24px; transition:background 0.3s;">
+        <div style="flex-shrink:0; width:72px; height:72px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; color:var(--primary); line-height:1.3; text-align:center; letter-spacing:1px; box-shadow:0 6px 20px rgba(200,164,92,0.3);">DAY<br><span style="font-size:28px; font-weight:900; line-height:1;">2</span></div>
+        <div style="flex:1;">
+          <h4 style="font-size:clamp(17px, 4vw, 21px); font-weight:800; color:#fff; margin-bottom:6px; line-height:1.55; font-family:'Noto Serif JP', serif;">質問が尋問に変わる時<br>質問と尋問の境界線を体感レベルで理解。</h4>
         </div>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
-        <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>3</div>
-        <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">だからこそ今、『伝える』を再認識する<br>『聴く』と同等に２つの「伝える」が変容を導く</h4>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(200,164,92,0.25); border-radius:16px; padding:28px 24px; display:flex; align-items:flex-start; gap:24px; transition:background 0.3s;">
+        <div style="flex-shrink:0; width:72px; height:72px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; color:var(--primary); line-height:1.3; text-align:center; letter-spacing:1px; box-shadow:0 6px 20px rgba(200,164,92,0.3);">DAY<br><span style="font-size:28px; font-weight:900; line-height:1;">3</span></div>
+        <div style="flex:1;">
+          <h4 style="font-size:clamp(17px, 4vw, 21px); font-weight:800; color:#fff; margin-bottom:6px; line-height:1.55; font-family:'Noto Serif JP', serif;">だからこそ今、『伝える』を再認識する<br>『聴く』と同等に２つの「伝える」が変容を導く</h4>
         </div>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
-        <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>4</div>
-        <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">お試し止まりの人の誠実すぎる誤解</h4>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(200,164,92,0.25); border-radius:16px; padding:28px 24px; display:flex; align-items:flex-start; gap:24px; transition:background 0.3s;">
+        <div style="flex-shrink:0; width:72px; height:72px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; color:var(--primary); line-height:1.3; text-align:center; letter-spacing:1px; box-shadow:0 6px 20px rgba(200,164,92,0.3);">DAY<br><span style="font-size:28px; font-weight:900; line-height:1;">4</span></div>
+        <div style="flex:1;">
+          <h4 style="font-size:clamp(17px, 4vw, 21px); font-weight:800; color:#fff; margin-bottom:6px; line-height:1.55; font-family:'Noto Serif JP', serif;">お試し止まりの人の誠実すぎる誤解</h4>
         </div>
       </div>
 
-      <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:24px; display:flex; align-items:flex-start; gap:20px;">
-        <div style="flex-shrink:0; width:56px; height:56px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--primary); line-height:1.2; text-align:center;">DAY<br>5</div>
-        <div>
-          <h4 style="font-size:18px; font-weight:700; color:var(--accent-light); margin-bottom:6px; line-height:1.6;">AI時代に必要な『脱』台本の"ありよう"とは？</h4>
+      <div style="background:rgba(255,255,255,0.07); border:1px solid rgba(200,164,92,0.25); border-radius:16px; padding:28px 24px; display:flex; align-items:flex-start; gap:24px; transition:background 0.3s;">
+        <div style="flex-shrink:0; width:72px; height:72px; background:linear-gradient(135deg, var(--accent), var(--accent-light)); border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:900; color:var(--primary); line-height:1.3; text-align:center; letter-spacing:1px; box-shadow:0 6px 20px rgba(200,164,92,0.3);">DAY<br><span style="font-size:28px; font-weight:900; line-height:1;">5</span></div>
+        <div style="flex:1;">
+          <h4 style="font-size:clamp(17px, 4vw, 21px); font-weight:800; color:#fff; margin-bottom:6px; line-height:1.55; font-family:'Noto Serif JP', serif;">AI時代に必要な『脱』台本の"ありよう"とは？</h4>
         </div>
       </div>
 
-    </div>
+    </div></div>
 
     <p style="font-size:12px; color:rgba(255,255,255,0.4); text-align:center; margin-top:24px;">＊ワークショップの内容は断りなく変更する場合があります</p>
   </div>
