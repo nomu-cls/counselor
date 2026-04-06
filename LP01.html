@@ -1571,8 +1571,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   // Form input focus effect
   // Set current URL for UTAGE tracking
+  var currentPageUrl = window.location.href;
   var urlField = document.querySelector('input[name="url"]');
-  if (urlField) urlField.value = window.location.href;
+  if (urlField) urlField.value = currentPageUrl;
+  var regForm = document.querySelector('form[action*="tkal.analogialemma.co.jp"]');
+  if (regForm) {
+    var sep = regForm.action.indexOf('?') >= 0 ? '&' : '?';
+    regForm.action = regForm.action + sep + 'url=' + encodeURIComponent(currentPageUrl);
+  }
 
   const formInput = document.querySelector('#cta-top input[name="mail"]');
   if (formInput) {
