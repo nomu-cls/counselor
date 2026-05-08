@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ご登録ありがとうございます | カウンセラーの言語学</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800;900&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #1e293b;
+  --accent: #ca9851;
+  --accent-light: #e4be81;
+  --accent-glow: #f5e6c0;
+  --white: #ffffff;
+  --text: #334155;
+  --text-light: #64748b;
+  --green: #06c755;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Noto Sans JP',sans-serif;
+  color:var(--text);
+  background: linear-gradient(170deg, #0d1f2d 0%, #1a3a4a 50%, #0d1f2d 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== BG DECORATION ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(200,164,92,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(200,164,92,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  animation: shimmer 10s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%,100% { transform:translateX(-5%) translateY(-5%); }
+  50% { transform:translateX(5%) translateY(5%); }
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #fff;
+  border-radius: 32px;
+  max-width: 560px;
+  width: 100%;
+  padding: 56px 40px 48px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4);
+  border: 1px solid rgba(200,164,92,0.2);
+  animation: fadeUp 0.7s ease both;
+}
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(32px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ===== CHECK ICON ===== */
+.check-wrap {
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #06c755, #04a344);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 28px;
+  box-shadow: 0 8px 24px rgba(6,199,85,0.3);
+  animation: popIn 0.5s 0.3s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+@keyframes popIn {
+  from { opacity:0; transform:scale(0.5); }
+  to   { opacity:1; transform:scale(1); }
+}
+.check-wrap svg {
+  width: 40px; height: 40px;
+  stroke: #fff; stroke-width: 3;
+  fill: none; stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* ===== TEXTS ===== */
+.label {
+  font-size: 12px; letter-spacing: 4px; color: var(--accent);
+  text-transform: uppercase; margin-bottom: 12px; font-weight: 700;
+}
+.title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 700; color: var(--primary);
+  line-height: 1.6; margin-bottom: 16px;
+}
+.subtitle {
+  font-size: 14px; color: var(--text-light);
+  line-height: 2; margin-bottom: 36px;
+}
+
+/* ===== STEP ===== */
+.steps {
+  background: #faf7f2;
+  border-radius: 16px;
+  padding: 24px 20px;
+  margin-bottom: 32px;
+  text-align: left;
+}
+.step-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(200,164,92,0.15);
+}
+.step-item:last-child { border-bottom: none; padding-bottom: 0; }
+.step-num {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--primary), #2a5a6a);
+  color: var(--accent-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; letter-spacing: 0;
+}
+.step-text strong { display:block; font-size:14px; font-weight:700; color:var(--primary); margin-bottom:2px; }
+.step-text span { font-size:12px; color:var(--text-light); line-height:1.6; }
+
+/* ===== LINE BUTTON ===== */
+.line-btn {
+  display: block;
+  background: linear-gradient(135deg, #06c755, #04a344);
+  color: #fff; font-size: 18px; font-weight: 800;
+  padding: 20px 32px; border-radius: 16px;
+  text-decoration: none; letter-spacing: 1px;
+  box-shadow: 0 8px 24px rgba(6,199,85,0.35);
+  transition: all 0.3s;
+  margin-bottom: 12px;
+}
+.line-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(6,199,85,0.45);
+}
+.line-btn-icon { margin-right: 10px; font-size: 22px; vertical-align: middle; }
+.line-note { font-size: 12px; color: var(--text-light); margin-bottom: 32px; line-height: 1.7; }
+
+/* ===== DIVIDER ===== */
+.divider {
+  display: flex; align-items: center; gap: 12px;
+  margin: 28px 0;
+}
+.divider::before, .divider::after {
+  content: ''; flex: 1; height: 1px;
+  background: rgba(200,164,92,0.25);
+}
+.divider span { font-size: 12px; color: var(--accent); letter-spacing: 2px; }
+
+/* ===== BONUS TEASER ===== */
+.bonus-teaser {
+  background: linear-gradient(135deg, rgba(200,164,92,0.08), rgba(200,164,92,0.04));
+  border: 1px solid rgba(200,164,92,0.3);
+  border-radius: 16px; padding: 24px 20px; text-align: left;
+  margin-bottom: 32px;
+}
+.bonus-teaser-label {
+  font-size: 11px; color: var(--accent); letter-spacing: 3px;
+  font-weight: 800; margin-bottom: 10px;
+}
+.bonus-teaser-title {
+  font-size: 15px; font-weight: 700; color: var(--primary);
+  margin-bottom: 6px; line-height: 1.6;
+}
+.bonus-teaser-desc {
+  font-size: 12px; color: var(--text-light); line-height: 1.8;
+}
+
+/* ===== FOOTER ===== */
+.footer-note {
+  font-size: 11px; color: var(--text-light);
+  line-height: 1.8; margin-top: 8px;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 40px 24px 36px; border-radius: 24px; }
+  .title { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- CHECK -->
+  <div class="check-wrap">
+    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  </div>
+
+  <p class="label">Registration Complete</p>
+  <h1 class="title serif">ご登録ありがとうございます！</h1>
+  <p class="subtitle">
+    メールアドレスのご登録が完了しました。<br>
+    ワークショップの詳細は、ご登録のメールアドレスにお届けします。
+  </p>
+
+  <!-- NEXT STEPS -->
+  <div class="steps">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        <strong>✅ メール登録 完了</strong>
+        <span>ワークショップの詳細をメールでお届けします</span>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        <strong>⬇ LINE登録（次のステップ）</strong>
+        <span>限定ボーナス動画＆リマインドをお届けします</span>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        <strong>🎓 5日間ワークショップ参加</strong>
+        <span>詳細はメール・LINEにてご案内します</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LINE BUTTON -->
+  <a href="#" class="line-btn" id="line-cta">
+    <span class="line-btn-icon">💬</span>LINEで受け取る →
+  </a>
+  <p class="line-note">
+    ※ 限定ボーナス動画はLINEにてお届けします<br>
+    ※ ワークショップのリマインドもLINEでご案内します
+  </p>
+
+  <div class="divider"><span>BONUS</span></div>
+
+  <!-- BONUS TEASER -->
+  <div class="bonus-teaser">
+    <p class="bonus-teaser-label">🎁 LINE登録後すぐに受け取れます</p>
+    <p class="bonus-teaser-title">「フリーズした瞬間に使える<br>緊急対応フレーズ集」</p>
+    <p class="bonus-teaser-desc">想定外の場面でも慌てず対応できる<br>その場しのぎではない、本質的なフレーズ10選</p>
+  </div>
+
+  <p class="footer-note">
+    ご不明な点がございましたら、LINEよりお問い合わせください。<br>
+    © 2026 カウンセラーの言語学
+  </p>
+
+</div>
+
+<script>
+  // URLパラメータからLINE URLを取得（動的に上書き可能）
+  const params = new URLSearchParams(window.location.search);
+  const lineUrl = params.get('line');
+  const lineBtn = document.getElementById('line-cta');
+  if (lineUrl) {
+    lineBtn.href = decodeURIComponent(lineUrl);
+  } else {
+    // デフォルトLINE URL（後で設定）
+    lineBtn.href = 'https://lin.ee/';
+  }
+</script>
+
+</body>
+</html>
