@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カウンセラーの言語学 オンライン自習コース｜5チャレ参加者限定</title>
+<meta name="description" content="5チャレで開いた回路を、自分のペースで実装まで運ぶための道具箱。動画・22のテンプレート付きオンライン自習コース。72時間限定。">
+<!-- OGP (Facebook / SNS) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="カウンセラーの言語学｜オンライン自習コース">
+<meta property="og:description" content="5チャレで開いた回路を、自分のペースで実装まで運ぶための道具箱。動画・22のテンプレート付きオンライン自習コース。">
+<meta property="og:image" content="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/au1J8cvJNSbJywViVqYYV6ZJRnPmotV7jk6Nkebu.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ja_JP">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="カウンセラーの言語学｜オンライン自習コース">
+<meta name="twitter:description" content="5チャレで開いた回路を、自分のペースで実装まで運ぶための道具箱。動画・22のテンプレート付き。">
+<meta name="twitter:image" content="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/au1J8cvJNSbJywViVqYYV6ZJRnPmotV7jk6Nkebu.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#1e293b;--primary-light:#2a5a6a;--primary-dark:#0d1f2d;
+  --accent:#ca9851;--accent-light:#e4be81;--accent-glow:#f5e6c0;
+  --warm:#f7f3ec;--warm-dark:#ede5d8;
+  --text:#334155;--text-light:#64748b;--white:#fff;
+  --gray-200:#e2e8f0;--gray-400:#94a3b8;
+  --shadow:0 4px 20px rgba(0,0,0,.08);--shadow-lg:0 8px 40px rgba(0,0,0,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--white);line-height:1.9;font-size:16px;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Noto Serif JP',serif}
+
+/* ── Timer Bar ── */
+.timer-bar{position:sticky;top:0;z-index:999;background:var(--primary);color:rgba(255,255,255,.85);text-align:center;padding:10px 16px;font-size:13px;letter-spacing:1px;backdrop-filter:blur(8px);border-bottom:1px solid rgba(200,164,92,.2)}
+.timer-bar strong{color:var(--accent-light);font-size:18px;font-weight:700;margin-left:8px;font-variant-numeric:tabular-nums}
+
+/* ── Section base ── */
+.section{padding:72px 20px;max-width:720px;margin:0 auto}
+.section-wide{padding:72px 20px}
+.section-inner{max-width:720px;margin:0 auto}
+
+/* ── First View ── */
+.fv{background:var(--white);padding:72px 20px 48px;text-align:center}
+.fv-pre{font-size:13px;letter-spacing:4px;color:var(--accent);margin-bottom:24px}
+.fv h1{font-size:clamp(24px,5.5vw,36px);font-weight:700;color:var(--primary);line-height:1.8;margin-bottom:24px}
+.fv .fv-sub{font-size:15px;color:var(--text-light);line-height:2;max-width:600px;margin:0 auto}
+
+/* ── Prose ── */
+.prose{font-size:15px;line-height:2.4;color:var(--text)}
+.prose p{margin-bottom:20px}
+.prose strong{color:var(--primary);font-weight:600}
+.prose em{font-style:normal;color:var(--accent);font-weight:600}
+
+/* ── Day Recap ── */
+.day-list{list-style:none;padding:0;margin:32px 0}
+.day-list li{background:var(--white);border-left:3px solid var(--accent);padding:20px 24px;margin-bottom:16px;border-radius:0 10px 10px 0;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.day-list li .day-tag{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:2px;margin-bottom:4px;display:block}
+.day-list li .day-title{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:6px}
+.day-list li .day-desc{font-size:14px;color:var(--text-light);line-height:1.9}
+
+/* ── 3 roads ── */
+.roads{counter-reset:road;list-style:none;padding:0;margin:32px 0}
+.roads li{counter-increment:road;padding:20px 24px 20px 60px;position:relative;margin-bottom:12px;background:rgba(200,164,92,.04);border-radius:10px;font-size:15px;line-height:1.9}
+.roads li::before{content:counter(road);position:absolute;left:18px;top:20px;width:28px;height:28px;background:var(--accent);color:var(--white);border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+
+/* ── Quote / Voice ── */
+.quiet-quote{background:var(--white);border-left:3px solid var(--accent);padding:24px 28px;margin:32px 0;border-radius:0 12px 12px 0;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.quiet-quote p{font-size:15px;line-height:2.2;color:var(--text);margin-bottom:12px}
+.quiet-quote .voice-name{font-size:13px;color:var(--text-light);font-weight:600;text-align:right}
+
+/* ── Toolbox features ── */
+.toolbox-list{list-style:none;padding:0;margin:24px 0;display:grid;gap:12px}
+.toolbox-list li{display:flex;align-items:flex-start;gap:12px;font-size:15px;line-height:1.8}
+.toolbox-list li::before{content:'';width:6px;height:6px;background:var(--accent);border-radius:50%;margin-top:10px;flex-shrink:0}
+
+/* ── Curriculum ── */
+.cur-chapter{margin-bottom:36px}
+.cur-chapter h4{font-size:16px;font-weight:700;color:var(--primary);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-200);display:flex;align-items:center;gap:10px;line-height:1.6}
+.cur-chapter h4 .ch-tag{font-size:11px;background:var(--accent);color:var(--white);padding:2px 10px;border-radius:20px;font-weight:700;letter-spacing:1px;flex-shrink:0}
+.cur-chapter ul{list-style:none;padding:0}
+.cur-chapter ul li{font-size:14px;color:var(--text-light);padding:6px 0 6px 20px;position:relative;line-height:1.8}
+.cur-chapter ul li::before{content:'―';position:absolute;left:0;color:var(--accent)}
+
+/* ── Template Grid ── */
+.tmpl-grid{list-style:none;padding:0;counter-reset:tmpl;display:grid;gap:8px}
+.tmpl-grid li{counter-increment:tmpl;display:flex;align-items:baseline;gap:10px;font-size:14px;line-height:1.8;padding:10px 14px;background:rgba(200,164,92,.04);border-radius:8px}
+.tmpl-grid li::before{content:counter(tmpl,decimal-leading-zero);font-size:12px;font-weight:700;color:var(--accent);flex-shrink:0;width:24px}
+
+/* ── Comparison Table ── */
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;margin:32px 0;font-size:14px;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.compare-table th,.compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--gray-200);line-height:1.7}
+.compare-table thead th{background:var(--primary);color:var(--white);font-weight:600;font-size:13px;letter-spacing:1px}
+.compare-table thead th:first-child{background:var(--primary-dark)}
+.compare-table tbody td:first-child{font-weight:600;color:var(--primary);background:rgba(200,164,92,.04)}
+.compare-table tbody tr:last-child td{border-bottom:none}
+
+/* ── CTA ── */
+.cta-block{text-align:center;padding:48px 20px;background:linear-gradient(170deg,rgba(202,152,81,.08),var(--white))}
+.cta-block .price-wrap{margin-bottom:24px}
+.cta-block .price-original{font-size:16px;color:var(--text-light);text-decoration:line-through;margin-bottom:4px}
+.cta-block .price-main{font-size:clamp(36px,8vw,52px);font-weight:900;color:var(--primary);letter-spacing:2px}
+.cta-block .price-main small{font-size:16px;font-weight:600}
+.cta-block .price-note{font-size:13px;color:var(--text-light);margin-top:8px;line-height:1.8}
+.cta-btn{display:inline-block;background:linear-gradient(135deg,var(--accent),var(--accent-light));color:var(--primary);font-size:18px;font-weight:800;padding:18px 48px;border-radius:8px;text-decoration:none;letter-spacing:2px;box-shadow:0 6px 24px rgba(200,164,92,.35);transition:all .25s}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(200,164,92,.45)}
+
+/* ── Bonus ── */
+.bonus-card{background:var(--white);border:1px solid rgba(200,164,92,.25);border-radius:16px;padding:28px 24px;margin-bottom:20px;position:relative;overflow:hidden}
+.bonus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-light))}
+.bonus-card .b-tag{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--white);background:var(--accent);padding:4px 14px;border-radius:20px;letter-spacing:1px;margin-bottom:12px}
+.bonus-card h4{font-size:17px;font-weight:800;color:var(--primary);margin-bottom:10px;line-height:1.6}
+.bonus-card p{font-size:14px;color:var(--text-light);line-height:1.9}
+
+/* ── Voice image ── */
+.voice-img{width:100%;border-radius:12px;margin-bottom:16px;box-shadow:0 4px 16px rgba(0,0,0,.06)}
+
+/* ── Q&A ── */
+.qa-item{margin-bottom:28px}
+.qa-item .qa-q{font-size:15px;font-weight:600;color:var(--primary);margin-bottom:6px;padding-left:24px;position:relative}
+.qa-item .qa-q::before{content:'Q';position:absolute;left:0;color:var(--accent);font-weight:700}
+.qa-item .qa-a{font-size:14px;color:var(--text-light);line-height:2;padding-left:24px}
+
+/* ── Endorsement ── */
+.endorsement{background:rgba(200,164,92,.06);border-radius:12px;padding:28px;margin:32px 0;border:1px solid rgba(200,164,92,.15)}
+.endorsement .e-name{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:8px}
+.endorsement p{font-size:14px;line-height:2;color:var(--text)}
+
+/* ── Payment ── */
+.payment-info{background:rgba(200,164,92,.04);border-radius:12px;padding:24px;margin:24px 0;font-size:14px;color:var(--text-light);line-height:2}
+
+/* ── Divider (Rich Ornament) ── */
+.divider{text-align:center;padding:32px 0;max-width:720px;margin:0 auto}
+.divider svg{display:block;margin:0 auto}
+
+/* ── Journey Flow SVG ── */
+.journey-flow{text-align:center;margin:40px auto;max-width:600px;padding:0 20px}
+.journey-flow svg{width:100%;height:auto}
+
+/* ── Footer ── */
+.footer{background:#1a2535;color:rgba(255,255,255,.4);text-align:center;padding:28px 20px;font-size:12px;line-height:1.8}
+.footer a{color:rgba(255,255,255,.5);text-decoration:none}
+
+/* ── Heading helpers ── */
+.s-label{font-size:12px;letter-spacing:3px;color:var(--accent);text-align:center;margin-bottom:8px;text-transform:uppercase}
+.s-title{font-size:clamp(22px,5vw,30px);font-weight:900;text-align:center;line-height:1.7;margin-bottom:32px;color:var(--primary);letter-spacing:1px}
+
+/* ── Highlighter (蛍光ペン) ── */
+.hl{background:linear-gradient(transparent 60%,rgba(202,152,81,.25) 60%);padding:0 2px;font-weight:700}
+.hl-strong{background:linear-gradient(transparent 50%,rgba(202,152,81,.35) 50%);padding:0 4px;font-weight:800;color:var(--primary)}
+
+/* ── Section Image ── */
+.section-img{margin:32px 0;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.08)}
+.section-img img{width:100%;display:block}
+
+/* ── Profile mini ── */
+.profile-mini{text-align:center;margin:32px 0}
+.profile-mini img{width:160px;height:160px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);box-shadow:0 6px 24px rgba(0,0,0,.1)}
+.profile-mini .p-name{font-size:16px;font-weight:700;color:var(--primary);margin-top:12px}
+.profile-mini .p-role{font-size:13px;color:var(--text-light);margin-top:4px}
+
+/* ── Key phrase callout ── */
+.key-phrase{text-align:center;margin:36px 0;padding:28px 24px;background:rgba(200,164,92,.06);border-radius:16px;border:1px solid rgba(200,164,92,.12)}
+.key-phrase p{font-size:clamp(18px,4vw,24px);font-weight:700;color:var(--primary);line-height:1.8;margin:0}
+
+/* ── Letter section ── */
+.letter{max-width:640px;margin:0 auto;padding:48px 20px}
+.letter p{font-size:15px;line-height:2.4;margin-bottom:16px;color:var(--text)}
+.letter .sign{text-align:right;font-size:15px;color:var(--primary);font-weight:600;margin-top:24px}
+
+/* ── Upgrade path ── */
+.upgrade-list{list-style:none;padding:0;margin:20px 0}
+.upgrade-list li{font-size:14px;padding:10px 16px;border-left:3px solid var(--accent);margin-bottom:8px;background:rgba(200,164,92,.04);border-radius:0 8px 8px 0;line-height:1.8}
+
+/* ── Compare table wrapper (mobile) ── */
+.compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
+
+/* ── Mobile comparison cards ── */
+.compare-mobile{display:none}
+.compare-mobile .cmp-card{background:var(--white);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.compare-mobile .cmp-card h4{font-size:15px;font-weight:700;color:var(--primary);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--accent);text-align:center}
+.compare-mobile .cmp-row{display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--gray-200);gap:12px}
+.compare-mobile .cmp-row:last-child{border-bottom:none}
+.compare-mobile .cmp-label{font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;width:80px}
+.compare-mobile .cmp-val{font-size:13px;color:var(--text);line-height:1.7;flex:1}
+
+/* ── Mobile journey flow ── */
+.journey-flow-mobile{display:none;text-align:center;margin:32px auto;padding:0 20px}
+.journey-flow-mobile svg{width:100%;max-width:280px;height:auto}
+
+/* ── Responsive ── */
+@media(max-width:640px){
+  .section{padding:48px 16px}
+  .section-wide{padding:48px 16px}
+  /* Hide desktop table, show mobile cards */
+  .compare-wrap{display:none}
+  .compare-mobile{display:block}
+  /* Hide desktop journey flow, show mobile */
+  .journey-flow{display:none}
+  .journey-flow-mobile{display:block}
+  .fv{padding:56px 16px 36px}
+  .fv h1{font-size:clamp(20px,5vw,30px)}
+  .cta-btn{font-size:16px;padding:16px 32px;display:block;margin:0 16px}
+  .profile-mini img{width:120px;height:120px}
+  .key-phrase p{font-size:clamp(16px,4vw,20px)}
+  .toolbox-list li{font-size:14px;line-height:1.8}
+  .s-title{font-size:clamp(18px,5vw,26px)}
+  .prose{font-size:14px}
+  .roads li{font-size:14px;padding:16px 20px 16px 52px}
+  .roads li::before{left:14px;top:16px}
+  .bonus-card h4{font-size:15px}
+  .endorsement{padding:20px}
+  .letter{padding:36px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== TIMER BAR ===== -->
+<div class="timer-bar" id="timerBar">
+  このご案内をお読みいただける時間：<strong id="countdown">72:00:00</strong>
+</div>
+
+<!-- ===== FIRST VIEW ===== -->
+<section class="fv">
+  <div class="profile-mini" style="margin-bottom:32px">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/ewR5ao58Hj1J9tEfPZTF7Cjj424LHLv8ZbBGHTT1.jpg" alt="神 崇仁">
+  </div>
+  <p class="fv-pre serif">ONLINE SELF-STUDY COURSE</p>
+  <h1 class="serif">5日間、走り抜けてくれて、<br>ありがとうございました。</h1>
+  <p class="fv-sub">5チャレ「カウンセラーの言語学　マルチセッションプロトコル」を<br>完走してくれたあなたへ、ひとつだけ、お話させてください。</p>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 5日間で受け取ったもの ===== -->
+<section class="section">
+  <p class="s-label">5 DAYS RECAP</p>
+  <h2 class="s-title serif">あなたが、5日間で受け取ったもの</h2>
+  <div class="prose">
+    <p>Day1から5まで、ただ「聞き方」や「話し方」を学んできたのではないことに、もう気づいているはずです。</p>
+  </div>
+  <ul class="day-list">
+    <li>
+      <span class="day-tag">DAY 1 ─ 傾聴 → 期待のデザイン</span>
+      <p class="day-desc">クライアントが「話してよかった」と感じる前に、すでに何かが始まっていた。</p>
+    </li>
+    <li>
+      <span class="day-tag">DAY 2 ─ 質問 → 探求のデザイン</span>
+      <p class="day-desc">問いを変えただけで、相手の答えが変わるのではなく、相手の見えている世界が変わった。</p>
+    </li>
+    <li>
+      <span class="day-tag">DAY 3 ─ 伝える → 受け取りのデザイン</span>
+      <p class="day-desc">伝え方を磨くのではなく、相手の受け取れる準備を整えてから言葉を置く。</p>
+    </li>
+    <li>
+      <span class="day-tag">DAY 4 ─ モニターセッション → 動機継続のデザイン</span>
+      <p class="day-desc">「やる気を出してもらう」のではなく、すでに動き始めている動機を、消さずに運ぶ。</p>
+    </li>
+    <li>
+      <span class="day-tag">DAY 5 ─ テンプレート → ありようのデザイン</span>
+      <p class="day-desc">テンプレートは「型」ではなく、自分の在り方を立ち上げるための足場でした。</p>
+    </li>
+  </ul>
+  <div class="key-phrase" style="margin-top:36px">
+    <p class="serif">これが、「マルチセッションプロトコル」。<br>ひとつのセッションだけを上手くする技術ではなく、<br><span class="hl-strong">クライアントとの関係そのものを設計する</span>技術。</p>
+  </div>
+  <p style="color:var(--accent);font-weight:700;text-align:center;font-size:17px;margin-top:24px" class="serif">5日間で、あなたは確かにその回路を開きました。</p>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 3つの分かれ道 ===== -->
+<section class="section">
+  <h2 class="s-title serif">ここからの分かれ道は、3つあります</h2>
+  <div class="prose"><p>5チャレを終えたあなたの前に、3つの道があります。</p></div>
+  <ol class="roads">
+    <li><strong>本講座で伴走を受ける道</strong>（コンプリート／エッセンシャル速習）<br><span style="font-size:14px;color:var(--text-light)">個別相談を経て、神と直接やり取りしながら、自分のセッションに完全実装していく道。</span></li>
+    <li><strong>自分のペースで深掘りする道</strong>（このページのオンライン自習コース）<br><span style="font-size:14px;color:var(--text-light)">5日間で開いた回路を、動画とテンプレートで自分の手元に残し、自走で実装していく道。</span></li>
+    <li><strong>ここで一区切りにする道</strong><br><span style="font-size:14px;color:var(--text-light)">5日間の体験そのものを資産として持ち帰り、今はここまでにする道。</span></li>
+  </ol>
+  <div class="prose" style="text-align:center">
+    <p>どれも、正解です。</p>
+    <p>ただ、3番を選ぼうとしているあなたに、<br>もうひとつだけ選択肢を渡したくて、このページを用意しました。</p>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 個別相談に進まなかったあなたへ ===== -->
+<section class="section">
+  <h2 class="s-title serif">個別相談に進まなかった、あなたへ</h2>
+  <div class="prose">
+    <p>個別相談に進まなかった理由、進めなかった理由は、人それぞれです。</p>
+  </div>
+  <ul class="toolbox-list" style="margin:24px 0 28px">
+    <li>「内容には惹かれるけど、今すぐ動かせる金額じゃない」</li>
+    <li>「タイミング的に、これ以上抱え込めない」</li>
+    <li>「本講座に進む確信が、まだ自分の中で固まっていない」</li>
+    <li>「個別相談で話を聞いて、いったん持ち帰った」</li>
+  </ul>
+  <div class="prose">
+    <p>どれも、不自然な理由ではありません。</p>
+    <p>私は、「決められなかった」ことより、<br><span class="hl-strong">「決められなかったまま、5日間で開いた回路を閉じてしまうこと」</span><br>のほうが、もったいないと考えています。</p>
+  </div>
+  <div class="key-phrase">
+    <p class="serif">5日間で動き始めたものを、<br>止めないでほしいのです。</p>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 道具箱 ===== -->
+<section class="section">
+  <h2 class="s-title serif">だから、<span class="hl">「持ち帰れる道具箱」</span>を<br>用意しました</h2>
+  <div style="text-align:center;margin:24px 0">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/BS24ZDaJp7rJ1hHhC3weirFXqRdTTR6aHeaD6JpT.jpg" alt="道具箱イラスト" style="max-width:320px;width:80%;border-radius:16px">
+  </div>
+  <div class="prose">
+    <p>オンライン自習コース『カウンセラーの言語学』は、本講座の "代わり" ではありません。<br><span class="hl-strong">5チャレで開いた回路を、自分のペースで現場まで運ぶための道具箱</span>です。</p>
+  </div>
+  <ul class="toolbox-list">
+    <li><strong>動画で</strong>、ひとつずつ確認できる</li>
+    <li><strong>テンプレート</strong>が手元に残る</li>
+    <li><strong>期限なく</strong>、好きな時に見返せる</li>
+    <li>あとから本講座に進みたくなったら、<strong>差額で参加できる</strong></li>
+  </ul>
+  <div class="key-phrase" style="margin-top:28px">
+    <p class="serif">つまり、ここは "終点" ではなく、<span class="hl-strong">中間駅</span>です。</p>
+  </div>
+  <!-- Journey Flow SVG (Desktop) -->
+  <div class="journey-flow">
+    <svg viewBox="0 0 560 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Step 1 -->
+      <rect x="0" y="16" width="140" height="48" rx="24" fill="rgba(200,164,92,0.1)" stroke="#ca9851" stroke-width="1"/>
+      <text x="70" y="45" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700" font-family="'Noto Sans JP',sans-serif">5チャレ（完了）</text>
+      <!-- Arrow 1 -->
+      <line x1="148" y1="40" x2="192" y2="40" stroke="#ca9851" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="192,36 200,40 192,44" fill="#ca9851"/>
+      <!-- Step 2 (highlighted) -->
+      <rect x="206" y="8" width="148" height="64" rx="24" fill="#ca9851" stroke="#ca9851" stroke-width="1.5"/>
+      <text x="280" y="36" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="'Noto Sans JP',sans-serif">オンライン自習コース</text>
+      <text x="280" y="54" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="10" font-family="'Noto Sans JP',sans-serif">← いまここ</text>
+      <!-- Arrow 2 -->
+      <line x1="362" y1="40" x2="406" y2="40" stroke="#ca9851" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="406,36 414,40 406,44" fill="#ca9851"/>
+      <!-- Step 3 -->
+      <rect x="420" y="16" width="140" height="48" rx="24" fill="rgba(200,164,92,0.1)" stroke="#ca9851" stroke-width="1"/>
+      <text x="490" y="38" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="700" font-family="'Noto Sans JP',sans-serif">本講座</text>
+      <text x="490" y="52" text-anchor="middle" fill="#64748b" font-size="10" font-family="'Noto Sans JP',sans-serif">差額で参加可</text>
+    </svg>
+  </div>
+  <!-- Journey Flow (Mobile: vertical layout) -->
+  <div class="journey-flow-mobile">
+    <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Step 1 -->
+      <rect x="20" y="10" width="160" height="48" rx="24" fill="rgba(200,164,92,0.1)" stroke="#ca9851" stroke-width="1"/>
+      <text x="100" y="39" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700" font-family="'Noto Sans JP',sans-serif">5チャレ（完了）</text>
+      <!-- Arrow 1 -->
+      <line x1="100" y1="62" x2="100" y2="96" stroke="#ca9851" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="96,96 100,104 104,96" fill="#ca9851"/>
+      <!-- Step 2 (highlighted) -->
+      <rect x="10" y="110" width="180" height="64" rx="24" fill="#ca9851" stroke="#ca9851" stroke-width="1.5"/>
+      <text x="100" y="138" text-anchor="middle" fill="#fff" font-size="13" font-weight="600" font-family="'Noto Sans JP',sans-serif">オンライン自習コース</text>
+      <text x="100" y="158" text-anchor="middle" fill="rgba(255,255,255,0.8)" font-size="11" font-family="'Noto Sans JP',sans-serif">← いまここ</text>
+      <!-- Arrow 2 -->
+      <line x1="100" y1="178" x2="100" y2="212" stroke="#ca9851" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <polygon points="96,212 100,220 104,212" fill="#ca9851"/>
+      <!-- Step 3 -->
+      <rect x="20" y="226" width="160" height="56" rx="24" fill="rgba(200,164,92,0.1)" stroke="#ca9851" stroke-width="1"/>
+      <text x="100" y="250" text-anchor="middle" fill="#1e293b" font-size="13" font-weight="700" font-family="'Noto Sans JP',sans-serif">本講座</text>
+      <text x="100" y="268" text-anchor="middle" fill="#64748b" font-size="10" font-family="'Noto Sans JP',sans-serif">差額で参加可</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== CTA 1 ===== -->
+<div class="cta-block" id="cta-mid">
+  <p style="font-size:14px;color:var(--text-light);margin-bottom:4px" class="price-limited-label">5チャレ参加者限定・72時間限定</p>
+  <div class="price-wrap">
+    <p class="price-original">販売価格 298,000円</p>
+    <p class="price-main serif cta-price-display"><span class="price-num">148,000</span><small>円（税込）</small></p>
+  </div>
+  <a href="https://tkal.analogialemma.co.jp/p/8Ov2sXZzlhUj" class="cta-btn cta-link">148,000円で申し込む →</a>
+  <p class="price-note" style="margin-top:16px">※差額で本講座にいつでもアップグレード可能</p>
+</div>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== カリキュラム ===== -->
+<section class="section-wide" style="background:var(--warm)">
+  <div class="section-inner">
+    <p class="s-label">CURRICULUM</p>
+    <h2 class="s-title serif">中身：Day1-5に対応するカリキュラム</h2>
+    <p class="prose" style="text-align:center;margin-bottom:36px">5チャレで触れたフレームを、深く・遅く・自分の手で扱えるところまで解説しています。</p>
+
+    <div class="cur-chapter">
+      <h4><span class="ch-tag">Day1</span>傾聴 → 期待のデザイン</h4>
+      <ul>
+        <li>カウンセラーのための信頼の6つのプロセス</li>
+        <li>カウンセラーのための信頼を生む非言語</li>
+        <li>感動を生む共感コミュニケーション（導入テンプレ／繋がりのテンプレ）</li>
+        <li>カウンセラーのためのセッションのオープニング方法</li>
+      </ul>
+    </div>
+    <div class="cur-chapter">
+      <h4><span class="ch-tag">Day2</span>質問 → 探求のデザイン</h4>
+      <ul>
+        <li>カウンセラーが知るべき価値観について</li>
+        <li>カウンセラーが行うべき戦略的コミュニケーション</li>
+        <li>カウンセラーが行うべき傾聴を超えた効果的な聞き方</li>
+        <li>カウンセラーが問題を聞く際の違いを生むポイント</li>
+        <li>カウンセラーが使うべきメタ・プログラム法</li>
+      </ul>
+    </div>
+    <div class="cur-chapter">
+      <h4><span class="ch-tag">Day3</span>伝える → 受け取りのデザイン</h4>
+      <ul>
+        <li>イエスセットを効果的にする方法</li>
+        <li>PSMモデル（効果的なメッセージやアドバイスの伝え方／順序について）</li>
+        <li>納得コミュニケーションで活用する認識論的聴術</li>
+        <li>変化を生む伝え返し方法（異なる答えを導く伝え返し、5つのリフレーミング）</li>
+        <li>なぜ？の経験的含意と承認のテンプレートと手順</li>
+        <li>カウンセラーが気をつけるべき非言語コミュニケーション</li>
+      </ul>
+    </div>
+    <div class="cur-chapter">
+      <h4><span class="ch-tag">Day4</span>モニターセッション → 動機継続のデザイン</h4>
+      <ul>
+        <li>カスタマージャーニー（3つの完了・TTM・感動ステップ）</li>
+        <li>セッションオープニング</li>
+        <li>カウンセラーのセッションの区切りを作る方法</li>
+        <li>カウンセラー見送りテンプレート</li>
+        <li>課題出しのテンプレート（セッション後のLINEや電話のやり取り。変化を課題に繋げる方法）</li>
+        <li>クライアントのモチベーションを上げる公式</li>
+      </ul>
+    </div>
+    <div class="cur-chapter">
+      <h4><span class="ch-tag">Day5</span>テンプレート → ありようのデザイン</h4>
+      <ul>
+        <li>カウンセラーのための「ひとこと技法」（5つのプロセス解説）</li>
+        <li>口慣らし方法と4MATテンプレート</li>
+        <li>クライアントを惹きつけるための自分ストーリー（ストーリーテンプレート）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 22 Templates ===== -->
+<section class="section">
+  <p class="s-label">22 TEMPLATES</p>
+  <h2 class="s-title serif">手元に残る22のテンプレート</h2>
+  <div class="prose" style="text-align:center;margin-bottom:32px">
+    <p>5チャレでお見せしたものも、まだお見せしていないものも、すべて入っています。</p>
+  </div>
+  <ol class="tmpl-grid">
+    <li>つながりをつくるセッション冒頭の催眠的テンプレート（過去・退行編）</li>
+    <li>つながりをつくるセッション冒頭の催眠的テンプレート（未来・可能性編）</li>
+    <li>12ステップ・セッション説明テンプレート</li>
+    <li>説明会冒頭のセットアップテンプレート</li>
+    <li>ネガティブ発言をポジティブに変える接続詞テンプレート</li>
+    <li>セッションの区切りテンプレート</li>
+    <li>見送り（退出前）のテンプレート</li>
+    <li>TOP SPINテンプレート（ピッチクエスチョンテンプレ）</li>
+    <li>予約受付のテンプレート（LINEテンプレ 1・2・3）</li>
+    <li>セッション効果を高める課題テンプレ（LINEテンプレ 4・5・6）</li>
+    <li>問題の意味論的リフレーミングテンプレ</li>
+    <li>3つの一般化を脱するフレーミングテンプレ</li>
+    <li>ネガティブを減らしポジティブを増やすテンプレ</li>
+    <li>レジリエンスを喚起するテンプレ</li>
+    <li>コインの裏表テンプレ</li>
+    <li>安定化のテンプレ</li>
+    <li>セッション後の課題だしテンプレ</li>
+    <li>神式課題を立体化するテンプレート（ひとこと技法）</li>
+    <li>言語化を促すテンプレート</li>
+    <li>セッションの納得を高める4MATテンプレート</li>
+    <li>深い悩みに寄り添うプロセスバリデーション</li>
+    <li>前熟考期の見込み客へのテンプレート</li>
+  </ol>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 比較表 ===== -->
+<section class="section">
+  <p class="s-label">COMPARISON</p>
+  <h2 class="s-title serif">本講座との違い（伴走と自走）</h2>
+  <div class="prose" style="margin-bottom:24px">
+    <p>このオンライン自習コースは、本講座（コンプリート／エッセンシャル速習）とは設計思想が違います。</p>
+  </div>
+  <div class="compare-wrap">
+  <table class="compare-table">
+    <thead>
+      <tr><th></th><th>オンライン自習コース</th><th>エッセンシャル速習／コンプリート</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>進め方</td><td>自分のペース、自分の手で</td><td>神と日程を合わせ、伴走で</td></tr>
+      <tr><td>テンプレートの扱い</td><td>まず "そのまま" 使って再現する</td><td>自分の現場仕様に書き換えるところまで仕上げる</td></tr>
+      <tr><td>フィードバック</td><td>なし（自分の実感が指標）</td><td>あり（直接アドバイス／個別相談）</td></tr>
+      <tr><td>到達点</td><td>「効果を体験する」までを自走</td><td>「自分のメソッドとして立てる」まで完了</td></tr>
+      <tr><td>向いている方</td><td>まずは自分で試してから判断したい方</td><td>期間を区切って完成形まで持っていきたい方</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <!-- Mobile comparison cards (shown only on mobile) -->
+  <div class="compare-mobile">
+    <div class="cmp-card">
+      <h4>オンライン自習コース</h4>
+      <div class="cmp-row"><span class="cmp-label">進め方</span><span class="cmp-val">自分のペース、自分の手で</span></div>
+      <div class="cmp-row"><span class="cmp-label">テンプレートの扱い</span><span class="cmp-val">まず "そのまま" 使って再現する</span></div>
+      <div class="cmp-row"><span class="cmp-label">フィードバック</span><span class="cmp-val">なし（自分の実感が指標）</span></div>
+      <div class="cmp-row"><span class="cmp-label">到達点</span><span class="cmp-val">「効果を体験する」までを自走</span></div>
+      <div class="cmp-row"><span class="cmp-label">向いている方</span><span class="cmp-val">まずは自分で試してから判断したい方</span></div>
+    </div>
+    <div class="cmp-card">
+      <h4>エッセンシャル速習／コンプリート</h4>
+      <div class="cmp-row"><span class="cmp-label">進め方</span><span class="cmp-val">神と日程を合わせ、伴走で</span></div>
+      <div class="cmp-row"><span class="cmp-label">テンプレートの扱い</span><span class="cmp-val">自分の現場仕様に書き換えるところまで仕上げる</span></div>
+      <div class="cmp-row"><span class="cmp-label">フィードバック</span><span class="cmp-val">あり（直接アドバイス／個別相談）</span></div>
+      <div class="cmp-row"><span class="cmp-label">到達点</span><span class="cmp-val">「自分のメソッドとして立てる」まで完了</span></div>
+      <div class="cmp-row"><span class="cmp-label">向いている方</span><span class="cmp-val">期間を区切って完成形まで持っていきたい方</span></div>
+    </div>
+  </div>
+  <div class="prose" style="text-align:center;margin-top:24px">
+    <p>「自習コースで効果を体験 → 本講座で完成形まで仕上げる」という、<br><em>段階的な投資ルート</em>が成立するように設計しています。</p>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== お客様の声 ===== -->
+<section class="section-wide" style="background:var(--warm)">
+  <div class="section-inner">
+    <p class="s-label">VOICES</p>
+    <h2 class="s-title serif">先に道を歩いた方の声</h2>
+    <p class="prose" style="text-align:center;margin-bottom:36px">5チャレ通過者のあなたに、いま読んでいただきたいものだけ載せます。</p>
+
+    <div class="quiet-quote">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/H9uyWb4j2my6/CDLNVwEvbeoeTvUZWQOI2fSBrkZAUkOxSLdf4IFO.png" alt="藤田悠貴さん" class="voice-img">
+      <p>セッションの前と後にどうやってお客さんと関わっていったらいいか、明確な指針がなく、いつも迷っていました。それが自信のなさとして表れて、セッション自体のクオリティにも影響していたんです。</p>
+      <p>言語学を学んでからのお客様は、ほぼ全てがリピートしてくださるようになりました。<span class="hl-strong">セッション以外のところを勉強しているのに、セッションのクオリティが上がった</span>というのが、いちばん大きな変化です。</p>
+      <p style="font-size:10px;color:var(--text-light);opacity:.5;margin:8px 0 0">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+
+    <div class="quiet-quote">
+      <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/o9hBOR4MW1SM/dQ52TwF6BIehGkplG79S4IHigffpX349Rz6QEaf4.png" alt="ふわ優子さん" class="voice-img">
+      <p>私ばかりがしゃべってしまっていて、お客さまを置き去りにしている感覚がありました。売上もどんどん落ちていたんです。</p>
+      <p>受け始めて落ちなくなって、最終的には、一番落ちていた時から倍ぐらいになりました。「うっかり自分の気持ちを話せたのは初めてです」というお声をいただくとき、これは絶対に言語学のおかげだと確信があります。</p>
+      <p style="font-size:10px;color:var(--text-light);opacity:.5;margin:8px 0 0">*個人の感想であり効果を保証するものではありません</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 神からの手紙 ===== -->
+<section class="letter">
+  <p class="s-label">FROM TAKAHITO KO</p>
+  <h2 class="s-title serif">神崇仁から、ひとこと</h2>
+  <div class="profile-mini" style="margin-bottom:24px">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/ewR5ao58Hj1J9tEfPZTF7Cjj424LHLv8ZbBGHTT1.jpg" alt="神 崇仁">
+    <p class="p-name serif">神 崇仁</p>
+    <p class="p-role">アナロギアレンマ株式会社 代表</p>
+  </div>
+  <p>5チャレを完走してくれた方に、私はこのオファーを「妥協」とは呼びたくありません。</p>
+  <p>5日間で開いた回路を、止めずに運ぶための<span class="hl-strong">「橋」</span>です。</p>
+  <div style="text-align:center;margin:28px 0">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/Qc67EIEN5lJQh213nqyPyqec0ZwtSRkY2mGwCUMf.jpg" alt="橋のイラスト" style="max-width:480px;width:90%;border-radius:16px">
+  </div>
+  <p>私は、対人支援の現場に立つあなたが、目の前のクライアントに<span class="hl">「届く言葉」</span>を持ち帰れることを、本気で願っています。本講座で会えるなら、それが一番嬉しい。それが今すぐではなくても、5日間で開いた回路を、あなたの手元から消したくない。</p>
+  <p>その想いだけで、この自習コースを用意しました。</p>
+  <p class="sign serif">― 神 崇仁</p>
+</section>
+
+<!-- ===== 推薦 ===== -->
+<section class="section">
+  <p class="s-label">ENDORSEMENT</p>
+  <h2 class="s-title serif">推薦のことば</h2>
+  <div class="endorsement">
+    <img src="https://utagesystem.s3.ap-northeast-1.amazonaws.com/3gRIftKfe1ud/H9uyWb4j2my6/8RPy65F3fgcoDSv0RsyE67nFIDnNC0j1ViN1HGEz.png" alt="ジェフリー・ザイク博士" style="width:100%;border-radius:10px;margin-bottom:16px">
+    <p>神先生の教え方、彼が行うワーク、そして受講生たちの進歩。そのすべてから、彼の深い努力と、その教えが受講生の成長を促進していることを確信しました。より効果的なコミュニケーションスキルを習得したい方、簡単なアイデアやメッセージに光を当てる方法を学びたい方に、特におすすめします。</p>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 特典 ===== -->
+<section class="section-wide" style="background:var(--warm)">
+  <div class="section-inner">
+    <p class="s-label">🎁 BONUS</p>
+    <h2 class="s-title serif">お申し込みの方への特典</h2>
+    <div class="bonus-card">
+      <p class="b-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg> 特典 1</p>
+      <h4>講座資料＆テンプレート（PDF）</h4>
+      <p>動画で使用したスライド資料と、22個のテンプレートをまとめたPDFをお渡しします。動画を見返さなくても、<strong>PDFだけで現場で使えます。</strong></p>
+    </div>
+    <div class="bonus-card">
+      <p class="b-tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg> 特典 2</p>
+      <h4>本講座への <span class="hl">"差額参加権"</span></h4>
+      <p>このオンライン自習コースを受講したあと、<strong>やはり本講座（コンプリート／エッセンシャル速習）で伴走を受けたい</strong>と感じたら、自習コースとの<strong>差額のみ</strong>で本講座に参加できます。期限は設けていません。</p>
+      <p style="margin-top:12px;font-size:14px;color:var(--text);text-align:center">「自習コースに入る＝本講座への道を閉じる」ではありません。<br><strong>中間駅から、いつでも次の電車に乗れる</strong>設計になっています。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== 価格 ===== -->
+<section class="section" style="text-align:center">
+  <p class="s-label">PRICE</p>
+  <h2 class="s-title serif">価格</h2>
+  <p style="font-size:16px;color:var(--text-light);margin-bottom:4px">販売価格</p>
+  <p style="font-size:24px;color:var(--text-light);text-decoration:line-through;margin-bottom:16px">298,000円</p>
+  <p style="font-size:14px;color:var(--accent);margin-bottom:8px;font-weight:600" class="price-limited-label">5チャレ参加者の方へ、3日間限定で</p>
+  <p style="font-size:clamp(40px,10vw,56px);font-weight:900;color:var(--primary);letter-spacing:2px" class="serif price-display"><span class="price-num">148,000</span><small style="font-size:18px;font-weight:600">円（税込）</small></p>
+  <p style="font-size:13px;color:var(--text-light);margin-top:16px;line-height:1.9;max-width:520px;margin-left:auto;margin-right:auto">※同じ枠組みで先行販売した『カウンセラーの言語学』オンライン自習コースは298,000円で提供しています。今回は5チャレ参加者の方への感謝の意を込めて、その半額でご案内します。</p>
+  <p style="font-size:13px;color:var(--text-light);margin-top:8px">※この価格でのご案内は、5チャレ参加者の方への今回限りです。</p>
+
+  <div class="payment-info" style="max-width:480px;margin:32px auto 0;text-align:left">
+    <p style="font-weight:600;color:var(--primary);margin-bottom:8px">お支払い方法</p>
+    <p>・銀行振込一括払い<br>・クレジットカード一括払い<br>・クレジットカード分割　3〜24回（VISA / Master / JCB / AMEX）</p>
+  </div>
+</section>
+
+<!-- ===== CTA 2 ===== -->
+<div class="cta-block" id="cta-price" style="background:linear-gradient(170deg,var(--primary),var(--primary-dark));padding:56px 20px">
+  <p style="font-size:14px;color:rgba(255,255,255,.5);margin-bottom:8px;letter-spacing:2px" class="price-limited-label">72時間限定</p>
+  <p style="font-size:clamp(32px,8vw,48px);font-weight:900;color:var(--accent);margin-bottom:24px" class="serif cta-price-display"><span class="price-num">148,000</span><small style="font-size:16px;font-weight:600;color:rgba(255,255,255,.7)">円（税込）</small></p>
+  <a href="https://tkal.analogialemma.co.jp/p/8Ov2sXZzlhUj" class="cta-btn cta-link" id="ctaBtnPrice">148,000円で申し込む →</a>
+  <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:16px">※差額で本講座にいつでもアップグレード可能</p>
+</div>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== Q&A ===== -->
+<section class="section-wide" style="background:var(--warm)">
+  <div class="section-inner">
+    <p class="s-label">FAQ</p>
+    <h2 class="s-title serif">よくあるご質問</h2>
+    <div class="qa-item">
+      <p class="qa-q">5チャレで十分理解できた気がします。それでもこのコースは必要ですか？</p>
+      <p class="qa-a">5日間で受け取れたものは、確かにあります。ただ、5日間で「触れた」フレームと、現場で「使える」フレームの間には距離があります。このコースは、その距離を埋めるための22個のテンプレートと、Day1-5に対応する動画解説が中心です。「もう一度ゆっくり見直したい」「テンプレートを手元に置いておきたい」という方に向いています。</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-q">あとから本講座に進みたくなったら、どうなりますか？</p>
+      <p class="qa-a">差額のみで本講座にご参加いただけます。期限は設けていませんので、ご自身のタイミングでお進みいただけます。</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-q">視聴期限はありますか？</p>
+      <p class="qa-a">期限なくご覧いただけます。</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-q">動画だけで身につきますか？</p>
+      <p class="qa-a">「動画を見るだけ」では身につきません。テンプレートを、実際のセッションで、まずそのまま使ってみることが前提です。最初は言い慣れない部分も出ますが、そこを越えると、5チャレで体感した「あの感じ」が、自分の現場で再現できるようになります。</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-q">カウンセラー以外の仕事ですが、活用できますか？</p>
+      <p class="qa-a">過去の受講生には、歯科医、薬剤師、人事担当、ビジネスコーチ、セラピストなど、対人支援に関わる多様な方が含まれます。「人と深く話す仕事」であれば、十分活用できます。</p>
+    </div>
+    <div class="qa-item">
+      <p class="qa-q">キャンセルはできますか？</p>
+      <p class="qa-a">デジタルコンテンツの性質上、お申込み後のキャンセル・返金はお受けしておりません。ご検討のうえお申込みください。</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><svg width="200" height="20" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="10" x2="85" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/><path d="M100 2 L106 10 L100 18 L94 10 Z" fill="none" stroke="#ca9851" stroke-width="1"/><circle cx="100" cy="10" r="2" fill="#ca9851"/><line x1="115" y1="10" x2="200" y2="10" stroke="#ca9851" stroke-width="0.5" stroke-dasharray="4 4"/></svg></div>
+
+<!-- ===== LAST MESSAGE ===== -->
+<section class="letter" style="padding-bottom:16px">
+  <p class="s-label">LAST MESSAGE</p>
+  <h2 class="s-title serif">最後に</h2>
+  <p>ここから先、どの道を選んでも、5日間で開いた回路は、あなたの中に残ります。</p>
+  <p>進む人。止まる人。寄り道する人。<br>どれも、対人支援者として誠実な選択です。</p>
+  <p>ただ、もし「ここで止めるのは、少しもったいない」と感じているなら、この中間駅を使ってください。動画とテンプレートを手元に持ち帰って、自分のペースで、試す。そして、必要になった時に、本講座の電車に乗り直す。</p>
+  <p>その道を、用意しました。</p>
+  <p class="sign serif">― 神 崇仁</p>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<div class="cta-block" id="cta-final" style="background:linear-gradient(170deg,var(--primary),#0f2030);padding:64px 20px">
+  <p style="font-size:13px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:12px" id="ctaFinalLabel">このご案内の有効期限</p>
+  <p style="font-size:28px;font-weight:700;color:var(--accent-light);margin-bottom:24px" class="serif" id="ctaFinalTimer">残り <span id="countdown2">72:00:00</span></p>
+  <p style="font-size:clamp(32px,8vw,48px);font-weight:900;color:var(--accent);margin-bottom:28px" class="serif cta-price-display"><span class="price-num">148,000</span><small style="font-size:16px;font-weight:600;color:rgba(255,255,255,.7)">円（税込）</small></p>
+  <a href="https://tkal.analogialemma.co.jp/p/8Ov2sXZzlhUj" class="cta-btn cta-link" id="ctaBtnFinal">148,000円で申し込む →</a>
+  <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:16px">※差額で本講座にいつでもアップグレード可能</p>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  アナロギアレンマ株式会社<br>
+  <a href="https://analogialemma.co.jp/privacy/" target="_blank" rel="noopener">プライバシーポリシー</a>　／　<a href="https://analogialemma.co.jp/tokusho/" target="_blank" rel="noopener">特定商取引法に基づく表記</a><br>
+  &copy; 2026 All Rights Reserved.
+</footer>
+
+<script>
+// ===== Config =====
+var PRICE_72H = '148,000';
+var PRICE_AFTER = '198,000';
+var URL_72H = 'https://tkal.analogialemma.co.jp/p/8Ov2sXZzlhUj';
+var URL_AFTER = 'https://tkal.analogialemma.co.jp/p/cDELbdBwGMWZ';
+
+// ===== Countdown Timer + Price & URL Switching =====
+// 販売期間: 2026年5月16日(土) 0:00 〜 5月18日(月) 23:59:59 JST
+(function(){
+  // テスト用: ?_test=expired で期限切れ状態をシミュレート
+  var _testParams = new URLSearchParams(window.location.search);
+  if (_testParams.get('_test') === 'expired') {
+    Date.now = function(){ return new Date('2026-05-19T12:00:00+09:00').getTime(); };
+  }
+
+  // Fixed deadline: May 18, 2026 23:59:59 JST (UTC+9)
+  var deadline = new Date('2026-05-18T23:59:59+09:00');
+
+  function switchPrice(price, url) {
+    document.querySelectorAll('.cta-link').forEach(function(a) {
+      a.href = url;
+      a.textContent = price + '円で申し込む →';
+    });
+    document.querySelectorAll('.price-num').forEach(function(el) {
+      el.textContent = price;
+    });
+  }
+
+  function update(){
+    var now = Date.now();
+    var diff = Math.max(0, deadline - now);
+
+    // Calculate days, hours, minutes, seconds
+    var days = Math.floor(diff / 86400000);
+    var h = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+    var m = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+    var s = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+
+    var t;
+    if (days > 0) {
+      t = days + '日 ' + h + ':' + m + ':' + s;
+    } else {
+      t = h + ':' + m + ':' + s;
+    }
+
+    document.getElementById('countdown').textContent = t;
+    document.getElementById('countdown2').textContent = t;
+
+    if (diff <= 0) {
+      // 期限後: タイマーバーを販売中メッセージに切り替え
+      document.getElementById('timerBar').textContent = '5チャレ参加者の方へ、特別価格でご案内中';
+      // 最終CTAのカウントダウンを非表示にし、ラベルを変更
+      var ctaLabel = document.getElementById('ctaFinalLabel');
+      var ctaTimer = document.getElementById('ctaFinalTimer');
+      if (ctaLabel) ctaLabel.textContent = '5チャレ参加者の方へ';
+      if (ctaTimer) ctaTimer.style.display = 'none';
+      switchPrice(PRICE_AFTER, URL_AFTER);
+      // Update limited labels
+      document.querySelectorAll('.price-limited-label').forEach(function(el) {
+        el.textContent = '5チャレ参加者の方へ';
+      });
+    } else {
+      switchPrice(PRICE_72H, URL_72H);
+    }
+  }
+  update();
+  setInterval(update, 1000);
+})();
+
+// ===== URL Parameter: ?from=consultation =====
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('from') === 'consultation') {
+    // Update hero heading
+    var h1 = document.querySelector('.fv h1');
+    if (h1) h1.innerHTML = '個別相談を受けてくれた、<br>あなたへの特別なご案内。';
+    // Update sub text
+    var sub = document.querySelector('.fv .fv-sub');
+    if (sub) sub.innerHTML = '個別相談でお話を聞いてくださったあなたへ、<br>もうひとつだけ、選択肢をお渡しさせてください。';
+    // Update the section about not proceeding
+    var sectionTitle = document.querySelectorAll('.s-title');
+    sectionTitle.forEach(function(el) {
+      if (el.textContent.includes('個別相談に進まなかった')) {
+        el.innerHTML = '個別相談を受けた、あなたへ';
+      }
+    });
+    // Update the intro prose for consultation recipients
+    var prosePs = document.querySelectorAll('.section .prose p');
+    prosePs.forEach(function(p) {
+      if (p.textContent.includes('個別相談に進まなかった理由')) {
+        p.textContent = '個別相談を受けた上で、今回は見送ろうとしている理由は、人それぞれです。';
+      }
+    });
+  }
+})();
+
+// ===== Smooth scroll for anchor links =====
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id = this.getAttribute('href').slice(1);
+    var el = document.getElementById(id);
+    if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  });
+});
+</script>
+
+</body>
+</html>

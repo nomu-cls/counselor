@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LP テスター</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box }
+body { font-family:-apple-system,'Noto Sans JP',sans-serif; background:#1a1a2e; color:#fff; min-height:100vh; display:flex; align-items:center; justify-content:center }
+.card {
+  background:#16213e; border-radius:16px; padding:40px; max-width:480px; width:90%;
+  border:1px solid rgba(202,152,81,.3); box-shadow:0 8px 40px rgba(0,0,0,.4);
+}
+h1 { font-size:20px; color:#ca9851; margin-bottom:8px; text-align:center }
+p.sub { font-size:13px; color:#888; text-align:center; margin-bottom:32px }
+.group { margin-bottom:24px }
+.group-label { font-size:11px; color:#666; letter-spacing:2px; text-transform:uppercase; margin-bottom:10px }
+a.btn {
+  display:block; padding:14px 20px; background:#0f3460; border:1px solid #333;
+  border-radius:10px; color:#fff; text-decoration:none; font-size:14px;
+  margin-bottom:8px; transition:all .2s; position:relative;
+}
+a.btn:hover { background:#1a5276; border-color:#ca9851; transform:translateX(4px) }
+a.btn .badge {
+  position:absolute; right:16px; top:50%; transform:translateY(-50%);
+  font-size:11px; padding:3px 10px; border-radius:20px; font-weight:700;
+}
+a.btn .badge.green { background:rgba(78,204,163,.15); color:#4ecca3 }
+a.btn .badge.red { background:rgba(231,76,60,.15); color:#e74c3c }
+a.btn .badge.blue { background:rgba(52,152,219,.15); color:#3498db }
+.note { font-size:11px; color:#555; margin-top:24px; line-height:1.8; text-align:center }
+.note code { background:rgba(255,255,255,.1); padding:2px 6px; border-radius:4px; color:#ca9851 }
+.divider { height:1px; background:#333; margin:24px 0 }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🧪 LP テスター</h1>
+  <p class="sub">ボタンをクリックするだけで各状態を確認できます</p>
+
+  <div class="group">
+    <div class="group-label">📅 日付切り替えテスト</div>
+    <a class="btn" href="LP-downsell-utage.html" target="_blank">
+      通常表示（期限内 / 148,000円）
+      <span class="badge green">LIVE</span>
+    </a>
+    <a class="btn" href="LP-downsell-utage.html?_test=expired" target="_blank">
+      期限切れ（受付終了 / 198,000円）
+      <span class="badge red">TEST</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="group">
+    <div class="group-label">💬 表示パターンテスト</div>
+    <a class="btn" href="LP-downsell-utage.html?from=consultation" target="_blank">
+      個別相談版（見出し切り替え）
+      <span class="badge blue">VARIANT</span>
+    </a>
+    <a class="btn" href="LP-downsell-utage.html?from=consultation&_test=expired" target="_blank">
+      個別相談版 × 期限切れ
+      <span class="badge red">TEST</span>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="note">
+    URLに <code>?_test=expired</code> を付けると期限切れ状態に<br>
+    <code>?from=consultation</code> で個別相談版に切り替わります<br>
+    ※テスト用パラメータは本番ユーザーには見えません
+  </p>
+</div>
+
+</body>
+</html>
